@@ -7,17 +7,21 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "server": "nodemon --inspect index.js"
-        
-        
   },
   "keywords": [],
   "author": "Brennan Flood",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "concurrently": "^5.2.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "mongoose": "^5.9.12"
+    "express-graphql": "^0.9.0",
+    "graphql": "^15.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.12",
+    "nodemon": "^2.0.3",
+    "validator": "^13.0.0"
   }
-  
 }

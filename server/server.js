@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require("mongoose");
 const db = require("../config/keys.js").MONGO_URI;
+const expressGraphQL = require("express-graphql");
 const path = require('path');
 
 // if (process.env.NODE_ENV === 'production') {
@@ -21,5 +22,18 @@ mongoose
 app.use(cors());
 
 app.use(bodyParser.json());
+
+app.use(
+  "/graphql",
+  expressGraphQL(req => {
+    return {
+      schema,
+      context: {
+        token: req.headers.authorization
+      },
+      graphiql: true
+    };
+  })
+);
 
 module.exports = app;
