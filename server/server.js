@@ -6,6 +6,8 @@ const mongoose = require("mongoose");
 const db = require("../config/keys.js").MONGO_URI;
 const expressGraphQL = require("express-graphql");
 const path = require('path');
+const schema = require("./schema/schema");
+
 
 // if (process.env.NODE_ENV === 'production') {
 //   app.use(express.static('client/build'));
