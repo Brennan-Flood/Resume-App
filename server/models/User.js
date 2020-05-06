@@ -21,3 +21,5 @@ const UserSchema = new Schema({
     max: 32
   }
 });
+
+module.exports = mongoose.model("users", UserSchema);
