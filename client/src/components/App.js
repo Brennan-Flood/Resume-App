@@ -3,7 +3,7 @@ import { Query } from "react-apollo";
 import Splash from "./auth/Splash";
 import Nav from "./nav/Nav";
 import Builder from "./builder/Builder"
-import '../App.css';
+import '../css_index.css';
 
 
 import Queries from "../graphql/queries";

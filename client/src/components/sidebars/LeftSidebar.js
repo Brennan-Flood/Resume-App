@@ -1,18 +1,28 @@
 import React from "react";
 
 class LeftSidebar extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {}
+  }
+
+  update(field) {
+   return e => this.props.update(field, e.target.value);
+  }
 
   render() {
     return (
       <div className="left-sidebar">
         LeftSidebar
 
-        Name: 
-        <input 
-        type="text" 
-        />
-
         
+
+        <input 
+        type="text"
+        placeholder="Name"
+        onChange={this.update("name")}
+        />
       </div>
     )
   }

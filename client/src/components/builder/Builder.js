@@ -5,21 +5,38 @@ import Resume from "../resume/Resume";
 
 
 class Builder extends React.Component {
+  constructor(props) {
+    super(props);
 
-  componentDidMount() {
-    console.log(this.props);
+    this.state = {
+      name: "", 
+      title: "",
+      yearsExperience: "",
+      currentPositionTitle: "",
+      currentCompanyName: "",
+      currentPositionYears: "",
+      currentPositionParagraph: "",
+      recentSearches: "",
+      educationAndEmployment: [],
+      LinkedinReviews: [],
+    }
+
+    this.update = this.update.bind(this);
   }
 
-  update(field) {
-    return e => this.setState({ [field]: e.target.value })
+  componentDidMount() {
+    console.log(this.state);
+  }
+
+  update(field, value) {
+    this.setState({ [field]: value })
   }
 
   render() {
     return(
       <div className="builder">
-        This is the Builder
-        <LeftSidebar />
-        <Resume /> 
+        <LeftSidebar update={this.update} />
+        <Resume state={this.state}/> 
         <RightSidebar />
       </div>
     )

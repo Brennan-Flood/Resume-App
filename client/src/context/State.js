@@ -1,10 +1,7 @@
 import React from "react";
 
 const initialState = {
-  name: { 
-    first: "",
-    last: ""
-  }
+  name: ""
 }
 
 export default AppContext
