@@ -3,7 +3,7 @@ import { Mutation } from "react-apollo";
 import Mutations from "../../graphql/mutations";
 import { Link } from "react-router-dom";
 
-const { REGISTER_USER, LOGIN_USER } = Mutations;
+const { REGISTER_USER} = Mutations;
 
 class Register extends Component {
   constructor(props) {

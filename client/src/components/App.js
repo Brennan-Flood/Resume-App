@@ -2,7 +2,9 @@ import React from 'react';
 import { Query } from "react-apollo";
 import Splash from "./auth/Splash";
 import Nav from "./nav/Nav";
+import Builder from "./builder/Builder"
 import '../App.css';
+
 
 import Queries from "../graphql/queries";
 const { IS_LOGGED_IN } = Queries;
@@ -16,9 +18,9 @@ class App extends React.Component {
         {({data }) => {
           if (data.isLoggedIn) {
             return (
-            <div>
-                You're Logged In
-                <Nav></Nav>
+            <div className="main">
+                <Nav/>
+                <Builder/>
             </div> 
             )
           } else {
