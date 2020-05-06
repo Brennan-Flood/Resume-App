@@ -48,6 +48,7 @@ class Login extends Component {
     }, 1);
     const splitErr = errors.message.split(":");
     this.setState({ errors: splitErr[1] });
+    console.log(errors);
   };
 
   emailStyle() {
