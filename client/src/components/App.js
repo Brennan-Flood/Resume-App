@@ -1,26 +1,34 @@
 import React from 'react';
-import logo from '../logo.svg';
+import { Query } from "react-apollo";
+
 import '../App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Queries from "../graphql/queries";
+const { IS_LOGGED_IN } = Queries;
+
+class App extends React.Component {
+
+  render() {
+    return (
+      <Query query= {IS_LOGGED_IN}> 
+        {({data }) => {
+          if (data.isLoggedIn) {
+            return (
+            <div>
+              You're Logged In
+            </div> 
+            )
+          } else {
+            return (
+              <div>
+                You're NOT Logged In
+              </div> 
+            )
+          }
+        }}
+      </Query> 
+    )
+  }
 }
 
 export default App;
