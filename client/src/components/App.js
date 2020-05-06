@@ -1,6 +1,7 @@
 import React from 'react';
 import { Query } from "react-apollo";
-
+import Splash from "./auth/Splash";
+import Nav from "./nav/Nav";
 import '../App.css';
 
 import Queries from "../graphql/queries";
@@ -10,18 +11,20 @@ class App extends React.Component {
 
   render() {
     return (
+      
       <Query query= {IS_LOGGED_IN}> 
         {({data }) => {
           if (data.isLoggedIn) {
             return (
             <div>
-              You're Logged In
+                You're Logged In
+                <Nav></Nav>
             </div> 
             )
           } else {
             return (
               <div>
-                You're NOT Logged In
+                <Splash/>
               </div> 
             )
           }

@@ -29,7 +29,6 @@ async function setupClient() {
   });
 
   const errorLink = onError(({ graphQLErrors }) => {
-    // if (graphQLErrors) graphQLErrors.map(({ message }) => console.log(message));
     if (graphQLErrors) {
       graphQLErrors.map(({ message }) => console.log(message));
     } else {
