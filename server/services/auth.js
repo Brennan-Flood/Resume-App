@@ -8,7 +8,7 @@ const validateLoginInput = require("../validation/login");
 const register = async data => {
   try {
     const { message, isValid } = validateRegisterInput(data);
-
+    
     if (!isValid) {
       throw new Error(message);
     }
@@ -45,7 +45,7 @@ const register = async data => {
 const login = async data => {
   try {
     const { message, isValid } = validateLoginInput(data);
-
+    
     if (!isValid) {
       throw new Error(message);
     }
