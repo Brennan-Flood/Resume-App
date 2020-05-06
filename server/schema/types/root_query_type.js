@@ -2,6 +2,9 @@ const mongoose = require("mongoose");
 const graphql = require("graphql");
 const { GraphQLObjectType, GraphQLList, GraphQLID, GraphQLNonNull } = graphql;
 
+const UserType = require("./user_type");
+const User = mongoose.model("users");
+
 const RootQueryType = new GraphQLObjectType({
   name: "RootQueryType",
   fields: () => ({
