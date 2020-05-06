@@ -5,7 +5,14 @@ class LeftSidebar extends React.Component {
   render() {
     return (
       <div className="left-sidebar">
-        This is the LeftSidebar
+        LeftSidebar
+
+        Name: 
+        <input 
+        type="text" 
+        />
+
+        
       </div>
     )
   }

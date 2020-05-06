@@ -3,11 +3,15 @@ import LeftSidebar from "../sidebars/LeftSidebar";
 import RightSidebar from "../sidebars/RightSidebar";
 import Resume from "../resume/Resume";
 
+
 class Builder extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {};
+  componentDidMount() {
+    console.log(this.props);
+  }
+
+  update(field) {
+    return e => this.setState({ [field]: e.target.value })
   }
 
   render() {
