@@ -7,3 +7,10 @@
   width: 567px;
 }
 
+.resume-header{
+  display: flex;
+  margin: 10px;
+  padding: 10px;
+  justify-content: space-evenly;
+}
+

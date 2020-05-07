@@ -1,0 +1,15 @@
+.recent-searches-div {
+  display: flex;
+  width: 33%;
+  height: 200px;
+  overflow-wrap: normal;
+}
+
+.recent-searches-header {
+
+}
+
+.recent-searches {
+  height: 100%;
+  overflow-wrap: break-word;
+}

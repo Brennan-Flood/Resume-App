@@ -1,0 +1,5 @@
+.resume-row-1 {
+ display: flex;
+ margin: 10px;
+ justify-content: space-evenly;
+}
