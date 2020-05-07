@@ -19,11 +19,27 @@ class Resume extends React.Component {
           <h1 className="name"> {this.props.state.name} </h1>
           <h1 className="years"> {this.props.state.yearsExperience} YEARS of recruiting experience </h1>
         </div>
+        <div className="resume-row-1">
+          <div className="current-position-div">
+            <h1 className="current-position-title">CURRENT POSITION</h1>
+            <div className="current-position-header">
+              <ul className="current-position-list">
+                <h1 className="current-title">{this.props.state.currentTitle}</h1>
+                <h1 className="current-company">{this.props.state.currentCompany}</h1>
+                <h1 className="current-company-time"> 
+                  {this.props.state.currentPositionStartTime} - {this.props.state.currentPositionTime}
+                </h1>
+              </ul>
+            </div>
+          </div>
 
-        <div className="current-position-div">
-          <h1 className="current-position-title">CURRENT POSITION</h1>
-          <div className="current-position-header">
-          <h1 className="current-position">{this.props.state.currentTitle}</h1>
+          <div className="recruiting-toolkit-div">
+            <h1 className="recruiting-toolkit-title"> RECRUITING TOOLKIT </h1>
+          </div>
+
+          <div className="recent-searches-div">
+            <h1 className="recent-searches-header"> RECENT SEARCHES</h1>
+            <h1 className="recent-searches"> {this.props.state.recentSearches}</h1>
           </div>
         </div>
       </div>

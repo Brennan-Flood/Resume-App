@@ -43,6 +43,12 @@ class LeftSidebar extends React.Component {
         onChange={this.update("currentTitle")}
         />
 
+        <input
+          type="text"
+          placeholder="Current Company"
+          onChange={this.update("currentCompany")}
+        />
+
         <input 
         type="number"
         placeholder="Starting Year of Current Position"
@@ -54,6 +60,14 @@ class LeftSidebar extends React.Component {
           placeholder="Current Year"
           onChange={this.update("currentPositionTime")}
         />
+
+        <input 
+        type="paragraph"
+        placeholder="Recent Searches"
+        onChange={this.update("recentSearches")}
+        />
+
+        
       </div>
     )
   }

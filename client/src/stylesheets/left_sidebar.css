@@ -5,4 +5,12 @@
   position: absolute;
   left: 0%;
   border-right: 1px solid black;
+  overflow: scroll;
+}
+
+.left-sidebar > input {
+  border-radius: 5px;
+  width: 200px;
+  padding: 5px;
+  margin: 5px;
 }

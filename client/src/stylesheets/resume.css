@@ -1,7 +1,9 @@
 .resume {
   margin: 5px;
   border: 1px solid black;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
   height: 800px;
   width: 567px;
 }
+
