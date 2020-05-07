@@ -31,8 +31,14 @@ class LeftSidebar extends React.Component {
 
         <input 
         type="text"
-        placeholder="Name"
-        onChange={this.update("name")}
+        placeholder="First Name"
+        onChange={this.update("firstName")}
+        />
+
+        <input
+          type="text"
+          placeholder="Last Name"
+          onChange={this.update("lastName")}
         />
 
         <input 
@@ -67,8 +73,7 @@ class LeftSidebar extends React.Component {
           onChange={this.update("currentPositionTime")}
         />
 
-        <input
-          type="text"
+        <textarea
           placeholder="Description"
           onChange={this.update("currentPositionParagraph")}
         />
@@ -77,7 +82,7 @@ class LeftSidebar extends React.Component {
 
         <h1 className="sidebar-section-name"> Recent Searches</h1>
 
-        <input 
+        <textarea 
         type="text"
         placeholder="Recent Searches"
         onChange={this.update("recentSearches")}

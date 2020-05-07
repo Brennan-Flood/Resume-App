@@ -9,7 +9,8 @@ class Builder extends React.Component {
     super(props);
 
     this.state = {
-      name: "", 
+      firstName: "",
+      lastName: "",
       title: "",
       yearsExperience: "",
       currentTitle: "",
@@ -20,6 +21,7 @@ class Builder extends React.Component {
       recentSearches: "",
       educationAndEmployment: [],
       LinkedinReviews: [],
+
     }
 
     this.update = this.update.bind(this);

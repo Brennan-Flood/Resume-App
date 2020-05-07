@@ -16,13 +16,26 @@ class Resume extends React.Component {
     return (
       <div className="resume">
         <div className="resume-header">
-          <h1 className="name"> {this.props.state.name} </h1>
-          <h1 className="years"> {this.props.state.yearsExperience} YEARS of recruiting experience </h1>
+
+          <div>
+            <h1 className="name"> {this.props.state.name} </h1>
+            <h1 className="name"> {this.props.state.name} </h1>
+          </div>
+
+          <div className="recruiting-experience-div">
+            <h1 className="years"> {this.props.state.yearsExperience} YEARS </h1>
+            <h1 className="recruiting-experience">recruiting experience</h1>
+          </div>
+
         </div>
         <div className="resume-row-1">
+
           <div className="current-position-div">
+
             <h1 className="current-position-title">CURRENT POSITION</h1>
+
             <div className="current-position-header">
+
               <ul className="current-position-list">
                 <h1 className="current-title">{this.props.state.currentTitle}</h1>
                 <h1 className="current-company">{this.props.state.currentCompany}</h1>
@@ -30,8 +43,11 @@ class Resume extends React.Component {
                   {this.props.state.currentPositionStartTime} - {this.props.state.currentPositionTime}
                 </h1>
               </ul>
+
             </div>
+
             <h1 className="current-position-description">{this.props.state.currentPositionParagraph}</h1>
+
           </div>
 
           <div className="recruiting-toolkit-div">
@@ -42,6 +58,7 @@ class Resume extends React.Component {
             <h1 className="recent-searches-header"> RECENT SEARCHES</h1>
             <h1 className="recent-searches"> {this.props.state.recentSearches}</h1>
           </div>
+          
         </div>
       </div>
     )
