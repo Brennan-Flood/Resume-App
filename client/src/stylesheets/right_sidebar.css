@@ -1,3 +1,8 @@
 .right-sidebar {
-  width: 33%;
+  position: absolute;
+  right: 0%;
+  display: flex;
+  width: 250px;
+  height: 100vh;
+  border-left: 1px solid black;
 }

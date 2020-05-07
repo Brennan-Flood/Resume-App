@@ -15,8 +15,17 @@ class Resume extends React.Component {
   render() {
     return (
       <div className="resume">
-        This is the 
-        <h1> {this.props.state.name} </h1>
+        <div className="resume-header">
+          <h1 className="name"> {this.props.state.name} </h1>
+          <h1 className="years"> {this.props.state.yearsExperience} YEARS of recruiting experience </h1>
+        </div>
+
+        <div className="current-position-div">
+          <h1 className="current-position-title">CURRENT POSITION</h1>
+          <div className="current-position-header">
+          <h1 className="current-position">{this.props.state.currentTitle}</h1>
+          </div>
+        </div>
       </div>
     )
   }

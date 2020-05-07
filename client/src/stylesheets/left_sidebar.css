@@ -1,5 +1,8 @@
 .left-sidebar {
-  width: 33%;
-  display: flex;
+  width: 250px;
+  height: 100vh;
   flex-direction: column;
+  position: absolute;
+  left: 0%;
+  border-right: 1px solid black;
 }

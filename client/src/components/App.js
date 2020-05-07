@@ -19,8 +19,8 @@ class App extends React.Component {
           if (data.isLoggedIn) {
             return (
             <div className="main">
-                <Nav/>
                 <Builder/>
+                <Nav />
             </div> 
             )
           } else {
