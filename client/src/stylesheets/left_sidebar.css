@@ -49,6 +49,7 @@
 
 .sidebar-section-name{ 
   margin: 5px;
+  margin-top: 15px;
   padding: 10px;
   border-bottom: 1px solid gray;
 }

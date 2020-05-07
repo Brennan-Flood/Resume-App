@@ -18,8 +18,8 @@ class Resume extends React.Component {
         <div className="resume-header">
 
           <div>
-            <h1 className="name"> {this.props.state.name} </h1>
-            <h1 className="name"> {this.props.state.name} </h1>
+            <h1 className="name"> {this.props.state.firstName} </h1>
+            <h1 className="name"> {this.props.state.lastName} </h1>
           </div>
 
           <div className="recruiting-experience-div">
@@ -58,7 +58,7 @@ class Resume extends React.Component {
             <h1 className="recent-searches-header"> RECENT SEARCHES</h1>
             <h1 className="recent-searches"> {this.props.state.recentSearches}</h1>
           </div>
-          
+
         </div>
       </div>
     )

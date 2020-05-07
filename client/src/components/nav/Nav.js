@@ -13,7 +13,7 @@ const Nav = props => {
           {({ data }) => {
             if (data.isLoggedIn) {
               return (
-                <div className="nav-auth">
+                <div className="nav">
                   <button
                     className="nav-button"
                     onClick={e => {

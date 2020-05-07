@@ -43,7 +43,7 @@ class LeftSidebar extends React.Component {
 
         <input 
         type="number"
-        placeholder="Years of Recruitment Experience"
+        placeholder="Years of Experience"
         onChange={this.update("yearsExperience")}
         />
         
@@ -63,7 +63,7 @@ class LeftSidebar extends React.Component {
 
         <input 
         type="number"
-        placeholder="Starting Year of Current Position"
+        placeholder="Starting Year"
         onChange={this.update("currentPositionStartTime")}
         />
 
