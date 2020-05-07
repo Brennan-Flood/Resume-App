@@ -3,7 +3,22 @@ import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 import { Query, ApolloConsumer } from "react-apollo";
 import Queries from "../../graphql/queries";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 const { IS_LOGGED_IN } = Queries;
+
+const downloadResume = function() {
+  const input = document.querySelector("#capture");
+  document.body.appendChild(input);
+  html2canvas(input)
+    .then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF();
+      pdf.addImage(imgData, 'PNG', 0, 0);
+      pdf.save("resume.pdf");
+    });
+  ;
+}
 
 const Nav = props => {
   return (
@@ -26,6 +41,10 @@ const Nav = props => {
                   >
                     Logout
                 </button>
+                <button 
+                className="download-resume-button"
+                onClick={downloadResume}
+                >Download PDF</button>
                   <div className="blurred"></div>
                 </div>
               );

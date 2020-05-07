@@ -14,7 +14,7 @@ class Resume extends React.Component {
   }
   render() {
     return (
-      <div className="resume">
+      <div id="capture" className="resume">
         <div className="resume-header">
 
           <div>
