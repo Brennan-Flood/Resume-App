@@ -9,7 +9,7 @@ const { IS_LOGGED_IN } = Queries;
 
 const downloadResume = function() {
   const input = document.querySelector("#capture");
-  document.body.appendChild(input);
+  
   html2canvas(input)
     .then((canvas) => {
       const imgData = canvas.toDataURL('image/png');
