@@ -4,5 +4,11 @@
   display: flex;
   width: 250px;
   height: 100vh;
-  border-left: 1px solid black;
+  box-shadow: -2px 0px 5px grey;
+  background-color: rgb(233, 253, 255);
+}
+
+.right-sidebar > h1 {
+  height: 19px;
+  width: 100%;
 }

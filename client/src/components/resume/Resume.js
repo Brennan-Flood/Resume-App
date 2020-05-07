@@ -31,6 +31,7 @@ class Resume extends React.Component {
                 </h1>
               </ul>
             </div>
+            <h1 className="current-position-description">{this.props.state.currentPositionParagraph}</h1>
           </div>
 
           <div className="recruiting-toolkit-div">

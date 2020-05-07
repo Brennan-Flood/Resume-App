@@ -5,7 +5,7 @@ class RightSidebar extends React.Component {
   render() {
     return (
       <div className="right-sidebar">
-        This is the RightSidebar
+        <h1 className="sidebar-header">THEMES</h1>
       </div>
     )
   }

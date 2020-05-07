@@ -25,6 +25,10 @@ class LeftSidebar extends React.Component {
   render() {
     return (
       <div className="left-sidebar">
+        <h1 className="sidebar-header">INPUTS</h1>
+
+        <h1 className="sidebar-section-name"> Basic Info</h1>
+
         <input 
         type="text"
         placeholder="Name"
@@ -36,6 +40,8 @@ class LeftSidebar extends React.Component {
         placeholder="Years of Recruitment Experience"
         onChange={this.update("yearsExperience")}
         />
+        
+        <h1 className="sidebar-section-name"> Current Position</h1>
 
         <input 
         type="text"
@@ -61,8 +67,18 @@ class LeftSidebar extends React.Component {
           onChange={this.update("currentPositionTime")}
         />
 
+        <input
+          type="text"
+          placeholder="Description"
+          onChange={this.update("currentPositionParagraph")}
+        />
+
+        <h1 className="sidebar-section-name"> Recruiting Toolkit </h1>
+
+        <h1 className="sidebar-section-name"> Recent Searches</h1>
+
         <input 
-        type="paragraph"
+        type="text"
         placeholder="Recent Searches"
         onChange={this.update("recentSearches")}
         />

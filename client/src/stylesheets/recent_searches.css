@@ -1,15 +1,18 @@
 .recent-searches-div {
   display: flex;
+  flex-direction: column;
   width: 33%;
   height: 200px;
   overflow-wrap: normal;
 }
 
 .recent-searches-header {
-
+  font-weight: 900;
 }
 
 .recent-searches {
+  padding: 4px;
+  flex-wrap: wrap;
   height: 100%;
-  overflow-wrap: break-word;
+  width: 100%;
 }

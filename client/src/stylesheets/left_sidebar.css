@@ -4,13 +4,33 @@
   flex-direction: column;
   position: absolute;
   left: 0%;
-  border-right: 1px solid black;
   overflow: scroll;
+  box-shadow: 2px 0px 5px grey;
+  background-color: rgb(233, 253, 255);
 }
 
 .left-sidebar > input {
-  border-radius: 5px;
+  border-radius: 8px;
   width: 200px;
   padding: 5px;
+  margin: 5px;
+  border: 1px solid gray; 
+  box-shadow: 1px 0px 1px grey;
+
+}
+
+.left-sidebar > input:hover {
+    border: 1px solid green; 
+    box-shadow: 2px 1px 1px grey;
+
+}
+
+.sidebar-header {
+  position: relative;
+  border-bottom: 1px solid grey;
+  margin: 10px;
+}
+
+.sidebar-section-name{ 
   margin: 5px;
 }
