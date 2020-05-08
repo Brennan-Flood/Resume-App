@@ -22,11 +22,12 @@
   box-shadow: 1px 0px 1px grey;
 }
 
-.left-sidebar > input::placeholder, textarea::placeholder {
+.education-input::placeholder , .left-sidebar > input::placeholder, 
+textarea::placeholder {
   color: rgb(192, 192, 192);
 }
 
-.left-sidebar > textarea {
+textarea, .left-sidebar > textarea {
   border-radius: 8px;
   margin: 10px;
   padding: 5px;
@@ -34,7 +35,7 @@
   box-shadow: 1px 0px 1px grey;
 }
 
-.left-sidebar > input:hover {
+.education-input:hover, .left-sidebar > input:hover {
   border: 1px solid green; 
   box-shadow: 2px 1px 1px grey;
 }
@@ -56,4 +57,16 @@
 
 .last-left-div {
   margin-bottom: 60px;
+}
+
+.add-field-button, .remove-field-button {
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid gray;
+  border-radius: 8px;
+}
+
+.education-cluster, .linkedin-cluster {
+  border-bottom: 1px solid black;
 }
