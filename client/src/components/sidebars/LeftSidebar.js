@@ -4,25 +4,52 @@ class LeftSidebar extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = {}
+    this.state = {educationInputs: 1, educationValues: {1: ""}};
+
+    this.addEducationField = this.addEducationField.bind(this);
+    this.removeEducationField = this.removeEducationField.bind(this);
+    this.updateEducationField = this.updateEducationField.bind(this);
   }
 
   update(field) {
    return e => this.props.update(field, e.target.value);
   }
 
-  // name: "",
-  // title: "",
-  // yearsExperience: "",
-  // currentTitle: "",
-  // currentCompany: "",
-  // currentPositionTime: "",
-  // currentPositionParagraph: "",
-  // recentSearches: "",
-  // educationAndEmployment: [],
-  // LinkedinReviews: [],
+  addEducationField() {
+    const numInputs = this.state.educationInputs + 1;
+    
+    let newEducationValues = this.state.educationValues;
+    newEducationValues[numInputs] = "";
+
+    this.setState({educationInputs: numInputs, educationValues: newEducationValues});
+    this.props.updateEducationField(numInputs);
+  }
+
+  removeEducationField() {
+    const numInputs = this.state.educationInputs - 1;
+    if (numInputs > 0) {
+    let newEducationValues = this.state.educationValues;
+    newEducationValues[numInputs] = "";
+    this.setState({educationInputs: numInputs, educationValues: newEducationValues});
+    this.props.updateEducationField(numInputs);
+    } else {
+      return
+    }
+  }
+  
+  updateEducationField(field) {
+    return (e) => {
+      let newEducationValues = this.state.educationValues
+      newEducationValues[field] = e.target.value
+      this.setState({educationValues: newEducationValues});
+      this.props.updateEducationField(this.state.educationInputs, field, e.target.value);
+    }
+  }
 
   render() {
+    let eduInputs = new Array(this.state.educationInputs).fill(0);
+    
+    console.log(eduInputs);
     return (
       <div className="left-sidebar">
         <h1 className="sidebar-header">INPUTS</h1>
@@ -88,7 +115,31 @@ class LeftSidebar extends React.Component {
         onChange={this.update("recentSearches")}
         />
 
+        <h1 className="sidebar-section-name"> {"HOBBIES & INTERESTS"}</h1>
+
         
+        <h1 className="sidebar-section-name">{"EDUCATION & EMPLOYMENT"}</h1>
+
+        <div className="education-field">
+          <button className="add-field-button" onClick={this.addEducationField}>ADD</button>
+          <button className="remove-field-button" onClick={this.removeEducationField}>REMOVE</button>
+          {eduInputs.map((e, i) => {
+            return (<input
+              type="text"
+              id={i + 1}
+              className="education-input"
+              placeholder="EDUCATION / EMPLOYMENT"
+              onChange={this.updateEducationField(i + 1)}
+            />
+            )
+          })}
+        </div>
+
+        <h1 className="sidebar-section-name">LinkedIn Reviews</h1>
+        <div className="last-left-div">
+        <input className="" placeholder="LinkedIn Review"/>
+        </div>
+
       </div>
     )
   }

@@ -9,7 +9,7 @@
   background-color: rgb(233, 253, 255);
 }
 
-.left-sidebar > input{
+.education-input, .left-sidebar > input{
   display: flex;
   flex-wrap: wrap;
   border-radius: 8px;
@@ -47,9 +47,13 @@
   font-size: 18px;
 }
 
-.sidebar-section-name{ 
+.sidebar-section-name { 
   margin: 5px;
   margin-top: 15px;
   padding: 10px;
   border-bottom: 1px solid gray;
+}
+
+.last-left-div {
+  margin-bottom: 60px;
 }

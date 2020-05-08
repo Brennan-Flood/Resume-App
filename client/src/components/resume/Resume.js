@@ -57,7 +57,15 @@ class Resume extends React.Component {
           <div className="recent-searches-div">
             <h1 className="recent-searches-header"> RECENT SEARCHES</h1>
             <h1 className="recent-searches"> {this.props.state.recentSearches}</h1>
+            <h1 className="hobbies-header">{"HOBBIES & INTERESTS"}</h1>
           </div>
+
+          
+
+        </div>
+        
+        <div className="education-and-employment-div">
+          <h1>{"EDUCATION & EMPLOYMENT HISTORY"}</h1>
 
         </div>
       </div>
