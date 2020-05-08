@@ -214,11 +214,11 @@ class LeftSidebar extends React.Component {
 
         <div className="agencies-and-clearence">
           <div className="agencies">
-
+            <h1 className="sidebar-section-name">FEDERAL AGENCIES</h1>
           </div>
 
           <div className="clearences">
-            
+            <h1 className="sidebar-section-name">CLEARENCE LEVELS</h1>
           </div>
         </div>
 
