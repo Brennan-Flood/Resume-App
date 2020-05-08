@@ -66,11 +66,12 @@ class Resume extends React.Component {
 
         <div className="education-and-employment-div">
           <h1>{"EDUCATION & EMPLOYMENT HISTORY"}</h1>
-          {this.props.state.educationAndEmployment.map((e) => {
-            return (<div>
-              <h1>{e[1].title}</h1>
-              <h1>{e[1].entity}</h1>
-              <h1>{e[1].startTime} - {e[1].endTime}</h1>
+          {this.props.state.educationAndEmployment.map((e, i) => {
+            let k = i * 3;
+            return (<div key={i}>
+              <h1 key={k + 1}>{e[1].title}</h1>
+              <h1 key={k + 2}>{e[1].entity}</h1>
+              <h1 key={k + 3}>{e[1].startTime} - {e[1].endTime}</h1>
               
             </div>)
           })}
@@ -80,10 +81,11 @@ class Resume extends React.Component {
           <h1>LINKEDIN REVIEWS</h1>
           {
             this.props.state.linkedinReviews.map((e, i) => {
+              let k = i * 3
               return (
-                <div>
-                  <h1>{e[1].author}</h1>
-                  <p>{e[1].body}</p>
+                <div key={k}>
+                  <h1 key={k + 1}>{e[1].author}</h1>
+                  <p key={k + 2}>{e[1].body}</p>
                 </div>
               )
             })

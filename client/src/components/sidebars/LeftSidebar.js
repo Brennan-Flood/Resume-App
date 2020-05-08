@@ -70,7 +70,6 @@ class LeftSidebar extends React.Component {
   }
   
   updateMultiField(metaField, index, field) {
-    console.log(metaField, index, field);
     return (e) => {
       let newValues;
       let inputs;
@@ -171,38 +170,38 @@ class LeftSidebar extends React.Component {
           <button className="add-field-button" onClick={() => this.addMultiField("edu")}>ADD</button>
           <button className="remove-field-button" onClick={() => this.removeMultiField("edu")}>REMOVE</button>
           {eduInputs.map((e, i) => {
-            
+            let k = i * 5;
             return (
-            <div className="education-cluster">
+            <div key={k} className="education-cluster">
               <h1 className="education-index">Experience #{i + 1}</h1>
               <input
                 type="text"
-                id={i + 1}
-                key={i}
+                id={k + 1}
+                key={k + 1}
                 className="education-input"
                 placeholder="Study or Title"
                 onChange={this.updateMultiField("edu", i + 1, "title")}
               />
               <input
                   type="text"
-                  id={i + 1}
-                  key={i}
+                  id={k + 2}
+                  key={k + 2}
                   className="education-input"
                   placeholder="School or Company"
                   onChange={this.updateMultiField("edu", i + 1, "entity")}
               />
                 <input
                   type="text"
-                  id={i + 1}
-                  key={i}
+                  id={k + 3}
+                  key={k + 3}
                   className="education-input"
                   placeholder="Starting Year"
                   onChange={this.updateMultiField("edu", i + 1, "startTime")}
                 />
                 <input
                   type="text"
-                  id={i + 1}
-                  key={i}
+                  id={k + 4}
+                  key={k + 4}
                   className="education-input"
                   placeholder="Ending Year"
                   onChange={this.updateMultiField("edu", i + 1, "endTime")}
@@ -228,10 +227,11 @@ class LeftSidebar extends React.Component {
           <button className="add-field-button" onClick={() => this.addMultiField("linkedin")}>ADD</button>
           <button className="remove-field-button" onClick={() => this.removeMultiField("linkedin")}>REMOVE</button>
           {linkedinInputs.map((e, i) => {
+            let k = i*3
             return (
-              <div className="linkedin-cluster">
-                <textarea id="i" className="" placeholder="Author Info" onChange={this.updateMultiField("linkedin", i + 1, "author")} />
-                <textarea id="i" className="" placeholder="Review" onChange={this.updateMultiField("linkedin", i + 1, "body")} />
+              <div key={k} className="linkedin-cluster">
+                <textarea key={k + 1} id={i} className="" placeholder="Author Info" onChange={this.updateMultiField("linkedin", i + 1, "author")} />
+                <textarea key={k + 2} id={i} className="" placeholder="Review" onChange={this.updateMultiField("linkedin", i + 1, "body")} />
               </div>
             )
           })}

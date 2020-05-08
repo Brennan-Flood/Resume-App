@@ -28,7 +28,7 @@ class Builder extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.state);
+    
   }
 
   update(field, value) {
@@ -43,8 +43,7 @@ class Builder extends React.Component {
     let key;
     let i;
 
-    console.log(metaField, inputs, index, field, value);
-    
+
     if (metaField === "edu") {
       currentField = this.state.educationAndEmployment;
       pushObject = { title: "", entity: "", startTime: "", endTime: "" };
@@ -74,7 +73,7 @@ class Builder extends React.Component {
           arr[1][field] = value;
         }
       });
-      console.log(newField, currentField, key)
+
       if (key === "educationAndEmployment") {
         this.setState({ educationAndEmployment: newField })
       } else if (key === "linkedinReviews") {
