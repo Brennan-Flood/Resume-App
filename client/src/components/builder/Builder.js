@@ -19,12 +19,12 @@ class Builder extends React.Component {
       currentPositionTime: "",
       currentPositionParagraph: "",
       recentSearches: "",
-      educationAndEmployment: [[1, ""]],
-      LinkedinReviews: [],
+      educationAndEmployment: [[1, { title: "", entity: "", startTime: "", endTime: "" }]],
+      linkedinReviews: [[1, {author: "", body: ""}]],
     }
 
     this.update = this.update.bind(this);
-    this.updateEducationField = this.updateEducationField.bind(this);
+    this.updateMultiField = this.updateMultiField.bind(this);
   }
 
   componentDidMount() {
@@ -35,33 +35,54 @@ class Builder extends React.Component {
     this.setState({ [field]: value })
   }
 
-  updateEducationField(educationInputs, field=undefined, value="") {
+  updateMultiField(metaField, inputs, index="", field="", value="") {
     const newArr = [];
-    const currentEducationField = this.state.educationAndEmployment;
-    const newEducationField = newArr.concat(currentEducationField);
 
-    let i = currentEducationField.length;
-    if (educationInputs > newEducationField.length) {
-      while (educationInputs !== newEducationField.length) {
+    let currentField;
+    let pushObject;
+    let key;
+    let i;
+
+    console.log(metaField, inputs, index, field, value);
+    
+    if (metaField === "edu") {
+      currentField = this.state.educationAndEmployment;
+      pushObject = { title: "", entity: "", startTime: "", endTime: "" };
+      key = "educationAndEmployment";
+      i = currentField.length;
+    } else if (metaField === "linkedin" ) {
+      currentField = this.state.linkedinReviews;
+      pushObject = { author: "", body: "" };
+      key = "linkedinReviews";
+      i = currentField.length;
+    }
+    let newField = newArr.concat(currentField);
+
+    if (inputs > newField.length) {
+      while (inputs !== newField.length) {
         i += 1
-        newEducationField.push([i, ""]);
+        newField.push([i, pushObject]);
       }
-    } else if (educationInputs < newEducationField.length) {
-      while (educationInputs !== newEducationField.length) {
-        newEducationField.shift();
+    } else if (inputs < newField.length) {
+      while (inputs !== newField.length) {
+        newField = newField.slice(0, newField.length - 1);
       }
     }
-    console.log(newEducationField);
-
-    currentEducationField.forEach(arr => {
-      if (arr[0] === field) {
-        arr[1] = value
+    if (currentField) {
+      newField.forEach(arr => {
+        if (arr[0] === index) {
+          arr[1][field] = value;
+        }
+      });
+      console.log(newField, currentField, key)
+      if (key === "educationAndEmployment") {
+        this.setState({ educationAndEmployment: newField })
+      } else if (key === "linkedinReviews") {
+        this.setState({ linkedinReviews: newField })
       }
-    });
+    }
 
-    console.log(newEducationField);
-
-    this.setState({educationAndEmployment: newEducationField})
+    console.log(this.state);
   }
 
   render() {
@@ -70,7 +91,7 @@ class Builder extends React.Component {
 
         <LeftSidebar 
         update={this.update} 
-        updateEducationField={this.updateEducationField} 
+        updateMultiField={this.updateMultiField} 
         />
 
         <Resume state={this.state}/> 

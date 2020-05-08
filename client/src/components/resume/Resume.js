@@ -63,10 +63,31 @@ class Resume extends React.Component {
           
 
         </div>
-        
+
         <div className="education-and-employment-div">
           <h1>{"EDUCATION & EMPLOYMENT HISTORY"}</h1>
+          {this.props.state.educationAndEmployment.map((e) => {
+            return (<div>
+              <h1>{e[1].title}</h1>
+              <h1>{e[1].entity}</h1>
+              <h1>{e[1].startTime} - {e[1].endTime}</h1>
+              
+            </div>)
+          })}
+        </div>
 
+        <div className="linkedin-review-div">
+          <h1>LINKEDIN REVIEWS</h1>
+          {
+            this.props.state.linkedinReviews.map((e, i) => {
+              return (
+                <div>
+                  <h1>{e[1].author}</h1>
+                  <p>{e[1].body}</p>
+                </div>
+              )
+            })
+          }
         </div>
       </div>
     )

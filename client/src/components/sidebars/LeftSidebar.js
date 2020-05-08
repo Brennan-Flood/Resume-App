@@ -4,52 +4,99 @@ class LeftSidebar extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = {educationInputs: 1, educationValues: {1: ""}};
+    this.state = {
+      educationInputs: 1, 
+      educationValues: {1: {title: "", entity: "", startTime: "", endTime: ""}},
+      linkedinInputs: 1,
+      linkedinValues: {1: {author: "", body: ""}}
+    };
 
-    this.addEducationField = this.addEducationField.bind(this);
-    this.removeEducationField = this.removeEducationField.bind(this);
-    this.updateEducationField = this.updateEducationField.bind(this);
+    this.addMultiField = this.addMultiField.bind(this);
+    this.removeMultiField = this.removeMultiField.bind(this);
+    this.updateMultiField = this.updateMultiField.bind(this);
   }
 
   update(field) {
    return e => this.props.update(field, e.target.value);
   }
 
-  addEducationField() {
-    const numInputs = this.state.educationInputs + 1;
+  addMultiField(field) {
     
-    let newEducationValues = this.state.educationValues;
-    newEducationValues[numInputs] = "";
+    let newValues;
+    let inputs;
+    if (field === "edu") {
+      inputs = this.state.educationInputs + 1;
+      newValues = this.state.educationValues;
+      newValues[inputs] = { title: "", entity: "", startTime: "", endTime: "" };
+      this.setState({educationInputs: inputs, educationValues: newValues });
 
-    this.setState({educationInputs: numInputs, educationValues: newEducationValues});
-    this.props.updateEducationField(numInputs);
+    } else if (field === "linkedin") {
+
+      newValues = this.state.linkedinValues;
+      inputs = this.state.linkedinInputs + 1;
+      newValues[inputs] = { author: "", body: "" };
+      this.setState({ linkedinInputs: inputs, linkedinValues: newValues });
+
+    }
+
+    this.props.updateMultiField(field, inputs);
   }
 
-  removeEducationField() {
-    const numInputs = this.state.educationInputs - 1;
-    if (numInputs > 0) {
-    let newEducationValues = this.state.educationValues;
-    newEducationValues[numInputs] = "";
-    this.setState({educationInputs: numInputs, educationValues: newEducationValues});
-    this.props.updateEducationField(numInputs);
-    } else {
-      return
+  removeMultiField(field) {
+    let newValues;
+    let inputs;
+    if (field === "edu") {
+      inputs = this.state.educationInputs - 1;
+      if (inputs <= 0) {
+        return;
+      }
+      newValues = this.state.educationValues;
+      newValues[inputs] = { title: "", entity: "", startTime: "", endTime: "" };
+      this.setState({ educationInputs: inputs, educationValues: newValues });
+      this.props.updateMultiField(field, inputs);
+
+    } else if (field === "linkedin") {
+
+      inputs = this.state.linkedinInputs - 1;
+      if (inputs <= 0) {
+        return;
+      }
+      newValues = this.state.linkedinValues;
+      newValues[inputs] = { author: "", body: "" };
+      this.setState({ linkedinInputs: inputs, linkedinValues: newValues });
+      this.props.updateMultiField(field, inputs);
     }
+    
   }
   
-  updateEducationField(field) {
+  updateMultiField(metaField, index, field) {
+    console.log(metaField, index, field);
     return (e) => {
-      let newEducationValues = this.state.educationValues
-      newEducationValues[field] = e.target.value
-      this.setState({educationValues: newEducationValues});
-      this.props.updateEducationField(this.state.educationInputs, field, e.target.value);
+      let newValues;
+      let inputs;
+      if (metaField === "edu") {
+
+        newValues = this.state.educationValues;
+        inputs = this.state.educationInputs;
+        newValues[index][field] = e.target.value;
+        this.setState({ educationValues: newValues });
+        
+      } else if (metaField === "linkedin") {
+
+        newValues = this.state.linkedinValues;
+        inputs = this.state.linkedinInputs;
+        newValues[index][field] = e.target.value;
+        this.setState({ linkedinValues: newValues });
+
+      }
+      this.props.updateMultiField(metaField, inputs, index, field, e.target.value);
     }
   }
 
   render() {
     let eduInputs = new Array(this.state.educationInputs).fill(0);
-    
-    console.log(eduInputs);
+    let linkedinInputs = new Array(this.state.linkedinInputs).fill(0);
+
     return (
       <div className="left-sidebar">
         <h1 className="sidebar-header">INPUTS</h1>
@@ -121,23 +168,73 @@ class LeftSidebar extends React.Component {
         <h1 className="sidebar-section-name">{"EDUCATION & EMPLOYMENT"}</h1>
 
         <div className="education-field">
-          <button className="add-field-button" onClick={this.addEducationField}>ADD</button>
-          <button className="remove-field-button" onClick={this.removeEducationField}>REMOVE</button>
+          <button className="add-field-button" onClick={() => this.addMultiField("edu")}>ADD</button>
+          <button className="remove-field-button" onClick={() => this.removeMultiField("edu")}>REMOVE</button>
           {eduInputs.map((e, i) => {
-            return (<input
-              type="text"
-              id={i + 1}
-              className="education-input"
-              placeholder="EDUCATION / EMPLOYMENT"
-              onChange={this.updateEducationField(i + 1)}
-            />
+            
+            return (
+            <div className="education-cluster">
+              <h1 className="education-index">Experience #{i + 1}</h1>
+              <input
+                type="text"
+                id={i + 1}
+                key={i}
+                className="education-input"
+                placeholder="Study or Title"
+                onChange={this.updateMultiField("edu", i + 1, "title")}
+              />
+              <input
+                  type="text"
+                  id={i + 1}
+                  key={i}
+                  className="education-input"
+                  placeholder="School or Company"
+                  onChange={this.updateMultiField("edu", i + 1, "entity")}
+              />
+                <input
+                  type="text"
+                  id={i + 1}
+                  key={i}
+                  className="education-input"
+                  placeholder="Starting Year"
+                  onChange={this.updateMultiField("edu", i + 1, "startTime")}
+                />
+                <input
+                  type="text"
+                  id={i + 1}
+                  key={i}
+                  className="education-input"
+                  placeholder="Ending Year"
+                  onChange={this.updateMultiField("edu", i + 1, "endTime")}
+                />
+            </div>
             )
           })}
         </div>
 
-        <h1 className="sidebar-section-name">LinkedIn Reviews</h1>
+        <div className="agencies-and-clearence">
+          <div className="agencies">
+
+          </div>
+
+          <div className="clearences">
+            
+          </div>
+        </div>
+
         <div className="last-left-div">
-        <input className="" placeholder="LinkedIn Review"/>
+          <h1 className="sidebar-section-name">LinkedIn Reviews</h1>
+
+          <button className="add-field-button" onClick={() => this.addMultiField("linkedin")}>ADD</button>
+          <button className="remove-field-button" onClick={() => this.removeMultiField("linkedin")}>REMOVE</button>
+          {linkedinInputs.map((e, i) => {
+            return (
+              <div className="linkedin-cluster">
+                <textarea id="i" className="" placeholder="Author Info" onChange={this.updateMultiField("linkedin", i + 1, "author")} />
+                <textarea id="i" className="" placeholder="Review" onChange={this.updateMultiField("linkedin", i + 1, "body")} />
+              </div>
+            )
+          })}
         </div>
 
       </div>
