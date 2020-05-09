@@ -6,7 +6,7 @@
   overflow-wrap: normal;
 }
 
-.recent-searches-header {
+.title, .recent-searches-header {
   font-weight: 900;
   font-size: 12px;
 

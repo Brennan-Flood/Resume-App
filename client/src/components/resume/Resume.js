@@ -13,8 +13,9 @@ class Resume extends React.Component {
     }
   }
   render() {
+    console.log(this.props.state.themeColor);
     return (
-      <div id="capture" className="resume">
+      <div id="capture" className="resume" style={this.props.state.themeColor}>
         <div className="resume-header">
 
           <div>
@@ -51,13 +52,13 @@ class Resume extends React.Component {
           </div>
 
           <div className="recruiting-toolkit-div">
-            <h1 className="recruiting-toolkit-title"> RECRUITING TOOLKIT </h1>
+            <h1 className="title"> RECRUITING TOOLKIT </h1>
           </div>
 
           <div className="recent-searches-div">
-            <h1 className="recent-searches-header"> RECENT SEARCHES</h1>
+            <h1 className="title"> RECENT SEARCHES</h1>
             <h1 className="recent-searches"> {this.props.state.recentSearches}</h1>
-            <h1 className="hobbies-header">{"HOBBIES & INTERESTS"}</h1>
+            <h1 className="title">{"HOBBIES & INTERESTS"}</h1>
           </div>
 
           
@@ -65,31 +66,35 @@ class Resume extends React.Component {
         </div>
 
         <div className="education-and-employment-div">
-          <h1>{"EDUCATION & EMPLOYMENT HISTORY"}</h1>
+          <h1 className="title">{"EDUCATION & EMPLOYMENT HISTORY"}</h1>
+          <div className="experience-timeline">
           {this.props.state.educationAndEmployment.map((e, i) => {
             let k = i * 3;
-            return (<div key={i}>
+            return (<div className="experience-node" key={i}>
               <h1 key={k + 1}>{e[1].title}</h1>
               <h1 key={k + 2}>{e[1].entity}</h1>
               <h1 key={k + 3}>{e[1].startTime} - {e[1].endTime}</h1>
               
             </div>)
           })}
+          </div>
         </div>
 
-        <div className="linkedin-review-div">
-          <h1>LINKEDIN REVIEWS</h1>
-          {
-            this.props.state.linkedinReviews.map((e, i) => {
-              let k = i * 3
-              return (
-                <div key={k}>
-                  <h1 key={k + 1}>{e[1].author}</h1>
-                  <p key={k + 2}>{e[1].body}</p>
-                </div>
-              )
-            })
-          }
+        <div>
+          <div className="linkedin-review-div">
+            <h1 className="title">LINKEDIN REVIEWS</h1>
+            {
+              this.props.state.linkedinReviews.map((e, i) => {
+                let k = i * 3
+                return (
+                  <div key={k}>
+                    <h1 key={k + 1}>{e[1].author}</h1>
+                    <p key={k + 2}>{e[1].body}</p>
+                  </div>
+                )
+              })
+            }
+          </div>
         </div>
       </div>
     )

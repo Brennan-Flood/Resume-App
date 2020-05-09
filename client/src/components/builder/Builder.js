@@ -21,14 +21,16 @@ class Builder extends React.Component {
       recentSearches: "",
       educationAndEmployment: [[1, { title: "", entity: "", startTime: "", endTime: "" }]],
       linkedinReviews: [[1, {author: "", body: ""}]],
+      themeColor: {backgroundColor: "rgb(245, 243, 233)"}
     }
 
     this.update = this.update.bind(this);
     this.updateMultiField = this.updateMultiField.bind(this);
+    this.updateBackgroundColor = this.updateBackgroundColor.bind(this);
   }
 
   componentDidMount() {
-    
+
   }
 
   update(field, value) {
@@ -84,6 +86,10 @@ class Builder extends React.Component {
     console.log(this.state);
   }
 
+  updateBackgroundColor(color) {
+    this.setState({themeColor: color});
+  }
+
   render() {
     return(
       <div className="builder">
@@ -95,7 +101,7 @@ class Builder extends React.Component {
 
         <Resume state={this.state}/> 
 
-        <RightSidebar />
+        <RightSidebar updateBackgroundColor={this.updateBackgroundColor} />
 
       </div>
     )

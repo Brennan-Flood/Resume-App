@@ -1,0 +1,23 @@
+.education-and-employment-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.education-and-employment-div > .title {
+  text-align: center;
+  padding: 10px;
+}
+
+.experience-timeline {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.experience-node {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  text-align: center;
+}
