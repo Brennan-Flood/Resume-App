@@ -87,7 +87,7 @@ class Builder extends React.Component {
   }
 
   updateBackgroundColor(color) {
-    this.setState({themeColor: color});
+    this.setState({themeColor: {backgroundColor: color}});
   }
 
   render() {

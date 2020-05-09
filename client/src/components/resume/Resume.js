@@ -19,8 +19,8 @@ class Resume extends React.Component {
         <div className="resume-header">
 
           <div>
-            <h1 className="name"> {this.props.state.firstName} </h1>
-            <h1 className="name"> {this.props.state.lastName} </h1>
+            <h1 className="first-name">{this.props.state.firstName}</h1>
+            <h1 className="last-name">{this.props.state.lastName}</h1>
           </div>
 
           <div className="recruiting-experience-div">
