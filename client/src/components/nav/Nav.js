@@ -39,7 +39,7 @@ const Nav = props => {
                       window.location.reload();
                     }}
                   >
-                    LOGOUT
+                    <i class="fas fa-sign-out-alt"></i>
                 </button>
                 <button 
                 className="download-resume-button"
