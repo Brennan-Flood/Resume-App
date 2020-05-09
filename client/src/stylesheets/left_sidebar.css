@@ -27,12 +27,14 @@ textarea::placeholder {
   color: rgb(192, 192, 192);
 }
 
-textarea, .left-sidebar > textarea {
+.linkedin-teaxtarea, textarea, .left-sidebar > textarea {
   border-radius: 8px;
   margin: 10px;
   padding: 5px;
   border: 2px solid gray;
   box-shadow: 1px 0px 1px grey;
+  max-width: 200px;
+  max-height: 200px;
 }
 
 .education-input:hover, .left-sidebar > input:hover {
@@ -69,4 +71,13 @@ textarea, .left-sidebar > textarea {
 
 .education-cluster, .linkedin-cluster {
   border-bottom: 1px solid black;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  justify-content: center;
+}
+
+.education-index {
+  padding-left: 10px;  
 }

@@ -9,7 +9,7 @@ const { IS_LOGGED_IN } = Queries;
 
 const downloadResume = function() {
   const input = document.querySelector("#capture");
-  
+
   html2canvas(input)
     .then((canvas) => {
       const imgData = canvas.toDataURL('image/png');
@@ -39,12 +39,15 @@ const Nav = props => {
                       window.location.reload();
                     }}
                   >
-                    Logout
+                    LOGOUT
                 </button>
                 <button 
                 className="download-resume-button"
                 onClick={downloadResume}
-                >Download PDF</button>
+                >
+                    {/* <img src="public/download.png" className="nav-icon" /> */}
+                    <i class="fas fa-download"></i>
+                </button>
                   <div className="blurred"></div>
                 </div>
               );
