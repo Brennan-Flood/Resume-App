@@ -43,14 +43,14 @@ const Nav = props => {
                       window.location.reload();
                     }}
                   >
-                    <i class="fas fa-sign-out-alt"></i>
+                    <i className="fas fa-sign-out-alt"></i>
                 </button>
                 <button 
                 className="download-resume-button"
                 onClick={downloadResume}
                 >
                     {/* <img src="public/download.png" className="nav-icon" /> */}
-                    <i class="fas fa-download"></i>
+                    <i className="fas fa-download"></i>
                 </button>
                   <div className="blurred"></div>
                 </div>

@@ -5,15 +5,28 @@ class Resume extends React.Component {
     super(props)
 
     this.state = this.props.state;
+
+    this.drawRecruitingCanvas = this.drawRecruitingCanvas.bind(this);
   }
 
   componentDidUpdate(oldProps) {
     if (oldProps !== this.props) {
+      this.drawRecruitingCanvas();
+
       this.setState(this.props.state);
     }
   }
+
+  drawRecruitingCanvas() {
+    const c = document.querySelector("#recruiting-canvas");
+    const ctx = c.getContext("2d");
+
+    ctx.beginPath();
+    ctx.arc(50, 50, 20, 0, 2 * Math.PI);
+    ctx.stroke();
+  }
+
   render() {
-    console.log(this.props.state.themeColor);
     return (
       <div id="capture" className="resume" style={this.props.state.themeColor}>
         <div className="resume-header">
@@ -53,6 +66,9 @@ class Resume extends React.Component {
 
           <div className="recruiting-toolkit-div">
             <h1 className="title"> RECRUITING TOOLKIT </h1>
+            <canvas id="recruiting-canvas">
+
+            </canvas>
           </div>
 
           <div className="recent-searches-div">
@@ -79,8 +95,60 @@ class Resume extends React.Component {
           })}
           </div>
         </div>
+        <div className="resume-last-row">
+          <div className="agencies-and-clearences">
+            <div className="resume-federal-agencies">
+              <h1 className="title">FEDERAL AGENCIES</h1>
+            </div>
+            <div className="clearence-levels">
+              <h1 className="title">CLEARENCE LEVELS</h1>
+                <h1>Secret</h1>
+                <div className="clearence-bar-outer"
+                style={{width: "100px"}}>
 
-        <div>
+                  <div className="clearence-bar-inner"
+                  style={{width: `${this.props.state.clearenceLevels.secret}%`}}>
+                  </div>
+                </div>
+
+                <h1>Top Secret</h1>
+                <div className="clearence-bar-outer"
+                  style={{ width: "100px" }}>
+
+                  <div className="clearence-bar-inner"
+                    style={{ width: `${this.props.state.clearenceLevels.topSecret}%` }}>
+                  </div>
+                </div>
+
+                <h1>TS/SCI</h1>
+                <div className="clearence-bar-outer"
+                  style={{ width: "100px" }}>
+
+                  <div className="clearence-bar-inner"
+                    style={{ width: `${this.props.state.clearenceLevels.TSSCI}%` }}>
+                  </div>
+                </div>
+
+                <h1>TS/SCI CI Polygraph</h1>
+                <div className="clearence-bar-outer"
+                  style={{ width: "100px" }}>
+
+                  <div className="clearence-bar-inner"
+                    style={{ width: `${this.props.state.clearenceLevels.TSSCICIPolygraph}%` }}>
+                  </div>
+                </div>
+
+                <h1>TS/SCI Full Scope Polygraph</h1>
+                <div className="clearence-bar-outer"
+                  style={{ width: "100px" }}>
+
+                  <div className="clearence-bar-inner"
+                    style={{ width: `${this.props.state.clearenceLevels.TSSCIFullScopePolygraph}%` }}>
+                  </div>
+                </div>
+            </div>
+          </div>
+
           <div className="linkedin-review-div">
             <h1 className="title">LINKEDIN REVIEWS</h1>
             {
@@ -95,7 +163,8 @@ class Resume extends React.Component {
               })
             }
           </div>
-        </div>
+      </div> 
+       
       </div>
     )
   }

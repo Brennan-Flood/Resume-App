@@ -92,6 +92,10 @@ class LeftSidebar extends React.Component {
     }
   }
 
+  updateClearenceSlider(field) {
+    return e => this.props.updateClearenceLevel(field, e.target.value);
+  }
+
   render() {
     let eduInputs = new Array(this.state.educationInputs).fill(0);
     let linkedinInputs = new Array(this.state.linkedinInputs).fill(0);
@@ -214,10 +218,76 @@ class LeftSidebar extends React.Component {
         <div className="agencies-and-clearence">
           <div className="agencies">
             <h1 className="sidebar-section-name">FEDERAL AGENCIES</h1>
+            
           </div>
 
           <div className="clearences">
             <h1 className="sidebar-section-name">CLEARENCE LEVELS</h1>
+            <div className="clearence-div">
+              <h1>Secret</h1>
+              <input onChange={this.updateClearenceSlider("secret")} 
+                type="range" 
+                min="0" 
+                max="100" 
+                value={this.props.state.clearenceLevels.secret} 
+                className="slider" 
+                id="myRange" 
+                />
+              <h1>{this.props.state.clearenceLevels.secret}%</h1>
+            </div>
+
+            <div className="clearence-div">
+              <h1>Top Secret</h1>
+              <input onChange={this.updateClearenceSlider("topSecret")}
+                type="range"
+                min="0"
+                max="100"
+                value={this.props.state.clearenceLevels.topSecret}
+                className="slider"
+                id="myRange"
+              />
+              <h1>{this.props.state.clearenceLevels.topSecret}%</h1>
+            </div>
+
+            <div className="clearence-div">
+              <h1>TS/SCI</h1>
+              <input onChange={this.updateClearenceSlider("TSSCI")}
+                type="range"
+                min="0"
+                max="100"
+                value={this.props.state.clearenceLevels.TSSCI}
+                className="slider"
+                id="myRange"
+              />
+              <h1>{this.props.state.clearenceLevels.TSSCI}%</h1>
+            </div>
+
+            <div className="clearence-div">
+              <h1>TS/SCI CI Polygraph</h1>
+              <input onChange={this.updateClearenceSlider("TSSCICIPolygraph")}
+                type="range"
+                min="0"
+                max="100"
+                value={this.props.state.clearenceLevels.TSSCICIPolygraph}
+                className="slider"
+                id="myRange"
+              />
+              <h1>{this.props.state.clearenceLevels.TSSCICIPolygraph}%</h1>
+            </div>
+
+            <div className="clearence-div">
+              <h1>TS/SCI Full Scope Polygraph</h1>
+              <input onChange={this.updateClearenceSlider("TSSCIFullScopePolygraph")}
+                type="range"
+                min="0"
+                max="100"
+                value={this.props.state.clearenceLevels.TSSCIFullScopePolygraph}
+                className="slider"
+                id="myRange"
+              />
+              <h1>{this.props.state.clearenceLevels.TSSCIFullScopePolygraph}%</h1>
+            </div>
+
           </div>
         </div>
 

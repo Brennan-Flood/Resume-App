@@ -19,5 +19,26 @@
   width: 200px;
 }
 
+.clearence-bar-outer {
+  background-color: white;
+  height: 8px;
+  border: 1px solid black;
+  border-radius: 12px;
+}
 
+.clearence-bar-inner {
+  background-color: black;
+  height: 8px;
+  border-radius: 12px;
+}
+
+.resume-last-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.resume-last-row > div {
+  width: 50%;
+  align-items: middle;
+}
 

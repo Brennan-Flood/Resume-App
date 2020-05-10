@@ -20,6 +20,7 @@ class Builder extends React.Component {
       currentPositionParagraph: "",
       recentSearches: "",
       educationAndEmployment: [[1, { title: "", entity: "", startTime: "", endTime: "" }]],
+      clearenceLevels: {secret: 50, topSecret: 50, TSSCI: 50, TSSCICIPolygraph: 50, TSSCIFullScopePolygraph: 50},
       linkedinReviews: [[1, {author: "", body: ""}]],
       themeColor: {backgroundColor: "rgb(245, 243, 233)"}
     }
@@ -27,6 +28,7 @@ class Builder extends React.Component {
     this.update = this.update.bind(this);
     this.updateMultiField = this.updateMultiField.bind(this);
     this.updateBackgroundColor = this.updateBackgroundColor.bind(this);
+    this.updateClearenceLevel = this.updateClearenceLevel.bind(this);
   }
 
   componentDidMount() {
@@ -82,12 +84,16 @@ class Builder extends React.Component {
         this.setState({ linkedinReviews: newField })
       }
     }
-
-    console.log(this.state);
   }
 
   updateBackgroundColor(color) {
     this.setState({themeColor: {backgroundColor: color}});
+  }
+
+  updateClearenceLevel(field, value) {
+    const currentClearenceLevels = this.state.clearenceLevels;
+    currentClearenceLevels[field] = value;
+    this.setState({clearenceLevels: currentClearenceLevels});
   }
 
   render() {
@@ -97,6 +103,8 @@ class Builder extends React.Component {
         <LeftSidebar 
         update={this.update} 
         updateMultiField={this.updateMultiField} 
+        updateClearenceLevel={this.updateClearenceLevel}
+        state={this.state}
         />
 
         <Resume state={this.state}/> 
