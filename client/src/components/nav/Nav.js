@@ -49,10 +49,8 @@ const Nav = props => {
                 className="download-resume-button"
                 onClick={downloadResume}
                 >
-                    {/* <img src="public/download.png" className="nav-icon" /> */}
                     <i className="fas fa-download"></i>
                 </button>
-                  <div className="blurred"></div>
                 </div>
               );
             } else {

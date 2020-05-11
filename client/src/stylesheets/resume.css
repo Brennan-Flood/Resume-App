@@ -40,5 +40,15 @@
 .resume-last-row > div {
   width: 50%;
   align-items: middle;
+
 }
 
+.clearence-levels {
+  margin: 5px;
+  padding: 10px;
+}
+
+.resume-federal-agencies {
+  margin: 5px;
+  padding: 10px;
+}

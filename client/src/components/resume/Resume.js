@@ -1,32 +1,30 @@
 import React from "react";
+import { arc } from "d3-shape";
 
 class Resume extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = this.props.state;
-
-    this.drawRecruitingCanvas = this.drawRecruitingCanvas.bind(this);
   }
 
   componentDidUpdate(oldProps) {
     if (oldProps !== this.props) {
-      this.drawRecruitingCanvas();
-
       this.setState(this.props.state);
     }
   }
 
-  drawRecruitingCanvas() {
-    const c = document.querySelector("#recruiting-canvas");
-    const ctx = c.getContext("2d");
-
-    ctx.beginPath();
-    ctx.arc(50, 50, 20, 0, 2 * Math.PI);
-    ctx.stroke();
-  }
-
   render() {
+    const arcGenerator = arc()
+      .innerRadius(31)
+      .outerRadius(21)
+      .startAngle(0)
+      .endAngle(6.2)
+      .padAngle(0)
+      .cornerRadius(0)
+
+    const arcPath = arcGenerator()
+
     return (
       <div id="capture" className="resume" style={this.props.state.themeColor}>
         <div className="resume-header">
@@ -38,7 +36,9 @@ class Resume extends React.Component {
 
           <div className="recruiting-experience-div">
             <h1 className="years"> {this.props.state.yearsExperience} YEARS </h1>
-            <h1 className="recruiting-experience">recruiting experience</h1>
+            <h1 className="recruiting-experience">recruiting</h1>
+            <h1 className="recruiting-experience">experience</h1>
+
           </div>
 
         </div>
@@ -66,9 +66,15 @@ class Resume extends React.Component {
 
           <div className="recruiting-toolkit-div">
             <h1 className="title"> RECRUITING TOOLKIT </h1>
-            <canvas id="recruiting-canvas">
+            
+            <svg width="62" height="62" style={{backgroundColor: "black", borderRadius: "100%"}}>
+              <path
+                fill="cornflowerblue"
+                d={arcPath}
+                style={{transform: "translate(50%, 50%)"}}
+              />
+            </svg>
 
-            </canvas>
           </div>
 
           <div className="recent-searches-div">
@@ -86,14 +92,18 @@ class Resume extends React.Component {
           <div className="experience-timeline">
           {this.props.state.educationAndEmployment.map((e, i) => {
             let k = i * 3;
-            return (<div className="experience-node" key={i}>
+            return (
+            <div className="experience-node" key={i}>
               <h1 key={k + 1}>{e[1].title}</h1>
               <h1 key={k + 2}>{e[1].entity}</h1>
-              <h1 key={k + 3}>{e[1].startTime} - {e[1].endTime}</h1>
+              <div className="experience-tag" style={this.props.state.backgroundColor}></div>
+              <h1 className="experience-years" key={k + 3}>{e[1].startTime}-{e[1].endTime}</h1>
               
             </div>)
           })}
           </div>
+          <div className="experience-bar"></div>
+
         </div>
         <div className="resume-last-row">
           <div className="agencies-and-clearences">
@@ -104,7 +114,7 @@ class Resume extends React.Component {
               <h1 className="title">CLEARENCE LEVELS</h1>
                 <h1>Secret</h1>
                 <div className="clearence-bar-outer"
-                style={{width: "100px"}}>
+                >
 
                   <div className="clearence-bar-inner"
                   style={{width: `${this.props.state.clearenceLevels.secret}%`}}>
@@ -113,7 +123,7 @@ class Resume extends React.Component {
 
                 <h1>Top Secret</h1>
                 <div className="clearence-bar-outer"
-                  style={{ width: "100px" }}>
+                >
 
                   <div className="clearence-bar-inner"
                     style={{ width: `${this.props.state.clearenceLevels.topSecret}%` }}>
@@ -122,7 +132,7 @@ class Resume extends React.Component {
 
                 <h1>TS/SCI</h1>
                 <div className="clearence-bar-outer"
-                  style={{ width: "100px" }}>
+                >
 
                   <div className="clearence-bar-inner"
                     style={{ width: `${this.props.state.clearenceLevels.TSSCI}%` }}>
@@ -131,7 +141,7 @@ class Resume extends React.Component {
 
                 <h1>TS/SCI CI Polygraph</h1>
                 <div className="clearence-bar-outer"
-                  style={{ width: "100px" }}>
+                >
 
                   <div className="clearence-bar-inner"
                     style={{ width: `${this.props.state.clearenceLevels.TSSCICIPolygraph}%` }}>
@@ -140,7 +150,7 @@ class Resume extends React.Component {
 
                 <h1>TS/SCI Full Scope Polygraph</h1>
                 <div className="clearence-bar-outer"
-                  style={{ width: "100px" }}>
+                >
 
                   <div className="clearence-bar-inner"
                     style={{ width: `${this.props.state.clearenceLevels.TSSCIFullScopePolygraph}%` }}>

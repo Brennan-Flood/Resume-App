@@ -1,9 +1,9 @@
 .recruiting-toolkit-div {
  width: 33%;
+ display: inline-block;
 }
 
 #recruiting-canvas {
-  display: block;
   width: 100px;
   height: 100px;
 }

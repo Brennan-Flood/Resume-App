@@ -2,6 +2,8 @@
   position: absolute;
   z-index: 2;
   justify-self: center;
+  display: flex;
+  justify-content: space-around;
   bottom: 0%;
   left: 40%;
   border: 1px solid gray;

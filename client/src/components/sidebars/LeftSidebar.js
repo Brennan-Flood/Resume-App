@@ -157,6 +157,17 @@ class LeftSidebar extends React.Component {
 
         <h1 className="sidebar-section-name"> Recruiting Toolkit </h1>
 
+        <div>
+          <input 
+            type="range"
+            min="0"
+            max="100"
+            value={this.props.state.clearenceLevels.topSecret}
+            className="slider"
+            id="myRange"
+          />
+        </div>
+
         <h1 className="sidebar-section-name"> Recent Searches</h1>
 
         <textarea 
