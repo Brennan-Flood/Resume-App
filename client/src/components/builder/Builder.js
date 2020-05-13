@@ -1,7 +1,7 @@
 import React from "react";
 import LeftSidebar from "../sidebars/LeftSidebar";
 import RightSidebar from "../sidebars/RightSidebar";
-import Resume from "../resume/Resume";
+import ResumeContainer from "../resume/ResumeContainer";
 
 
 class Builder extends React.Component {
@@ -115,7 +115,7 @@ class Builder extends React.Component {
         state={this.state}
         />
 
-        <Resume state={this.state}/> 
+        <ResumeContainer state={this.state}/> 
 
         <RightSidebar updateBackgroundColor={this.updateBackgroundColor} />
 
