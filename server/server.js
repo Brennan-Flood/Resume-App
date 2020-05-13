@@ -14,10 +14,11 @@ const schema = require("./schema/schema");
 //   app.get('/', (req, res) => {
 //     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
 //   })
+// { useNewUrlParser: true }
 // };
 
 mongoose
-  .connect(db, { useNewUrlParser: true })
+  .connect(db, { useUnifiedTopology: true, useNewUrlParser: true })
   .then(() => console.log("Connected to MongoDB successfully"))
   .catch(err => console.log(err));
 

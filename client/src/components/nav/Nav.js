@@ -7,7 +7,7 @@ import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 const { IS_LOGGED_IN } = Queries;
 
-const downloadResume = function() {
+const downloadResume = function(quality = 1) {
   const input = document.querySelector("#capture");
   const firstName = document.querySelector(".first-name").innerHTML;
   const lastName = document.querySelector(".last-name").innerHTML;
@@ -18,7 +18,8 @@ const downloadResume = function() {
     .then((canvas) => {
       const imgData = canvas.toDataURL('image/png');
       const pdf = new jsPDF("p", "mm", "a4");
-      pdf.addImage(imgData, 'PNG', 0, 0, 137.054167, 185.208333);
+      console.log(canvas, imgData, pdf)
+      pdf.addImage(imgData, 'PNG', 0, 0, 211, 298);
       pdf.save(fileName);
     });
   ;
