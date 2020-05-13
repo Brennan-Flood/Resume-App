@@ -9,21 +9,24 @@
 }
 
 .current-position-header {
-  
+  display: flex;
+  flex-direction: row;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .current-position-list {
-
+  margin-left: 10px;
 }
 
 .current-title {
-
+  font-size: 12px;
 }
 
 .current-company {
-
+  font-size: 12px;
 }
 
 .current-company-time {
-
+  font-size: 12px;
 }

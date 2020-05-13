@@ -81,3 +81,13 @@ textarea::placeholder {
 .education-index {
   padding-left: 10px;  
 }
+
+.slider {
+  margin: 10px;
+}
+
+.recruiting-tool-title {
+  margin: 10px;
+  margin-left: 20px;
+  margin-bottom: 0px;
+}

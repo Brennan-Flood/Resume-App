@@ -19,6 +19,11 @@
   width: 200px;
 }
 
+.years {
+  font-size: 20px;
+  color: green;
+}
+
 .clearence-bar-outer {
   background-color: white;
   height: 8px;
@@ -27,7 +32,7 @@
 }
 
 .clearence-bar-inner {
-  background-color: black;
+  background-color: green;
   height: 8px;
   border-radius: 12px;
 }
@@ -51,4 +56,50 @@
 .resume-federal-agencies {
   margin: 5px;
   padding: 10px;
+}
+
+.image-placeholder-inner {
+  background-color: white;
+  height: 38px;
+  width: 38px;
+  border-radius: 100%;
+}
+
+.image-placeholder-outer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}
+
+.image-placeholder-inner-2 {
+  background-color: white;
+  height: 34px;
+  width: 34px;
+  border-radius: 100%;
+}
+
+.image-placeholder-outer-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  width: 36px;
+  height: 36px;
+  border-radius: 100%;
+  margin: 5px;
+}
+
+.hobbies-and-interests {
+  display: flex;
+  flex-direction: row;
+}
+
+.clearences {
+  margin: 5px;
+  padding: 10px;
+  justify-content: center;
 }

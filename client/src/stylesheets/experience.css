@@ -16,10 +16,11 @@
   display: flex;
   justify-content: space-around;
   z-index: 2;
+  height: 35px;
 }
 
 .experience-node {
-  display: flex;
+  display: block;
   flex-direction: column;
   font-size: 12px;
   text-align: center;
@@ -30,19 +31,25 @@
   width: 90%;
   height: 8px;
   border-radius: 10px;
-  background-color: black;
-  margin: 20px;
+  background-color: green;
+  margin-bottom: 20px;
   /* align-self: middle; */
 }
 
 .experience-tag {
+  display: inline-block;
   background-color: white;
   position: relative;
-  top: 48px;
+  top: 2px;
   z-index: 2;
   width: 5px;
   height: 18px;
-  border: 1px solid black;
+  border: 1px solid green;
   border-radius: 10px;
   align-self: center;
+}
+
+.experience-years {
+  position: relative;
+  top: 2px;
 }

@@ -22,13 +22,15 @@ class Builder extends React.Component {
       educationAndEmployment: [[1, { title: "", entity: "", startTime: "", endTime: "" }]],
       clearenceLevels: {secret: 50, topSecret: 50, TSSCI: 50, TSSCICIPolygraph: 50, TSSCIFullScopePolygraph: 50},
       linkedinReviews: [[1, {author: "", body: ""}]],
-      themeColor: {backgroundColor: "rgb(245, 243, 233)"}
+      themeColor: {backgroundColor: "rgb(245, 243, 233)"},
+      recruitingToolkit: {linkedIn: 50},
     }
 
     this.update = this.update.bind(this);
     this.updateMultiField = this.updateMultiField.bind(this);
     this.updateBackgroundColor = this.updateBackgroundColor.bind(this);
     this.updateClearenceLevel = this.updateClearenceLevel.bind(this);
+    this.updateRecruitingToolkit = this.updateRecruitingToolkit.bind(this);
   }
 
   componentDidMount() {
@@ -96,6 +98,11 @@ class Builder extends React.Component {
     this.setState({clearenceLevels: currentClearenceLevels});
   }
 
+  updateRecruitingToolkit(field, value) {
+    const currentRecruitingToolkit = this.state.recruitingToolkit;
+    currentRecruitingToolkit[field] = value;
+    this.setState({recruitingToolkit: currentRecruitingToolkit});
+  }
   render() {
     return(
       <div className="builder">
@@ -104,6 +111,7 @@ class Builder extends React.Component {
         update={this.update} 
         updateMultiField={this.updateMultiField} 
         updateClearenceLevel={this.updateClearenceLevel}
+        updateRecruitingToolkit={this.updateRecruitingToolkit}
         state={this.state}
         />
 

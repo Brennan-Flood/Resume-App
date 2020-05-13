@@ -16,10 +16,10 @@ class Resume extends React.Component {
 
   render() {
     const arcGenerator = arc()
-      .innerRadius(31)
-      .outerRadius(21)
+      .innerRadius(25)
+      .outerRadius(20)
       .startAngle(0)
-      .endAngle(6.2)
+      .endAngle((this.props.state.recruitingToolkit.linkedIn/100)*6.3)
       .padAngle(0)
       .cornerRadius(0)
 
@@ -49,8 +49,13 @@ class Resume extends React.Component {
             <h1 className="current-position-title">CURRENT POSITION</h1>
 
             <div className="current-position-header">
+              
+              <div className="image-placeholder-outer" width="50px" height="50px" >
+                <h1 className="image-placeholder-inner" width="48px" height="48px"> </h1>
+              </div>
 
               <ul className="current-position-list">
+                
                 <h1 className="current-title">{this.props.state.currentTitle}</h1>
                 <h1 className="current-company">{this.props.state.currentCompany}</h1>
                 <h1 className="current-company-time"> 
@@ -66,10 +71,14 @@ class Resume extends React.Component {
 
           <div className="recruiting-toolkit-div">
             <h1 className="title"> RECRUITING TOOLKIT </h1>
-            
-            <svg width="62" height="62" style={{backgroundColor: "black", borderRadius: "100%"}}>
+
+            <svg width="50" height="50" 
+            style={{backgroundColor: "white",
+              borderRadius: "100%",
+              margin: "10px"}}
+            >
               <path
-                fill="cornflowerblue"
+                fill="green"
                 d={arcPath}
                 style={{transform: "translate(50%, 50%)"}}
               />
@@ -81,6 +90,15 @@ class Resume extends React.Component {
             <h1 className="title"> RECENT SEARCHES</h1>
             <h1 className="recent-searches"> {this.props.state.recentSearches}</h1>
             <h1 className="title">{"HOBBIES & INTERESTS"}</h1>
+            <div className="hobbies-and-interests">
+              <div className="image-placeholder-outer-2" width="50px" height="50px" >
+                <h1 className="image-placeholder-inner-2" width="48px" height="48px"> </h1>
+              </div>
+              <div className="image-placeholder-outer-2" width="50px" height="50px" >
+                <h1 className="image-placeholder-inner-2" width="48px" height="48px"> </h1>
+              </div>
+            </div>
+
           </div>
 
           
@@ -94,8 +112,8 @@ class Resume extends React.Component {
             let k = i * 3;
             return (
             <div className="experience-node" key={i}>
-              <h1 key={k + 1}>{e[1].title}</h1>
-              <h1 key={k + 2}>{e[1].entity}</h1>
+              <h1 style={{height: "14px"}} key={k + 1}>{e[1].title}</h1>
+              <h1 style={{ height: "14px" }} key={k + 2}>{e[1].entity}</h1>
               <div className="experience-tag" style={this.props.state.backgroundColor}></div>
               <h1 className="experience-years" key={k + 3}>{e[1].startTime}-{e[1].endTime}</h1>
               
@@ -109,6 +127,15 @@ class Resume extends React.Component {
           <div className="agencies-and-clearences">
             <div className="resume-federal-agencies">
               <h1 className="title">FEDERAL AGENCIES</h1>
+
+              <div className="hobbies-and-interests">
+                <div className="image-placeholder-outer-2" width="50px" height="50px" >
+                  <h1 className="image-placeholder-inner-2" width="48px" height="48px"> </h1>
+                </div>
+                <div className="image-placeholder-outer-2" width="50px" height="50px" >
+                  <h1 className="image-placeholder-inner-2" width="48px" height="48px"> </h1>
+                </div>
+              </div>
             </div>
             <div className="clearence-levels">
               <h1 className="title">CLEARENCE LEVELS</h1>

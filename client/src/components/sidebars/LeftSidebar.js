@@ -96,6 +96,10 @@ class LeftSidebar extends React.Component {
     return e => this.props.updateClearenceLevel(field, e.target.value);
   }
 
+  updateRecruitingToolkitSlider(field) {
+    return e => this.props.updateRecruitingToolkit(field, e.target.value);
+  }
+
   render() {
     let eduInputs = new Array(this.state.educationInputs).fill(0);
     let linkedinInputs = new Array(this.state.linkedinInputs).fill(0);
@@ -157,12 +161,14 @@ class LeftSidebar extends React.Component {
 
         <h1 className="sidebar-section-name"> Recruiting Toolkit </h1>
 
-        <div>
+        <div className="recruiting-toolkit-left-sidebar">
+          <h1 className="recruiting-tool-title">LinkedIn: {this.props.state.recruitingToolkit.linkedIn}%</h1>
           <input 
+            onChange={this.updateRecruitingToolkitSlider("linkedIn")}
             type="range"
             min="0"
             max="100"
-            value={this.props.state.clearenceLevels.topSecret}
+            value={this.props.state.recruitingToolkit.linkedIn}
             className="slider"
             id="myRange"
           />
@@ -235,7 +241,7 @@ class LeftSidebar extends React.Component {
           <div className="clearences">
             <h1 className="sidebar-section-name">CLEARENCE LEVELS</h1>
             <div className="clearence-div">
-              <h1>Secret</h1>
+              <h1>Secret: {this.props.state.clearenceLevels.secret}%</h1>
               <input onChange={this.updateClearenceSlider("secret")} 
                 type="range" 
                 min="0" 
@@ -244,11 +250,10 @@ class LeftSidebar extends React.Component {
                 className="slider" 
                 id="myRange" 
                 />
-              <h1>{this.props.state.clearenceLevels.secret}%</h1>
             </div>
 
             <div className="clearence-div">
-              <h1>Top Secret</h1>
+              <h1>Top Secret: {this.props.state.clearenceLevels.topSecret}%</h1>
               <input onChange={this.updateClearenceSlider("topSecret")}
                 type="range"
                 min="0"
@@ -257,11 +262,10 @@ class LeftSidebar extends React.Component {
                 className="slider"
                 id="myRange"
               />
-              <h1>{this.props.state.clearenceLevels.topSecret}%</h1>
             </div>
 
             <div className="clearence-div">
-              <h1>TS/SCI</h1>
+              <h1>TS/SCI: {this.props.state.clearenceLevels.TSSCI}%</h1>
               <input onChange={this.updateClearenceSlider("TSSCI")}
                 type="range"
                 min="0"
@@ -270,11 +274,10 @@ class LeftSidebar extends React.Component {
                 className="slider"
                 id="myRange"
               />
-              <h1>{this.props.state.clearenceLevels.TSSCI}%</h1>
             </div>
 
             <div className="clearence-div">
-              <h1>TS/SCI CI Polygraph</h1>
+              <h1>TS/SCI CI Polygraph: {this.props.state.clearenceLevels.TSSCICIPolygraph}%</h1>
               <input onChange={this.updateClearenceSlider("TSSCICIPolygraph")}
                 type="range"
                 min="0"
@@ -283,11 +286,10 @@ class LeftSidebar extends React.Component {
                 className="slider"
                 id="myRange"
               />
-              <h1>{this.props.state.clearenceLevels.TSSCICIPolygraph}%</h1>
             </div>
 
             <div className="clearence-div">
-              <h1>TS/SCI Full Scope Polygraph</h1>
+              <h1>TS/SCI Full Scope Polygraph: {this.props.state.clearenceLevels.TSSCIFullScopePolygraph}%</h1>
               <input onChange={this.updateClearenceSlider("TSSCIFullScopePolygraph")}
                 type="range"
                 min="0"
@@ -296,7 +298,6 @@ class LeftSidebar extends React.Component {
                 className="slider"
                 id="myRange"
               />
-              <h1>{this.props.state.clearenceLevels.TSSCIFullScopePolygraph}%</h1>
             </div>
 
           </div>

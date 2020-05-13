@@ -13,7 +13,7 @@ const downloadResume = function() {
   const firstName = document.querySelector(".first-name").innerHTML;
   const lastName = document.querySelector(".last-name").innerHTML;
 
-  const fileName = lastName + "_" + firstName + "_" + "resume.pdf"
+  const fileName = lastName + "_" + firstName + "_resume.pdf"
   html2canvas(input)
     .then((canvas) => {
       const imgData = canvas.toDataURL('image/png');
