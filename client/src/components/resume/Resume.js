@@ -79,7 +79,7 @@ class Resume extends React.Component {
               margin: "10px"}}
             >
               <path
-                fill="green"
+                fill="rgb(0, 167, 0)"
                 d={arcPath}
                 style={{transform: "translate(50%, 50%)"}}
               />
@@ -140,7 +140,7 @@ class Resume extends React.Component {
             </div>
             <div className="clearence-levels">
               <h1 className="title">CLEARENCE LEVELS</h1>
-                <h1>Secret</h1>
+                <h1 className="clearence-type">Secret</h1>
                 <div className="clearence-bar-outer"
                 >
 
@@ -149,7 +149,7 @@ class Resume extends React.Component {
                   </div>
                 </div>
 
-                <h1>Top Secret</h1>
+              <h1 className="clearence-type">Top Secret</h1>
                 <div className="clearence-bar-outer"
                 >
 
@@ -158,7 +158,7 @@ class Resume extends React.Component {
                   </div>
                 </div>
 
-                <h1>TS/SCI</h1>
+              <h1 className="clearence-type">TS/SCI</h1>
                 <div className="clearence-bar-outer"
                 >
 
@@ -167,7 +167,7 @@ class Resume extends React.Component {
                   </div>
                 </div>
 
-                <h1>TS/SCI CI Polygraph</h1>
+              <h1 className="clearence-type">TS/SCI CI Polygraph</h1>
                 <div className="clearence-bar-outer"
                 >
 
@@ -176,7 +176,7 @@ class Resume extends React.Component {
                   </div>
                 </div>
 
-                <h1>TS/SCI Full Scope Polygraph</h1>
+              <h1 className="clearence-type">TS/SCI Full Scope Polygraph</h1>
                 <div className="clearence-bar-outer"
                 >
 

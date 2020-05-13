@@ -20,13 +20,17 @@
 }
 
 .current-title {
-  font-size: 12px;
+  font-size: 10px;
 }
 
 .current-company {
-  font-size: 12px;
+  font-size: 10px;
 }
 
 .current-company-time {
-  font-size: 12px;
+  font-size: 10px;
+}
+
+.current-position-description {
+  font-size: 10px;
 }

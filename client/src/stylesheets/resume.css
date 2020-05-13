@@ -30,38 +30,9 @@
   color: green;
 }
 
-.clearence-bar-outer {
-  background-color: white;
-  height: 8px;
-  border: 1px solid black;
-  border-radius: 12px;
-}
-
-.clearence-bar-inner {
-  background-color: green;
-  height: 8px;
-  border-radius: 12px;
-}
-
 .resume-last-row {
   display: flex;
   flex-direction: row;
-}
-
-.resume-last-row > div {
-  width: 50%;
-  align-items: middle;
-
-}
-
-.clearence-levels {
-  margin: 5px;
-  padding: 10px;
-}
-
-.resume-federal-agencies {
-  margin: 5px;
-  padding: 10px;
 }
 
 .image-placeholder-inner {
@@ -102,10 +73,4 @@
 .hobbies-and-interests {
   display: flex;
   flex-direction: row;
-}
-
-.clearences {
-  margin: 5px;
-  padding: 10px;
-  justify-content: center;
 }

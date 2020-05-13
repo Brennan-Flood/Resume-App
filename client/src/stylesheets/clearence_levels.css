@@ -1,0 +1,39 @@
+.clearence-type {
+  font-size: 10px;
+  margin: 5px;
+}
+
+.clearence-levels {
+  margin: 5px;
+  padding: 10px;
+}
+
+.resume-federal-agencies {
+  margin: 5px;
+  padding: 10px;
+}
+
+.clearences {
+  margin: 5px;
+  padding: 10px;
+  justify-content: center;
+}
+
+.agencies-and-clearences {
+  width: 55%;
+}
+
+.clearence-bar-inner {
+  background-color: rgb(0, 167, 0);
+  height: 8px;
+  border-radius: 12px;
+  border-radius: 1px solid rgb(0, 167, 0);
+  position: relative;
+}
+
+.clearence-bar-outer {
+  background-color: white;
+  height: 8px;
+  border: 1px solid black;
+  border-radius: 12px;
+}

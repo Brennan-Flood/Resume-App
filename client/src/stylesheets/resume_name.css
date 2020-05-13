@@ -1,0 +1,16 @@
+.resume-name {
+  padding: 10px;
+}
+
+.first-name {
+  font-weight: 600;
+}
+
+.last-name {
+  font-weight: 600;
+}
+
+.applicant-title {
+  font-size: 12px;
+  font-weight: 400;
+}

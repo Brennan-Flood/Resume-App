@@ -1,43 +1,3 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-
 @import url("./stylesheets/main_page.css");
 @import url("./stylesheets/builder.css");
 @import url("./stylesheets/left_sidebar.css");
@@ -50,4 +10,7 @@
 @import url("./stylesheets/current_pos.css");
 @import url("./stylesheets/nav.css");
 @import url("./stylesheets/experience.css");
-@import url("./stylesheets/linkedin-reviews.css");
+@import url("./stylesheets/linkedin_reviews.css");
+@import url("./stylesheets/resume_name.css");
+@import url("./stylesheets/clearence_levels.css");
+@import url("./stylesheets/image_placeholders.css")
