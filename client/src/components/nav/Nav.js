@@ -9,16 +9,16 @@ const { IS_LOGGED_IN } = Queries;
 
 const downloadResume = function() {
   const input = document.querySelector("#capture");
-
   const firstName = document.querySelector(".first-name").innerHTML;
   const lastName = document.querySelector(".last-name").innerHTML;
+
 
   const fileName = lastName + "_" + firstName + "_resume.pdf"
   html2canvas(input)
     .then((canvas) => {
       const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF();
-      pdf.addImage(imgData, 'PNG', 0, 0);
+      const pdf = new jsPDF("p", "mm", "a4");
+      pdf.addImage(imgData, 'PNG', 0, 0, 137.054167, 185.208333);
       pdf.save(fileName);
     });
   ;

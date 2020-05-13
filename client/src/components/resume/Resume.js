@@ -36,7 +36,10 @@ class Resume extends React.Component {
           </div>
 
           <div className="recruiting-experience-div">
-            <h1 className="years"> {this.props.state.yearsExperience} YEARS </h1>
+            <div className="header-years">
+              <h1 className="years"> {this.props.state.yearsExperience}</h1>
+              <h1 className="years-inner">YEARS</h1>
+            </div>
             <h1 className="recruiting-experience">recruiting</h1>
             <h1 className="recruiting-experience">experience</h1>
 
@@ -113,6 +116,9 @@ class Resume extends React.Component {
             let k = i * 3;
             return (
             <div className="experience-node" key={i}>
+              <div className="image-placeholder-outer-3">
+                <h1 className="image-placeholder-inner-3"> </h1>
+              </div>
               <h1 style={{height: "14px"}} key={k + 1}>{e[1].title}</h1>
               <h1 style={{ height: "14px" }} key={k + 2}>{e[1].entity}</h1>
               <div className="experience-tag" style={this.props.state.backgroundColor}></div>

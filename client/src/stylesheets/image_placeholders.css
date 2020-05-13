@@ -1,0 +1,10 @@
+.image-placeholder-outer-3 {
+  width: 23px;
+  height: 23px;
+  background-color: white;
+  border-radius: 100%;
+  border: 1px solid black;
+  position: relative;
+  left: 50%;
+  margin-left: -12px;
+}

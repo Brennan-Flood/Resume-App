@@ -1,11 +1,11 @@
 .clearence-type {
   font-size: 10px;
-  margin: 5px;
+  margin: 2px;
 }
 
 .clearence-levels {
-  margin: 5px;
-  padding: 10px;
+  margin-left: 10px;
+  padding: 5px;
 }
 
 .resume-federal-agencies {
@@ -14,8 +14,8 @@
 }
 
 .clearences {
-  margin: 5px;
-  padding: 10px;
+  margin: 2px;
+  padding: 2px;
   justify-content: center;
 }
 
