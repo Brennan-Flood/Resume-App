@@ -16,6 +16,11 @@ class ResumeContainer extends React.Component {
         '65': { x: -1, y: 0, z: 0 },
         '68': { x: 1, y: 0, z: 0 },
       }}
+      boundaryRatioVertical={0.4}
+      boundaryRatioHorizontal={0.8}
+      enableBoundingBox
+      minZoom={0.4}
+      maxZoom={3}
     >
       <Resume state={this.props.state}/>
     </PanZoom>
