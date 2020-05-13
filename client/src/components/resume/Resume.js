@@ -29,9 +29,10 @@ class Resume extends React.Component {
       <div id="capture" className="resume" style={this.props.state.themeColor}>
         <div className="resume-header">
 
-          <div>
+          <div className="resume-name">
             <h1 className="first-name">{this.props.state.firstName}</h1>
             <h1 className="last-name">{this.props.state.lastName}</h1>
+            <h1 className="applicant-title">{this.props.state.title}</h1>
           </div>
 
           <div className="recruiting-experience-div">
@@ -46,7 +47,7 @@ class Resume extends React.Component {
 
           <div className="current-position-div">
 
-            <h1 className="current-position-title">CURRENT POSITION</h1>
+            <h1 className="title">CURRENT POSITION</h1>
 
             <div className="current-position-header">
               

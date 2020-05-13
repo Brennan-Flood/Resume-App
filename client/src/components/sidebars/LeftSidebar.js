@@ -17,7 +17,11 @@ class LeftSidebar extends React.Component {
   }
 
   update(field) {
+  if (field === "firstName" || field === "lastName" || field === "title") {
+    return e => this.props.update(field, e.target.value.toUpperCase())
+  } else {
    return e => this.props.update(field, e.target.value);
+  }
   }
 
   addMultiField(field) {
@@ -120,6 +124,12 @@ class LeftSidebar extends React.Component {
           type="text"
           placeholder="Last Name"
           onChange={this.update("lastName")}
+        />
+
+        <input
+          type="text"
+          placeholder="Title"
+          onChange={this.update("title")}
         />
 
         <input 
