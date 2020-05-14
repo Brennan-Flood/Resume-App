@@ -7,29 +7,17 @@ class RightSidebar extends React.Component {
         <h1 className="sidebar-header">THEMES</h1>
         <ul className="theme-list">
           <button className="theme" 
-            style={{ backgroundColor: "rgb(245, 243, 233)" }}
-            onClick={e => this.props.updateBackgroundColor("rgb(245, 243, 233)")}></button>
+            style={{ backgroundColor: "rgb(229, 229, 229)" }}
+            onClick={e => this.props.updateBackgroundColor("rgb(229, 229, 229)")}></button>
           <button className="theme"
-            style={{ backgroundColor: "rgb(232, 236, 235)" }}
-            onClick={e => this.props.updateBackgroundColor("rgb(232, 236, 235)")}></button>
+            style={{ backgroundColor: "rgb(232, 235, 238)" }}
+            onClick={e => this.props.updateBackgroundColor("rgb(232, 235, 238)")}></button>
           <button className="theme"
-            style={{ backgroundColor: "rgb(228, 228, 223)" }}
-            onClick={e => this.props.updateBackgroundColor("rgb(228, 228, 223)")}></button>
+            style={{ backgroundColor: "rgb(243, 240, 245)" }}
+            onClick={e => this.props.updateBackgroundColor("rgb(243, 240, 245)")}></button>
           <button className="theme"
-            style={{ backgroundColor: "rgb(173,216,230)" }}
-            onClick={e => this.props.updateBackgroundColor("rgb(173,216,230)")}></button>
-          <button className="theme"
-            style={{ backgroundColor: "rgb(192,192,192)" }}
-            onClick={e => this.props.updateBackgroundColor("rgb(192,192,192)")}></button>
-          <button className="theme"
-            style={{ backgroundColor: "rgb(245, 243, 233)" }}
-            onClick={e => this.props.updateBackgroundColor("rgb(245, 243, 233)")}></button>
-          <button className="theme"
-            style={{ backgroundColor: "rgb(245, 243, 233)" }}
-            onClick={e => this.props.updateBackgroundColor("rgb(245, 243, 233)")}></button>
-          <button className="theme"
-            style={{ backgroundColor: "rgb(245, 243, 233)" }}
-            onClick={e => this.props.updateBackgroundColor("rgb(245, 243, 233)")}></button>
+            style={{ backgroundColor: "rgb(243, 240, 233)" }}
+            onClick={e => this.props.updateBackgroundColor("rgb(243, 240, 233)")}></button>
         </ul>
       </div>
     )

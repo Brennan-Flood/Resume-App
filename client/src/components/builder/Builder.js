@@ -22,7 +22,7 @@ class Builder extends React.Component {
       educationAndEmployment: [[1, { title: "", entity: "", startTime: "", endTime: "" }]],
       clearenceLevels: {secret: 50, topSecret: 50, TSSCI: 50, TSSCICIPolygraph: 50, TSSCIFullScopePolygraph: 50},
       linkedinReviews: [[1, {author: "", body: ""}]],
-      themeColor: {backgroundColor: "rgb(245, 243, 233)"},
+      themeColor: {backgroundColor: "rgb(229, 229, 229)"},
       recruitingToolkit: {linkedIn: 50},
     }
 

@@ -1,3 +1,28 @@
+@font-face {
+  font-family: 'AvenirLTStd-book';
+  src: url('./fonts/AvenirLTStd-Book.otf');
+}
+
+@font-face {
+  font-family: 'AvenirLTStd-medium';
+  src: url('./fonts/AvenirLTStd-Medium.otf');
+}
+
+@font-face {
+  font-family: 'AvenirLTStd-roman';
+  src: url('./fonts/AvenirLTStd-Roman.otf'); 
+}
+
+@font-face {
+  font-family: 'AvenirLTStd-black';
+  src: url('./fonts/AvenirLTStd-Black.otf'); 
+}
+
+@font-face {
+  font-family: 'AvenirLTStd-light';
+  src: url('./fonts/AvenirLTStd-Light.otf');
+}
+
 @import url("./stylesheets/main_page.css");
 @import url("./stylesheets/builder.css");
 @import url("./stylesheets/left_sidebar.css");

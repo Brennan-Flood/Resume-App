@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 import { Query, ApolloConsumer } from "react-apollo";
@@ -7,25 +7,36 @@ import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 const { IS_LOGGED_IN } = Queries;
 
-const downloadResume = function(quality = 1) {
-  const input = document.querySelector("#capture");
-  const firstName = document.querySelector(".first-name").innerHTML;
-  const lastName = document.querySelector(".last-name").innerHTML;
+const PageContext = React.createContext(null);
 
 
-  const fileName = lastName + "_" + firstName + "_resume.pdf"
-  html2canvas(input)
-    .then((canvas) => {
-      const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF("p", "mm", "a4");
-      console.log(canvas, imgData, pdf)
-      pdf.addImage(imgData, 'PNG', 0, 0, 211, 298);
-      pdf.save(fileName);
-    });
-  ;
-};
 
-const Nav = props => {
+const Nav = (props) => {
+  const pageContext = useContext(PageContext);
+  const { panZoomRef } = pageContext;
+
+  const zoomIn = () => panZoomRef.current.zoomIn(2);
+  const zoomOut = () => panZoomRef.current.zoomOut(2);
+  const centerReset = () => {
+    panZoomRef.current.autoCenter(1);
+    panZoomRef.current.reset(1);
+  };
+
+  const downloadResume = (quality = 1) => {
+    const input = document.querySelector("#capture");
+    const firstName = document.querySelector(".first-name").innerHTML;
+    const lastName = document.querySelector(".last-name").innerHTML;
+    const fileName = lastName + "_" + firstName + "_resume.pdf"
+    html2canvas(input)
+      .then((canvas) => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF("p", "mm", "a4");
+        console.log(canvas, imgData, pdf)
+        pdf.addImage(imgData, 'PNG', 0, 0, 211, 298);
+        pdf.save(fileName);
+      });
+    ;
+  };
   return (
     <ApolloConsumer>
       {client => (
@@ -45,13 +56,13 @@ const Nav = props => {
                     }}
                   >
                     <i className="fas fa-sign-out-alt"></i>
-                </button>
-                <button 
-                className="download-resume-button"
-                onClick={downloadResume}
-                >
+                  </button>
+                  <button
+                    className="download-resume-button"
+                    onClick={downloadResume}
+                  >
                     <i className="fas fa-download"></i>
-                </button>
+                  </button>
                 </div>
               );
             } else {
@@ -69,6 +80,9 @@ const Nav = props => {
       )}
     </ApolloConsumer>
   );
-};
+}
+// const Nav = props => {
+  
+// };
 
 export default withRouter(Nav);

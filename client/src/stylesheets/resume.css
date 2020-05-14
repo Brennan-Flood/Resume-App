@@ -3,8 +3,8 @@
   border: 1px solid rgb(209, 209, 209);
   display: flex;
   flex-direction: column;
-  height: 700px;
-  width: 518px;
+  height: 894px;
+  width: 633px;
   box-shadow: 3px 3px 5px grey;
 }
 
@@ -17,11 +17,9 @@
 
 .recruiting-experience-div {
   width: 200px;
-  font-family: 'Montserrat', sans-serif;
 }
 
 .recruiting-experience-div > h1 {
-  font-family: 'Montserrat', sans-serif;
   font-weight: 300;
 }
 
@@ -46,7 +44,7 @@
   padding: 0px;
   display: flex;
   flex-direction: row;
-  color: rgb(0, 167, 0);
+  color: rgb(20, 178, 75);
 }
 
 .resume-last-row {

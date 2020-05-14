@@ -39,7 +39,7 @@ textarea::placeholder {
 }
 
 .education-input:hover, .left-sidebar > input:hover {
-  border: 1px solid green; 
+  border: 1px solid rgb(20, 178, 75); 
   box-shadow: 2px 1px 1px grey;
 }
 
@@ -91,4 +91,27 @@ textarea::placeholder {
   margin: 10px;
   margin-left: 20px;
   margin-bottom: 0px;
+}
+
+.font-test {
+  font-family: 'AvenirLTStd-book';
+  font-size: 30px;
+}
+
+.font-comparison-1 {
+  font-size: 30px;
+  font-family: 'AvenirLTStd-medium';
+  font-weight: 900;
+}
+
+.font-comparison-2 {
+  font-size: 30px;
+  font-family: 'AvenirLTStd-roman';
+
+}
+
+.font-comparison-3 {
+  font-size: 30px;
+  font-family: 'AvenirLTStd-black';
+
 }

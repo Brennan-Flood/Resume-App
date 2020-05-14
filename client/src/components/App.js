@@ -1,7 +1,6 @@
 import React from 'react';
 import { Query } from "react-apollo";
 import Splash from "./auth/Splash";
-import Nav from "./nav/Nav";
 import Builder from "./builder/Builder"
 import '../css_index.css';
 
@@ -20,7 +19,6 @@ class App extends React.Component {
             return (
             <div className="main">
                 <Builder/>
-                <Nav />
             </div> 
             )
           } else {

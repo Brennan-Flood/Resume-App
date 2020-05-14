@@ -1,15 +1,29 @@
-import React from "react";
+import React, {useRef} from "react";
 import Resume from "./Resume";
+import Nav from "../nav/Nav";
 
-import { PanZoom } from 'react-easy-panzoom'
+import { PanZoom, reset } from 'react-easy-panzoom'
 
 class ResumeContainer extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      printing: false
+    };
+    this.print = this.print.bind(this);
   }
+
+  print() {
+    this.panZoomRef.reset()
+    this.setState({printing: true});
+  }
+  
   render() {
   return (
+    <div>
     <PanZoom
+      ref={this.panZoomRef}
       keyMapping={{
         '87': { x: 0, y: -1, z: 0 },
         '83': { x: 0, y: 1, z: 0 },
@@ -21,9 +35,15 @@ class ResumeContainer extends React.Component {
       enableBoundingBox
       minZoom={0.4}
       maxZoom={3}
+      onStateChange={reset}
     >
       <Resume state={this.props.state}/>
+
     </PanZoom>
+    <Nav print={this.print}/>
+
+    </div>
+
   )
 }
 }
