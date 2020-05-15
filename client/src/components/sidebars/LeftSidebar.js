@@ -5,10 +5,17 @@ class LeftSidebar extends React.Component {
     super(props)
 
     this.state = {
+
       educationInputs: 1, 
       educationValues: {1: {title: "", entity: "", startTime: "", endTime: ""}},
       linkedinInputs: 1,
-      linkedinValues: {1: {author: "", body: ""}}
+      linkedinValues: {1: {author: "", body: ""}},
+      recruitingToolkitSliders: 1,
+      recruitingToolkitValues: {1: {name: "", value: ""}},
+      federalAgencies: 1,
+      federalAgenciesValues: {1: {image: ""}},
+      hobbies: 1,
+      hobbiesValues: {1: {image: ""}},
     };
 
     this.addMultiField = this.addMultiField.bind(this);
@@ -29,6 +36,7 @@ class LeftSidebar extends React.Component {
     let newValues;
     let inputs;
     if (field === "edu") {
+
       inputs = this.state.educationInputs + 1;
       newValues = this.state.educationValues;
       newValues[inputs] = { title: "", entity: "", startTime: "", endTime: "" };
@@ -41,6 +49,27 @@ class LeftSidebar extends React.Component {
       newValues[inputs] = { author: "", body: "" };
       this.setState({ linkedinInputs: inputs, linkedinValues: newValues });
 
+    } else if ( field === "recruitingToolkit") {
+
+      newValues = this.state.recruitingToolkitValues;
+      inputs = this.state.recruitingToolkitSliders + 1;
+      newValues[inputs] = {name: "", values: ""};
+      this.setState({ recruitingToolkitSliders: inputs, recruitingToolkitValues: newValues });
+
+    } else if ( field === "federalAgencies") {
+
+      newValues = this.state.federalAgenciesValues;
+      inputs = this.state.federalAgencies + 1;
+      newValues[inputs] = {image: ""};
+      this.setState({ federalAgencies: inputs, federalAgenciesValues: newValues});
+
+    } else if (field === "hobbies") {
+
+      newValues = this.state.hobbiesValues;
+      inputs = this.state.hobbies + 1;
+      newValues[inputs] = {image: ""};
+      this.setState({hobbies: inputs, hobbiesValues: newValues});
+
     }
 
     this.props.updateMultiField(field, inputs);
@@ -50,27 +79,56 @@ class LeftSidebar extends React.Component {
     let newValues;
     let inputs;
     if (field === "edu") {
-      inputs = this.state.educationInputs - 1;
-      if (inputs <= 0) {
-        return;
-      }
-      newValues = this.state.educationValues;
-      newValues[inputs] = { title: "", entity: "", startTime: "", endTime: "" };
-      this.setState({ educationInputs: inputs, educationValues: newValues });
-      this.props.updateMultiField(field, inputs);
+        inputs = this.state.educationInputs - 1;
+        if (inputs <= 0) {
+          return;
+        }
+        newValues = this.state.educationValues;
+        newValues[inputs] = { title: "", entity: "", startTime: "", endTime: "" };
+        this.setState({ educationInputs: inputs, educationValues: newValues });
 
     } else if (field === "linkedin") {
 
-      inputs = this.state.linkedinInputs - 1;
-      if (inputs <= 0) {
-        return;
-      }
-      newValues = this.state.linkedinValues;
-      newValues[inputs] = { author: "", body: "" };
-      this.setState({ linkedinInputs: inputs, linkedinValues: newValues });
-      this.props.updateMultiField(field, inputs);
+        inputs = this.state.linkedinInputs - 1;
+        if (inputs <= 0) {
+          return;
+        }
+        newValues = this.state.linkedinValues;
+        newValues[inputs] = { author: "", body: "" };
+        this.setState({ linkedinInputs: inputs, linkedinValues: newValues });
+    } else if (field === "recruitingToolkit") {
+
+        inputs = this.state.recruitingToolkitSliders - 1;
+        if (inputs <= 0) {
+          return;
+        }
+        newValues = this.state.recruitingToolkitValues;
+        newValues[inputs] = { name: "", value: ""};
+        this.setState({recruitingToolkitSliders: inputs, recruitingToolkitValues: newValues})
+
+    } else if (field === "federalAgencies") {
+
+        inputs = this.state.federalAgencies - 1;
+        if (inputs <= 0) {
+          return;
+        }
+        newValues = this.state.federalAgenciesValues;
+        newValues[inputs] = { image: "" };
+        this.setState({ federalAgencies: inputs, federalAgenciesValues: newValues });
+
+    } else if (field === "hobbies") {
+
+        inputs = this.state.hobbies - 1;
+        if (inputs <= 0) {
+          return;
+        }
+        newValues = this.state.hobbiesValues;
+        newValues[inputs] = {image: ""};
+        this.setState({ hobbies: inputs, hobbiesValues: newValues })
+        
     }
-    
+
+    this.props.updateMultiField(field, inputs);
   }
   
   updateMultiField(metaField, index, field) {
@@ -91,6 +149,11 @@ class LeftSidebar extends React.Component {
         newValues[index][field] = e.target.value;
         this.setState({ linkedinValues: newValues });
 
+      } else if (metaField === "recruitingToolkit") {
+        newValues = this.state.recruitingToolkitValues;
+        inputs = this.state.recruitingToolkitSliders;
+        newValues[index][field] = e.target.value;
+        this.setState({recruitingToolkitValues: newValues})
       }
       this.props.updateMultiField(metaField, inputs, index, field, e.target.value);
     }
@@ -100,14 +163,13 @@ class LeftSidebar extends React.Component {
     return e => this.props.updateClearenceLevel(field, e.target.value);
   }
 
-  updateRecruitingToolkitSlider(field) {
-    return e => this.props.updateRecruitingToolkit(field, e.target.value);
-  }
-
   render() {
+
     let eduInputs = new Array(this.state.educationInputs).fill(0);
     let linkedinInputs = new Array(this.state.linkedinInputs).fill(0);
-
+    let recruitingToolkitSliders = new Array(this.state.recruitingToolkitSliders).fill(0);
+    let federalAgencies = new Array(this.state.federalAgencies).fill(0);
+    let hobbies = new Array(this.state.hobbies).fill(0);
     return (
       <div className="left-sidebar">
         <h1 className="font-test">Test</h1>
@@ -177,16 +239,33 @@ class LeftSidebar extends React.Component {
         <h1 className="sidebar-section-name"> Recruiting Toolkit </h1>
 
         <div className="recruiting-toolkit-left-sidebar">
-          <h1 className="recruiting-tool-title">LinkedIn: {this.props.state.recruitingToolkit.linkedIn}%</h1>
-          <input 
-            onChange={this.updateRecruitingToolkitSlider("linkedIn")}
-            type="range"
-            min="0"
-            max="100"
-            value={this.props.state.recruitingToolkit.linkedIn}
-            className="slider"
-            id="myRange"
-          />
+          <button className="add-field-button" onClick={() => this.addMultiField("recruitingToolkit")}>ADD</button>
+          <button className="remove-field-button" onClick={() => this.removeMultiField("recruitingToolkit")}>REMOVE</button>
+          {recruitingToolkitSliders.map((e, i) => {
+            let k = i * 2
+            return(
+            <div>
+              <input
+                key={k}
+                onChange={this.updateMultiField("recruitingToolkit", i + 1, "name")}
+                type="text"
+                className="education-input"
+                placeholder="Recruiting Tool"
+              />
+              <input
+                key={k + 1}
+                onChange={this.updateMultiField("recruitingToolkit", i + 1, "value")}
+                type="range"
+                min="0"
+                max="100"
+                value={this.props.state.recruitingToolkit.linkedIn}
+                className="slider"
+                id="myRange"
+              />
+            </div>
+            )
+          })}
+        
         </div>
 
         <h1 className="sidebar-section-name"> Recent Searches</h1>
@@ -198,8 +277,16 @@ class LeftSidebar extends React.Component {
         />
 
         <h1 className="sidebar-section-name"> {"HOBBIES & INTERESTS"}</h1>
+        <button className="add-field-button" onClick={() => this.addMultiField("hobbies")}>ADD</button>
+        <button className="remove-field-button" onClick={() => this.removeMultiField("hobbies")}>REMOVE</button>
+        <div>
+          {hobbies.map((e, i) => {
+            return(
+              <input key={i} placeholder="hobby" />
+            )
+          })}
+        </div>
 
-        
         <h1 className="sidebar-section-name">{"EDUCATION & EMPLOYMENT"}</h1>
 
         <div className="education-field">
@@ -250,7 +337,14 @@ class LeftSidebar extends React.Component {
         <div className="agencies-and-clearence">
           <div className="agencies">
             <h1 className="sidebar-section-name">FEDERAL AGENCIES</h1>
-            
+            <button className="add-field-button" onClick={() => this.addMultiField("federalAgencies")}>ADD</button>
+            <button className="remove-field-button" onClick={() => this.removeMultiField("federalAgencies")}>REMOVE</button>
+            {federalAgencies.map((e, i) => {
+              
+              return(
+                <input key={i} className="education-input"/> 
+              )
+            })}
           </div>
 
           <div className="clearences">

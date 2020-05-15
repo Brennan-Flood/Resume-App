@@ -9,30 +9,50 @@ import { PanZoom } from 'react-easy-panzoom'
 
 const ResumeContainer = (props) => {
   const panZoomRef = React.createRef();
+  const resumeRef = React.createRef();
+  
 
-  const recenterPanZoom = function() {
-    
-    panZoomRef.current.autoCenter(1);
+  const print = () => new Promise(resolve => {
     panZoomRef.current.reset(1);
-    panZoomRef.current.disabled = true;
-    
-  }
+    panZoomRef.current.autoCenter(1);
 
-  const print = () => {
-    recenterPanZoom();
-    const input = document.querySelector("#capture");
     const firstName = document.querySelector(".first-name").innerHTML;
     const lastName = document.querySelector(".last-name").innerHTML;
     const fileName = lastName + "_" + firstName + "_resume.pdf"
-    html2canvas(input)
-      .then((canvas) => {
-        const imgData = canvas.toDataURL('image/png');
-        const pdf = new jsPDF("p", "mm", "a4");
-        pdf.addImage(imgData, 'PNG', 0, 0, 211, 298);
-        pdf.save(fileName);
-      });
-    ;
-  }
+
+    setTimeout(() => {
+      html2canvas(resumeRef.current, {
+        scale: 5,
+        useCORS: true,
+        allowTaint: true
+      })
+        .then((canvas) => {
+          const image = canvas.toDataURL('image/jpeg', 80 / 100);
+          const doc = new jsPDF({
+            orientation: 'portrait',
+            unit: 'px',
+          });
+
+          const pageWidth = doc.internal.pageSize.getWidth();
+          const pageHeight = doc.internal.pageSize.getHeight();
+
+          const widthRatio = pageWidth / canvas.width;
+          const heightRatio = pageHeight / canvas.height;
+          const ratio = widthRatio > heightRatio ? heightRatio : widthRatio;
+
+          const canvasWidth = canvas.width * ratio;
+          const canvasHeight = canvas.height * ratio;
+
+          let marginX = 0;
+          let marginY = 0;
+
+          doc.addImage(image, 'JPEG', marginX, marginY, canvasWidth, canvasHeight, null, 'SLOW');
+          doc.save(fileName);
+          resolve();
+        });
+
+    }, 250)
+  });
 
   return (
     <div>
@@ -51,7 +71,7 @@ const ResumeContainer = (props) => {
       maxZoom={3}
       autoCenter
     >
-      <Resume state={props.state}/>
+      <Resume resumeRef={resumeRef} state={props.state}/>
 
     </PanZoom>
     <Nav print={print}/>

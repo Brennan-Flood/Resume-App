@@ -15,18 +15,9 @@ class Resume extends React.Component {
   }
 
   render() {
-    const arcGenerator = arc()
-      .innerRadius(25)
-      .outerRadius(20)
-      .startAngle(0)
-      .endAngle((this.props.state.recruitingToolkit.linkedIn/100)*6.3)
-      .padAngle(0)
-      .cornerRadius(0)
-
-    const arcPath = arcGenerator()
 
     return (
-      <div id="capture" className="resume" style={this.props.state.themeColor}>
+      <div ref={this.props.resumeRef} id="capture" className="resume" style={this.props.state.themeColor}>
         <div className="resume-header">
 
           <div className="resume-name">
@@ -75,15 +66,29 @@ class Resume extends React.Component {
 
           <div className="recruiting-toolkit-div">
             <h1 className="title"> RECRUITING TOOLKIT </h1>
+            {this.props.state.recruitingToolkit.map((e, i) => {
+              const arcGenerator = arc()
+                .innerRadius(25)
+                .outerRadius(20)
+                .startAngle(0)
+                .endAngle(( e[1].value / 100) * 6.3)
+                .padAngle(0)
+                .cornerRadius(0)
 
-            <svg width="50" height="50" 
-            >
-              <path
-                fill="rgb(0, 167, 0)"
-                d={arcPath}
-                style={{transform: "translate(50%, 50%)"}}
-              />
-            </svg>
+              const arcPath = arcGenerator()
+              const k = i*2
+              return (
+              <svg key={k} width="50" height="50"
+              >
+                <path
+                  fill="rgb(0, 167, 0)"
+                  d={arcPath}
+                  style={{ transform: "translate(50%, 50%)" }}
+                />
+              </svg>
+              )
+            })}
+            
 
           </div>
 
@@ -92,12 +97,14 @@ class Resume extends React.Component {
             <h1 className="recent-searches"> {this.props.state.recentSearches}</h1>
             <h1 className="title">{"HOBBIES & INTERESTS"}</h1>
             <div className="hobbies-and-interests">
-              <div className="image-placeholder-outer-2" width="50px" height="50px" >
-                <h1 className="image-placeholder-inner-2" width="48px" height="48px"> </h1>
-              </div>
-              <div className="image-placeholder-outer-2" width="50px" height="50px" >
-                <h1 className="image-placeholder-inner-2" width="48px" height="48px"> </h1>
-              </div>
+              {this.props.state.hobbies.map((e, i) => {
+                let k = i * 2
+                return(
+                  <div key={k} className="image-placeholder-outer-2" width="50px" height="50px" >
+                    <h1 key={k + 1} className="image-placeholder-inner-2" width="48px" height="48px"> </h1>
+                  </div>
+                )
+              })}
             </div>
 
           </div>
@@ -128,19 +135,22 @@ class Resume extends React.Component {
 
         </div>
         <div className="resume-last-row">
+
           <div className="agencies-and-clearences">
+
             <div className="resume-federal-agencies">
               <h1 className="title">FEDERAL AGENCIES</h1>
 
-              <div className="hobbies-and-interests">
-                <div className="image-placeholder-outer-2" width="50px" height="50px" >
-                  <h1 className="image-placeholder-inner-2" width="48px" height="48px"> </h1>
-                </div>
-                <div className="image-placeholder-outer-2" width="50px" height="50px" >
-                  <h1 className="image-placeholder-inner-2" width="48px" height="48px"> </h1>
-                </div>
-              </div>
+              {this.props.state.federalAgencies.map((e, i) => {
+                let k = i * 2
+                return(
+                  <div key={k} className="image-placeholder-outer-2" width="50px" height="50px" >
+                    <h1 key={k + 1} className="image-placeholder-inner-2" width="48px" height="48px"> </h1>
+                  </div>
+                )
+              })}
             </div>
+
             <div className="clearence-levels">
               <h1 className="title">CLEARENCE LEVELS</h1>
                 <h1 className="clearence-type">Secret</h1>
@@ -191,6 +201,7 @@ class Resume extends React.Component {
           </div>
 
           <div className="linkedin-review-div">
+            
             <h1 className="title">LINKEDIN REVIEWS</h1>
             {
               this.props.state.linkedinReviews.map((e, i) => {

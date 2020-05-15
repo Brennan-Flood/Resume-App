@@ -24,18 +24,15 @@ class Builder extends React.Component {
       clearenceLevels: {secret: 50, topSecret: 50, TSSCI: 50, TSSCICIPolygraph: 50, TSSCIFullScopePolygraph: 50},
       linkedinReviews: [[1, {author: "", body: ""}]],
       themeColor: {backgroundColor: "rgb(229, 229, 229)"},
-      recruitingToolkit: {linkedIn: 50},
+      recruitingToolkit: [[1, {name: "", value: 50}]],
+      federalAgencies: [[1, {image: ""}]],
+      hobbies: [[1, {image: ""}]]
     }
 
     this.update = this.update.bind(this);
     this.updateMultiField = this.updateMultiField.bind(this);
     this.updateBackgroundColor = this.updateBackgroundColor.bind(this);
     this.updateClearenceLevel = this.updateClearenceLevel.bind(this);
-    this.updateRecruitingToolkit = this.updateRecruitingToolkit.bind(this);
-  }
-
-  componentDidMount() {
-
   }
 
   update(field, value) {
@@ -44,7 +41,6 @@ class Builder extends React.Component {
 
   updateMultiField(metaField, inputs, index="", field="", value="") {
     const newArr = [];
-
     let currentField;
     let pushObject;
     let key;
@@ -60,6 +56,21 @@ class Builder extends React.Component {
       currentField = this.state.linkedinReviews;
       pushObject = { author: "", body: "" };
       key = "linkedinReviews";
+      i = currentField.length;
+    } else if (metaField === "recruitingToolkit") {
+      currentField = this.state.recruitingToolkit;
+      pushObject = { name: "", value: 50};
+      key = "recruitingToolkit";
+      i = currentField.length
+    } else if (metaField === "federalAgencies") {
+      currentField = this.state.federalAgencies;
+      pushObject = { image: "" };
+      key = "federalAgencies";
+      i = currentField.length
+    } else if (metaField === "hobbies" ) {
+      currentField = this.state.hobbies;
+      pushObject = { image: "" };
+      key = "hobbies";
       i = currentField.length;
     }
     let newField = newArr.concat(currentField);
@@ -85,6 +96,12 @@ class Builder extends React.Component {
         this.setState({ educationAndEmployment: newField })
       } else if (key === "linkedinReviews") {
         this.setState({ linkedinReviews: newField })
+      } else if (key === "recruitingToolkit") {
+        this.setState({recruitingToolkit: newField})
+      } else if (key === "federalAgencies") {
+        this.setState({ federalAgencies: newField })
+      } else if (key === "hobbies") {
+        this.setState({ hobbies: newField })
       }
     }
   }
@@ -99,11 +116,6 @@ class Builder extends React.Component {
     this.setState({clearenceLevels: currentClearenceLevels});
   }
 
-  updateRecruitingToolkit(field, value) {
-    const currentRecruitingToolkit = this.state.recruitingToolkit;
-    currentRecruitingToolkit[field] = value;
-    this.setState({recruitingToolkit: currentRecruitingToolkit});
-  }
   render() {
     return(
       <div className="builder">
