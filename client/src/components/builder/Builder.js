@@ -2,6 +2,7 @@ import React from "react";
 import LeftSidebar from "../sidebars/LeftSidebar";
 import RightSidebar from "../sidebars/RightSidebar";
 import ResumeContainer from "../resume/ResumeContainer";
+import PageContext from "../../context/PageContext";
 
 
 class Builder extends React.Component {

@@ -1,13 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Query } from "react-apollo";
 import Splash from "./auth/Splash";
-import Builder from "./builder/Builder"
+import Builder from "./builder/Builder";
+
 import '../css_index.css';
 
 
 import Queries from "../graphql/queries";
 const { IS_LOGGED_IN } = Queries;
-
 class App extends React.Component {
 
   render() {
