@@ -37,7 +37,7 @@
   height: 0px;
   position: absolute;
   width: 0px;
-  left: 0px;
+  left: -2px;
   justify-self: left;
   border-left: 40px solid white;
 }

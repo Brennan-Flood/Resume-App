@@ -64,7 +64,7 @@ const ResumeContainer = (props) => {
         '65': { x: -1, y: 0, z: 0 },
         '68': { x: 1, y: 0, z: 0 },
       }}
-      boundaryRatioVertical={0.4}
+      boundaryRatioVertical={0.8}
       boundaryRatioHorizontal={0.8}
       enableBoundingBox
       minZoom={0.4}
