@@ -74,9 +74,7 @@ const ResumeContainer = (props) => {
       <Resume resumeRef={resumeRef} state={props.state}/>
 
     </PanZoom>
-    <Nav print={print}/>
-    <div className="capture-clone-div"></div>
-
+    <Nav print={print} panZoomRef={panZoomRef}/>
     </div>
 
   )

@@ -54,6 +54,12 @@ const Nav = (props) => {
                   >
                     <i className="fas fa-download"></i>
                   </button>
+
+                  <button>
+                  </button>
+
+                  <button>
+                  </button>
                 </div>
               );
             } else {
