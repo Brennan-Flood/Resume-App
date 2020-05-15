@@ -77,9 +77,6 @@ class Resume extends React.Component {
             <h1 className="title"> RECRUITING TOOLKIT </h1>
 
             <svg width="50" height="50" 
-            style={{backgroundColor: "white",
-              borderRadius: "100%",
-              margin: "10px"}}
             >
               <path
                 fill="rgb(0, 167, 0)"

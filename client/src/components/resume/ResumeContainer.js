@@ -1,4 +1,4 @@
-import React, {useRef} from "react";
+import React, {useRef, cloneElement} from "react";
 import Resume from "./Resume";
 import Nav from "../nav/Nav";
 import html2canvas from "html2canvas";
@@ -19,8 +19,7 @@ const ResumeContainer = (props) => {
   }
 
   const print = () => {
-    recenterPanZoom()
-    
+    recenterPanZoom();
     const input = document.querySelector("#capture");
     const firstName = document.querySelector(".first-name").innerHTML;
     const lastName = document.querySelector(".last-name").innerHTML;
@@ -29,7 +28,6 @@ const ResumeContainer = (props) => {
       .then((canvas) => {
         const imgData = canvas.toDataURL('image/png');
         const pdf = new jsPDF("p", "mm", "a4");
-        console.log(canvas, imgData, pdf)
         pdf.addImage(imgData, 'PNG', 0, 0, 211, 298);
         pdf.save(fileName);
       });
@@ -57,6 +55,7 @@ const ResumeContainer = (props) => {
 
     </PanZoom>
     <Nav print={print}/>
+    <div className="capture-clone-div"></div>
 
     </div>
 
