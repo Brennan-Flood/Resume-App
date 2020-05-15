@@ -1,6 +1,7 @@
 .current-position-div {
   display: inline-block;
-  width: 33%;
+  width: 30%;
+  margin-left: 10px;
 }
 
 .current-position-header {
@@ -28,4 +29,5 @@
 
 .current-position-description {
   font-size: 10px;
+  width: 160px;
 }

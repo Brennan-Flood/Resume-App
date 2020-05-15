@@ -26,14 +26,18 @@ class Resume extends React.Component {
             <h1 className="applicant-title">{this.props.state.title}</h1>
           </div>
 
-          <div className="recruiting-experience-div">
-            <div className="header-years">
-              <h1 className="years"> {this.props.state.yearsExperience}</h1>
-              <h1 className="years-inner">YEARS</h1>
+          <div className="recruiting-experience-div" style={this.props.state.themeColor}>
+            <div className="arrow-left" style={
+              { borderTop: `60px solid ${this.props.state.themeColor.backgroundColor}`, borderBottom: `60px solid ${this.props.state.themeColor.backgroundColor}`}}></div>
+            <div className="header-right-text">
+              <div className="header-years">
+                <h1 className="years"> {this.props.state.yearsExperience}</h1>
+                <h1 className="years-inner">YEARS</h1>
+              </div>
+              <h1 className="recruiting-experience-1">recruiting</h1>
+              <h1 className="recruiting-experience-2">experience</h1>
             </div>
-            <h1 className="recruiting-experience">recruiting</h1>
-            <h1 className="recruiting-experience">experience</h1>
-
+            <div className="arrow-right" style={{ borderLeft: `40px solid ${this.props.state.themeColor.backgroundColor}` }}></div>
           </div>
 
         </div>
@@ -66,10 +70,11 @@ class Resume extends React.Component {
 
           <div className="recruiting-toolkit-div">
             <h1 className="title"> RECRUITING TOOLKIT </h1>
+            <div className="recruiting-toolkit-sliders">
             {this.props.state.recruitingToolkit.map((e, i) => {
               const arcGenerator = arc()
-                .innerRadius(25)
-                .outerRadius(20)
+                .innerRadius(20)
+                .outerRadius(16)
                 .startAngle(0)
                 .endAngle(( e[1].value / 100) * 6.3)
                 .padAngle(0)
@@ -78,25 +83,30 @@ class Resume extends React.Component {
               const arcPath = arcGenerator()
               const k = i*2
               return (
-              <svg key={k} width="50" height="50"
-              >
-                <path
-                  fill="rgb(0, 167, 0)"
-                  d={arcPath}
-                  style={{ transform: "translate(50%, 50%)" }}
-                />
-              </svg>
+                <div className="arc-container">
+                  <svg key={k} width="40" height="40"
+                  >
+                    <path
+                      fill="rgb(0, 167, 0)"
+                      d={arcPath}
+                      style={{ transform: "translate(50%, 50%)" }}
+                    />
+                  </svg>
+                </div>
               )
             })}
             
-
+            </div>
           </div>
 
           <div className="recent-searches-div">
-            <h1 className="title"> RECENT SEARCHES</h1>
-            <h1 className="recent-searches"> {this.props.state.recentSearches}</h1>
-            <h1 className="title">{"HOBBIES & INTERESTS"}</h1>
+            <div className="recent-searches-div">
+              <h1 className="title"> RECENT SEARCHES</h1>
+              <h1 className="recent-searches"> {this.props.state.recentSearches}</h1>
+            </div>
             <div className="hobbies-and-interests">
+              <h1 className="title">{"HOBBIES & INTERESTS"}</h1>
+              <div className="hobbies-images">
               {this.props.state.hobbies.map((e, i) => {
                 let k = i * 2
                 return(
@@ -105,6 +115,7 @@ class Resume extends React.Component {
                   </div>
                 )
               })}
+              </div>
             </div>
 
           </div>

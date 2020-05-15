@@ -55,10 +55,16 @@ const Nav = (props) => {
                     <i className="fas fa-download"></i>
                   </button>
 
-                  <button>
+                  <button 
+                  onClick={() => {props.panZoomRef.current.zoomIn(1)}}
+                  >
+                    <i className="fas fa-search-plus"></i>
                   </button>
 
-                  <button>
+                  <button
+                    onClick={() => { props.panZoomRef.current.zoomOut(1) }}
+                  >
+                    <i className="fas fa-search-minus"></i>
                   </button>
                 </div>
               );

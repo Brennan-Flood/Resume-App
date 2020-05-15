@@ -3,4 +3,8 @@
   padding: 10px;
   align-content: center;
 }
+.hobbies-and-interests {
+  flex-direction: column;
+  margin-top: 10px;
+}
 

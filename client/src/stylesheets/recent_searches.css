@@ -1,14 +1,14 @@
 .recent-searches-div {
   display: flex;
   flex-direction: column;
-  width: 33%;
+  width: 42%;
   height: 100px;
   overflow-wrap: normal;
 }
 
 .title, .recent-searches-header {
   font-family: 'AvenirLTStd-medium';
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .recent-searches {
