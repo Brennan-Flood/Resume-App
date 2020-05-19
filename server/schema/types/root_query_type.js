@@ -20,7 +20,7 @@ const RootQueryType = new GraphQLObjectType({
       resolve() {
         return User.find({});
       }
-    }
+    },
   })
 });
 
