@@ -1,12 +1,17 @@
 const mongoose = require("mongoose");
 const graphql = require("graphql");
 const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLBoolean, GraphQLList } = graphql;
+const Image = mongoose.model("images");
 
 const ImageType = new GraphQLObjectType({
-  name: "UserType",
+  name: "ImageType",
   fields: () => ({
     _id: { type: GraphQLID },
-    category: { type: GraphQLString },
+    category: {
+      type: require("./image_category_type"),
+      resolve(parentValue) {
+        return Image.findCategory(parentValue.id);
+      }},
     url: { type: GraphQLString }
   })
 });
