@@ -22,7 +22,8 @@ async function setupClient() {
   });
 
   const httpLink = createHttpLink({
-    // uri: "http://localhost:5000/graphql",
+    // COMMENT OUT FOR PRODUCTION
+    uri: "http://localhost:5000/graphql",
     headers: {
       authorization: localStorage.getItem("auth-token")
     }
