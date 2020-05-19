@@ -26,10 +26,5 @@ ImageCategorySchema.statics.findImages = function (id) {
   })
 };
 
-ImageCategorySchema.statics.addImageToCategory = function (category, imageId) {
-      category.images.push(imageId);
-      category.save();
-      return category
-};
 
 module.exports = mongoose.model("imageCategory", ImageCategorySchema);

@@ -23,16 +23,16 @@ ImageSchema.statics.addImageToCategory = function (id, category) {
     image.category = category;
     category.images.push(image);
     return Promise.all([image.save(), category.save()])
-    .then(([image, category]) => image)
+    .then(([image, category]) => [image, category])
   })})
 };
 
 ImageSchema.statics.findCategory = function (id) {
   return this.findById(id)
     .populate("category")
-    .then(category => {
+    .then(image => {
       const ImageCategory = mongoose.model("imageCategory");
-      return ImageCategory.findById(category);
+      return ImageCategory.findById(image.category);
     });
 };
 
