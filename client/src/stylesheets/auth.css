@@ -1,0 +1,41 @@
+.auth-div {
+  background-color: rgb(229, 229, 229);
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.auth-div, .auth-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.auth-input, .auth-button {
+  margin: 10px;
+  padding: 10px;
+  border: 0.5px solid black;
+  border-radius: 10px;
+}
+
+.errors-ul {
+  color: red;
+  margin: 10px;
+}
+
+.auth-button {
+  border: 0.5px solid black;
+}
+
+.auth-switch {
+margin: 10px;
+}
+
+.auth-link-preface, .auth-link {
+  margin: 10px;
+}
+
+.auth-link {
+  color: aquamarine;
+}

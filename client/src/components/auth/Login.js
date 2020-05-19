@@ -27,16 +27,6 @@ class Login extends Component {
     });
   };
 
-  // demoUser(e, login) {
-  //   e.preventDefault();
-  //   login({
-  //     variables: {
-  //       email: "demoUser@gmail.com",
-  //       password: "password"
-  //     }
-  //   });
-  // };
-
   componentWillUnmount() {
     clearTimeout(this.timer);
   }

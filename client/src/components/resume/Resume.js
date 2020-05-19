@@ -19,7 +19,7 @@ class Resume extends React.Component {
     return (
       <div ref={this.props.resumeRef} id="capture" className="resume" style={this.props.state.themeColor}>
         <div className="resume-header">
-
+          <img className="logo" src="talent-spring-logo.jpg"/>
           <div className="resume-name">
             <h1 className="first-name">{this.props.state.firstName}</h1>
             <h1 className="last-name">{this.props.state.lastName}</h1>

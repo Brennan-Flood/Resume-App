@@ -149,3 +149,10 @@
   display: flex;
   flex-direction: row;
 }
+
+.logo {
+  width: 200px;
+  height: auto;
+  position: absolute;
+  left: 10px;
+}
