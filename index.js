@@ -6,10 +6,10 @@ const bluebird = require('bluebird');
 const multiparty = require('multiparty');
 const { BUCKET_NAME, IAM_USER_KEY, IAM_USER_SECRET } = require("./config/aws_keys");
 
-AWS.config.update({
-  accessKeyId: IAM_USER_KEY,
-  secretAccessKey: IAM_USER_SECRET
-});
+// AWS.config.update({
+//   accessKeyId: IAM_USER_KEY,
+//   secretAccessKey: IAM_USER_SECRET
+// });
 
 // configure AWS to work with promises
 AWS.config.setPromisesDependency(bluebird);
@@ -31,6 +31,7 @@ const uploadFile = (buffer, name, type) => {
 
 // Define POST route
 app.post('/test-upload', (request, response) => {
+  console.log("hitting request");
   const form = new multiparty.Form();
   form.parse(request, async (error, fields, files) => {
     if (error) throw new Error(error);
