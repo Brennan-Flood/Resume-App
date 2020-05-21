@@ -25,5 +25,37 @@ const Mutations = {
       }
     }
   `,
+  CREATE_IMAGE: gql`
+    mutation CreateImage($url: String!, $category: ID!) {
+      createImage(url: $url, category: $category) {
+        url
+        category{
+          _id
+          name
+        }
+      }
+    }
+  `,
+  CREATE_IMAGE_CATEGORY: gql`
+    mutation CreateImageCategory($name: String!) {
+      createImageCategory(name: $name){
+        _id
+        name
+        images {
+          _id
+          url
+        }
+      }
+    }
+  `,
+  ADD_IMAGE_TO_CATEGORY: gql`
+    mutation AddImageToCategory($imageId: ID!, $categoryId: ID!) {
+      addImageToCategory(imageId: $imageId, categoryId: $categoryId) {
+        image{
+          url
+        }
+      }
+    }
+  `
 };
 export default Mutations;

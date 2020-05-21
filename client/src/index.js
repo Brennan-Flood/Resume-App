@@ -33,7 +33,8 @@ async function setupClient() {
     if (graphQLErrors) {
       graphQLErrors.map(({ message }) => console.log(message));
     } else {
-      window.location.reload();
+      // window.location.reload();
+
     }
   });
 

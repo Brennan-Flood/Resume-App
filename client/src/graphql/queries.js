@@ -11,4 +11,46 @@ export default {
       currentUserId @client
     }
   `,
+  FETCH_IMAGE: gql`
+    query fetchImage($id: ID!) {
+      image(id: $id) {
+        url
+        category{
+          name
+          _id
+        }
+      }
+    }
+  `,
+  FETCH_IMAGES: gql`
+    query fetchImages {
+      images {
+        url
+        category {
+          name
+          _id
+        }
+      }
+    }
+  `,
+  FETCH_CATEGORY: gql`
+    query fetchCategory($id: ID!) {
+      imageCategory(id: $id) {
+        name
+        images {
+          url
+        }
+      }
+    }
+  `,
+  FETCH_CATEGORIES: gql`
+    query fetchCategories {
+      imageCategories {
+        name
+        images{
+          url
+        }
+      }
+    }
+  `
 };

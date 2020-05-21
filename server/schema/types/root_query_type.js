@@ -30,7 +30,7 @@ const RootQueryType = new GraphQLObjectType({
       type: ImageType,
       args: {_id: { type: new GraphQLNonNull(GraphQLID) } },
       resolve(_, args) {
-        return Image.findById(args._id);
+        return Image.findById(args._id)
       }
     },
     images: {
