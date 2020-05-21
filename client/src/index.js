@@ -34,7 +34,6 @@ async function setupClient() {
       graphQLErrors.map(({ message }) => console.log(message));
     } else {
       // window.location.reload();
-
     }
   });
 

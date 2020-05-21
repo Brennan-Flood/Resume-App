@@ -6,10 +6,10 @@ const bluebird = require('bluebird');
 const multiparty = require('multiparty');
 const { BUCKET_NAME, IAM_USER_KEY, IAM_USER_SECRET } = require("./config/aws_keys");
 
-// AWS.config.update({
-//   accessKeyId: IAM_USER_KEY,
-//   secretAccessKey: IAM_USER_SECRET
-// });
+AWS.config.update({
+  accessKeyId: IAM_USER_KEY,
+  secretAccessKey: IAM_USER_SECRET
+});
 
 // configure AWS to work with promises
 AWS.config.setPromisesDependency(bluebird);
@@ -40,10 +40,11 @@ app.post('/test-upload', (request, response) => {
       const buffer = fs.readFileSync(path);
       const type = fileType(buffer);
       const timestamp = Date.now().toString();
-      const fileName = `bucketFolder/${timestamp}-lg`;
+      const fileName = `${timestamp}-lg`;
       const data = await uploadFile(buffer, fileName, type);
       return response.status(200).send(data);
     } catch (error) {
+      console.log(error);
       return response.status(400).send(error);
     }
   });

@@ -1,32 +1,14 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 import { Query, ApolloConsumer } from "react-apollo";
 import Queries from "../../graphql/queries";
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
 
 const { IS_LOGGED_IN } = Queries;
 
 
 
 const Nav = (props) => {
-
-  // const downloadResume = (quality = 1) => {
-  //   const input = document.querySelector("#capture");
-  //   const firstName = document.querySelector(".first-name").innerHTML;
-  //   const lastName = document.querySelector(".last-name").innerHTML;
-  //   const fileName = lastName + "_" + firstName + "_resume.pdf"
-  //   html2canvas(input)
-  //     .then((canvas) => {
-  //       const imgData = canvas.toDataURL('image/png');
-  //       const pdf = new jsPDF("p", "mm", "a4");
-  //       console.log(canvas, imgData, pdf)
-  //       pdf.addImage(imgData, 'PNG', 0, 0, 211, 298);
-  //       pdf.save(fileName);
-  //     });
-  //   ;
-  // };
 
   return (
     <ApolloConsumer>

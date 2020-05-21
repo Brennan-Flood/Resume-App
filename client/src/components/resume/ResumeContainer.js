@@ -1,4 +1,4 @@
-import React, {useRef, cloneElement} from "react";
+import React from "react";
 import Resume from "./Resume";
 import Nav from "../nav/Nav";
 import html2canvas from "html2canvas";
