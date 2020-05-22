@@ -246,12 +246,14 @@ class LeftSidebar extends React.Component {
         />
 
         <h1 className="sidebar-section-name"> {"HOBBIES & INTERESTS"}</h1>
+        <button onClick={e => this.toggleModal("hobbies")}> Reveal </button>
         <ImageCategory 
           addImageToField={this.props.addImageToField}
           removeImageFromField={this.props.removeImageFromField}
           field={"hobbies"}
           state={this.props.state}
           imageCategoryId={"5ec7570efc7837539dc1dc33"}
+          toggleModal={this.toggleModal}
         />
 
         <h1 className="sidebar-section-name">{"EDUCATION & EMPLOYMENT"}</h1>
@@ -311,6 +313,7 @@ class LeftSidebar extends React.Component {
               removeImageFromField={this.props.removeImageFromField}
               field={"federalAgencies"}
               state={this.props.state}
+              toggleModal={this.toggleModal}
             /> 
             
           </div>

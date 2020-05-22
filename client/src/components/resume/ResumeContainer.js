@@ -11,6 +11,13 @@ const ResumeContainer = (props) => {
   const panZoomRef = React.createRef();
   const resumeRef = React.createRef();
 
+  const recenter = () => {
+
+    panZoomRef.current.reset(1);
+    panZoomRef.current.autoCenter(1);
+
+  };
+
   const print = () => new Promise(resolve => {
     panZoomRef.current.reset(1);
     panZoomRef.current.autoCenter(1);
@@ -56,8 +63,9 @@ const ResumeContainer = (props) => {
   });
 
   return (
-    <div>
+    <div className="pan-zoom-container">
     <PanZoom
+      style={{width: "100%"}}
       ref={panZoomRef}
       keyMapping={{
         '87': { x: 0, y: -1, z: 0 },
@@ -75,7 +83,7 @@ const ResumeContainer = (props) => {
       <Resume resumeRef={resumeRef} state={props.state}/>
 
     </PanZoom>
-    <Nav print={print} panZoomRef={panZoomRef}/>
+    <Nav recenter={recenter} print={print} panZoomRef={panZoomRef}/>
     </div>
 
   )

@@ -7,7 +7,6 @@ const { FETCH_CATEGORY } = Queries;
 const ImageCategory = (props) => {
 
   const toggleImage = function(imageId, url) {
-    console.log(imageId);
     if (props.state[props.field][imageId] === undefined) {
       props.addImageToField(props.field, url, imageId);
     } else {
@@ -24,8 +23,8 @@ const ImageCategory = (props) => {
           <div id={props.field} className="image-selector-modal hidden-modal">
             <div className="image-selector-interior">
             <h1 className="image-selector-title">{data.imageCategory.name}</h1>
-            <button onClick={e => props.toggleModal(props.field)}></button>
-            <ul>
+            <button onClick={e => props.toggleModal(props.field)}> Hide </button>
+            <ul className="image-select-list">
               {data.imageCategory.images.map((img, i) => {
                 return (
                   <button className="image-toggle-button" onClick={e => toggleImage(img._id, img.url)}>
@@ -35,7 +34,11 @@ const ImageCategory = (props) => {
               })}
             </ul>
             <Upload name={data.imageCategory.name} imageCategoryId={props.imageCategoryId} />
+
             </div>
+            <div onClick={e => props.toggleModal(props.field)} className="close-modal" />
+
+
           </div>
         )
       }}

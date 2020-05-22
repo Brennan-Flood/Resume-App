@@ -87,14 +87,11 @@ class FileUpload extends Component {
           update={(cache, data) => this.updateCache(cache, data)}
         >
           {(createImage, {data}) => {
-            return (
-              <div>
-             
-              <form onSubmit={e => this.submitFile(e, createImage)}>
-                <input label='upload file' type='file' onChange={this.handleFileUpload}></input>
-                <button type='submit'>Send</button>
+            return (             
+              <form className="image-upload-form" onSubmit={e => this.submitFile(e, createImage)}>
+                <input className="upload-input" label='upload file' type='file' onChange={this.handleFileUpload}></input>
+                <button className="upload-button" type='submit'>Upload File</button>
               </form>
-              </div>
             )
           }}
         

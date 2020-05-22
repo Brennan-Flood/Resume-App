@@ -3,7 +3,7 @@ import React from "react";
 class RightSidebar extends React.Component {
   render() {
     return (
-      <div className="right-sidebar">
+      <div className="right-sidebar col-sm-8">
         <h1 className="sidebar-header">THEMES</h1>
         <ul className="theme-list">
           <button className="theme" 

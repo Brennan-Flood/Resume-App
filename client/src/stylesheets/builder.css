@@ -1,8 +1,10 @@
 .builder {
   display: flex;
+  position: absolute;
+  flex-direction: row;
+  justify-content: space-between;
   width: 100vw;
   height: 100vh;
-  justify-content: center;
   padding: 0px;
   margin: 0px;
 }

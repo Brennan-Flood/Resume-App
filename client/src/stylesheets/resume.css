@@ -156,3 +156,13 @@
   position: absolute;
   left: 10px;
 }
+
+.pan-zoom-container {
+  display: flex;
+  justify-content: center;
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  height: auto;
+}
+

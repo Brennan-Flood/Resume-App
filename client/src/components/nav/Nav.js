@@ -17,9 +17,9 @@ const Nav = (props) => {
           {({ data }) => {
             if (data.isLoggedIn) {
               return (
-                <div className="nav">
+                <div className="nav" style={{left: "50vw - 110px"}}>
                   <button
-                    className="nav-button"
+                    className="logout-button"
                     onClick={e => {
                       e.preventDefault();
                       localStorage.removeItem("auth-token");
@@ -29,24 +29,33 @@ const Nav = (props) => {
                     }}
                   >
                     <i className="fas fa-sign-out-alt"></i>
+                    <h1> Logout </h1>
                   </button>
                   <button
-                    className="download-resume-button"
+                    className="download-button"
                     onClick={props.print}
                   >
                     <i className="fas fa-download"></i>
+                    <h1> Download as PDF</h1>
+                  </button>
+
+                  <button onClick={props.recenter}>
+                    <i className="fas fa-expand-arrows-alt"></i>
+                    <h1> Recenter Resume </h1>
                   </button>
 
                   <button 
                   onClick={() => {props.panZoomRef.current.zoomIn(1)}}
                   >
                     <i className="fas fa-search-plus"></i>
+                    <h1> Zoom IN </h1>
                   </button>
 
                   <button
                     onClick={() => { props.panZoomRef.current.zoomOut(1) }}
                   >
                     <i className="fas fa-search-minus"></i>
+                    <h1> Zoom OUT</h1>
                   </button>
                 </div>
               );

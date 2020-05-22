@@ -1,15 +1,97 @@
 .nav {
-  position: fixed;
+  position: absolute;
   z-index: 2;
-  justify-self: center;
   display: flex;
   justify-content: space-around;
-  bottom: 1vh;
-  left: 50vw;
+  bottom: 4vh;
   border: 1px solid gray;
   padding: 10px;
   margin: 10px;
   border-radius: 15px;
   background-color: white;
-  width: 200px;
+  box-shadow: 2px 0px 5px grey;
+  width: auto;
 }
+
+.nav > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 35px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.nav > button > i {
+  font-size: 25px;
+  transition: 0.1s;
+  margin: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* .nav > button > i:hover {
+  color: green;
+  bottom: 1px;
+  font-size: 28px;
+  margin: 3px;
+  margin-left: 9px;
+  margin-right: 9px;
+} */
+
+.nav > button:hover > i {
+  color: green;
+  bottom: 1px;
+  font-size: 28px;
+  margin: 3px;
+  margin-left: 9px;
+  margin-right: 9px;
+}
+
+.logout-button {
+  border-right: 1px solid black;
+  padding-right: 5px;
+  margin-left: 5px;
+}
+
+.nav > button > h1 {
+  display: flex;
+  flex-direction: column;
+  visibility: hidden;
+  position: absolute;
+  text-align: center;
+  width: 80px;
+  font-size: 10px;
+  top: 55px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 10px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border: 0.5px solid gray;
+  border-top: 0px;
+  left: 50%;
+  margin-left: -40px;
+}
+
+.nav > button > h1:hover {
+  cursor: default;
+  width: 0px;
+  height: 0px;
+  color: rgba(255, 255, 255, 0);
+  background-color: rgba(255, 255, 255, 0);
+  border: rgba(255, 255, 255, 0);
+  visibility: hidden;
+}
+
+.nav > button:hover > h1 {
+  visibility: visible;
+}
+
+.download-button {
+  border-right: 1px solid black;
+  padding-right: 5px;
+  margin-left: 5px;
+}
+

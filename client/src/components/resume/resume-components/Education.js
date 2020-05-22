@@ -12,8 +12,8 @@ const Education = (props) => {
               <div className="image-placeholder-outer-3">
                 <h1 className="image-placeholder-inner-3"> </h1>
               </div>
-              <h1 style={{ height: "14px" }} key={k + 1}>{e[1].title}</h1>
-              <h1 style={{ height: "14px" }} key={k + 2}>{e[1].entity}</h1>
+              <h1 className="experience-title" style={{ height: "14px" }} key={k + 1}>{e[1].title}</h1>
+              <h1 className="experience-loc" style={{ height: "14px" }} key={k + 2}>{e[1].entity}</h1>
               <div className="experience-tag" style={props.state.backgroundColor}></div>
               <h1 className="experience-years" key={k + 3}>{e[1].startTime}-{e[1].endTime}</h1>
 

@@ -17,9 +17,7 @@ class App extends React.Component {
         {({data }) => {
           if (data.isLoggedIn) {
             return (
-            <div className="main">
                 <Builder/>
-            </div> 
             )
           } else {
             return (
