@@ -1,6 +1,10 @@
 import React from "react";
-import { arc } from "d3-shape";
-import ClearenceLevels from "./resume-components/Clearences"
+import ClearenceLevels from "./resume-components/Clearences";
+import Header from "./resume-components/Header";
+import Hobbies from "./resume-components/Hobbies";
+import Searches from "./resume-components/RecentSearches";
+import Toolkit from "./resume-components/Toolkit";
+import CurrentPosition from "./resume-components/CurrentPos";
 class Resume extends React.Component {
   constructor(props) {
     super(props)
@@ -18,106 +22,20 @@ class Resume extends React.Component {
 
     return (
       <div ref={this.props.resumeRef} id="capture" className="resume" style={this.props.state.themeColor}>
-        <div className="resume-header">
-          {/* <img className="logo" src="talent-spring-logo.jpg"/> */}
-          <div className="resume-name">
-            <h1 className="first-name">{this.props.state.firstName}</h1>
-            <h1 className="last-name">{this.props.state.lastName}</h1>
-            <h1 className="applicant-title">{this.props.state.title}</h1>
-          </div>
-
-          <div className="recruiting-experience-div" style={this.props.state.themeColor}>
-            <div className="arrow-left" style={
-              { borderTop: `60px solid ${this.props.state.themeColor.backgroundColor}`, borderBottom: `60px solid ${this.props.state.themeColor.backgroundColor}`}}></div>
-            <div className="header-right-text">
-              <div className="header-years">
-                <h1 className="years"> {this.props.state.yearsExperience}</h1>
-                <h1 className="years-inner">YEARS</h1>
-              </div>
-              <h1 className="recruiting-experience-1">recruiting</h1>
-              <h1 className="recruiting-experience-2">experience</h1>
-            </div>
-            <div className="arrow-right" style={{ borderLeft: `40px solid ${this.props.state.themeColor.backgroundColor}` }}></div>
-          </div>
-
-        </div>
+        
+        <Header state={this.props.state}/> 
         <div className="resume-row-1">
 
-          <div className="current-position-div">
+          <CurrentPosition state={this.props.state}/>
 
-            <h1 className="title">CURRENT POSITION</h1>
-
-            <div className="current-position-header">
-              
-              <div className="image-placeholder-outer" width="50px" height="50px" >
-                <h1 className="image-placeholder-inner" width="48px" height="48px"> </h1>
-              </div>
-
-              <ul className="current-position-list">
-                
-                <h1 className="current-title">{this.props.state.currentTitle}</h1>
-                <h1 className="current-company">{this.props.state.currentCompany}</h1>
-                <h1 className="current-company-time"> 
-                  {this.props.state.currentPositionStartTime} - {this.props.state.currentPositionTime}
-                </h1>
-              </ul>
-
-            </div>
-
-            <h1 className="current-position-description">{this.props.state.currentPositionParagraph}</h1>
-
-          </div>
-
-          <div className="recruiting-toolkit-div">
-            <h1 className="title"> RECRUITING TOOLKIT </h1>
-            <div className="recruiting-toolkit-sliders">
-            {this.props.state.recruitingToolkit.map((e, i) => {
-              const arcGenerator = arc()
-                .innerRadius(20)
-                .outerRadius(16)
-                .startAngle(0)
-                .endAngle(( e[1].value / 100) * 6.3)
-                .padAngle(0)
-                .cornerRadius(0)
-
-              const arcPath = arcGenerator()
-              const k = i*2
-              return (
-                <div className="arc-container">
-                  <svg key={k} width="40" height="40"
-                  >
-                    <path
-                      fill="rgb(0, 167, 0)"
-                      d={arcPath}
-                      style={{ transform: "translate(50%, 50%)" }}
-                    />
-                  </svg>
-                </div>
-              )
-            })}
-            
-            </div>
-          </div>
+          <Toolkit state={this.props.state}/>
 
           <div className="recent-searches-div">
-            <div className="recent-searches-div">
-              <h1 className="title"> RECENT SEARCHES</h1>
-              <h1 className="recent-searches"> {this.props.state.recentSearches}</h1>
-            </div>
-            <div className="hobbies-and-interests">
-              <h1 className="title">{"HOBBIES & INTERESTS"}</h1>
-              <div className="hobbies-images">
-              {Object.values(this.props.state.hobbies).map((url, i) => {
-                return(
-                  <img key={i} className="hobbies-image" src={url} alt="hobby"/>
-                )
-              })}
-              </div>
-            </div>
+            
+            <Searches state={this.props.state}/>
+            <Hobbies state={this.props.state}/>
 
           </div>
-
-          
 
         </div>
 
@@ -156,7 +74,7 @@ class Resume extends React.Component {
               })}
               </div>
             </div>
-            
+
               <ClearenceLevels state={this.props.state}/> 
   
           </div>
