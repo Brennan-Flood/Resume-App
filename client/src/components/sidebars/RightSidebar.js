@@ -1,7 +1,6 @@
 import React from "react";
 import { Query } from "react-apollo";
 import Queries from "../../graphql/queries";
-// import Upload from "../upload/upload";
 const {FETCH_CATEGORIES} = Queries;
 
 class RightSidebar extends React.Component {
@@ -31,15 +30,14 @@ class RightSidebar extends React.Component {
             return data.imageCategories.map(({ _id, name, images }) => (
               
                 <div className="">
-                  <h1 className="">{name}</h1>
-                  <img src={images[0].url} alt={name}/>
+                  <h1 className=""></h1>
+                  <img src={images[0].url} />
                 </div>
               
             ));
           }}
 
         </Query>
-        {/* <Upload /> */}
       </div>
     )
   }
