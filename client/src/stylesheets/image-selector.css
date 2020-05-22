@@ -1,0 +1,22 @@
+.hidden-modal {
+  visibility: hidden;
+  transition: 0.3s;
+  width: 0px;
+  height: 0px;
+}
+
+.image-selector-modal {
+  transition: 0.1s;
+  position: relative;
+  height: auto;
+  width: auto;
+  z-index: 100;
+}
+
+.image-selector-interior {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}

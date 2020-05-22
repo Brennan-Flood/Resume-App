@@ -18,6 +18,13 @@ class LeftSidebar extends React.Component {
     this.addMultiField = this.addMultiField.bind(this);
     this.removeMultiField = this.removeMultiField.bind(this);
     this.updateMultiField = this.updateMultiField.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
+  }
+
+  toggleModal(field) {
+    let modal = document.getElementById(field);
+    modal.classList.toggle("hidden-modal");
+    console.log(modal);
   }
 
   update(field) {
@@ -297,6 +304,7 @@ class LeftSidebar extends React.Component {
         <div className="agencies-and-clearence">
           <div className="agencies">
             <h1 className="sidebar-section-name">FEDERAL AGENCIES</h1>
+            <button onClick={e => this.toggleModal("federalAgencies")}> Reveal </button>
             <ImageCategory name={"Federal Agencies"} 
               imageCategoryId={"5ec7459c19eaed359f63641e"}
               addImageToField={this.props.addImageToField}

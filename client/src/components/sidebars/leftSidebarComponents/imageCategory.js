@@ -21,8 +21,10 @@ const ImageCategory = (props) => {
         if (loading) return <p>Loading...</p>;
         if (error) return <p>Error</p>;
         return (
-          <div className="image-selector-modal">
+          <div id={props.field} className="image-selector-modal hidden-modal">
+            <div className="image-selector-interior">
             <h1 className="image-selector-title">{data.imageCategory.name}</h1>
+            <button onClick={e => props.toggleModal(props.field)}></button>
             <ul>
               {data.imageCategory.images.map((img, i) => {
                 return (
@@ -33,7 +35,7 @@ const ImageCategory = (props) => {
               })}
             </ul>
             <Upload name={data.imageCategory.name} imageCategoryId={props.imageCategoryId} />
-
+            </div>
           </div>
         )
       }}
