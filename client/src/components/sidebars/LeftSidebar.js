@@ -1,4 +1,5 @@
 import React from "react";
+import ImageCategory from "./leftSidebarComponents/imageCategory";
 
 class LeftSidebar extends React.Component {
   constructor(props) {
@@ -12,10 +13,6 @@ class LeftSidebar extends React.Component {
       linkedinValues: {1: {author: "", body: ""}},
       recruitingToolkitSliders: 1,
       recruitingToolkitValues: {1: {name: "", value: ""}},
-      federalAgencies: 1,
-      federalAgenciesValues: {1: {image: ""}},
-      hobbies: 1,
-      hobbiesValues: {1: {image: ""}},
     };
 
     this.addMultiField = this.addMultiField.bind(this);
@@ -56,20 +53,6 @@ class LeftSidebar extends React.Component {
       newValues[inputs] = {name: "", values: ""};
       this.setState({ recruitingToolkitSliders: inputs, recruitingToolkitValues: newValues });
 
-    } else if ( field === "federalAgencies") {
-
-      newValues = this.state.federalAgenciesValues;
-      inputs = this.state.federalAgencies + 1;
-      newValues[inputs] = {image: ""};
-      this.setState({ federalAgencies: inputs, federalAgenciesValues: newValues});
-
-    } else if (field === "hobbies") {
-
-      newValues = this.state.hobbiesValues;
-      inputs = this.state.hobbies + 1;
-      newValues[inputs] = {image: ""};
-      this.setState({hobbies: inputs, hobbiesValues: newValues});
-
     }
 
     this.props.updateMultiField(field, inputs);
@@ -106,26 +89,6 @@ class LeftSidebar extends React.Component {
         newValues[inputs] = { name: "", value: ""};
         this.setState({recruitingToolkitSliders: inputs, recruitingToolkitValues: newValues})
 
-    } else if (field === "federalAgencies") {
-
-        inputs = this.state.federalAgencies - 1;
-        if (inputs <= 0) {
-          return;
-        }
-        newValues = this.state.federalAgenciesValues;
-        newValues[inputs] = { image: "" };
-        this.setState({ federalAgencies: inputs, federalAgenciesValues: newValues });
-
-    } else if (field === "hobbies") {
-
-        inputs = this.state.hobbies - 1;
-        if (inputs <= 0) {
-          return;
-        }
-        newValues = this.state.hobbiesValues;
-        newValues[inputs] = {image: ""};
-        this.setState({ hobbies: inputs, hobbiesValues: newValues })
-        
     }
 
     this.props.updateMultiField(field, inputs);
@@ -168,8 +131,6 @@ class LeftSidebar extends React.Component {
     let eduInputs = new Array(this.state.educationInputs).fill(0);
     let linkedinInputs = new Array(this.state.linkedinInputs).fill(0);
     let recruitingToolkitSliders = new Array(this.state.recruitingToolkitSliders).fill(0);
-    let federalAgencies = new Array(this.state.federalAgencies).fill(0);
-    let hobbies = new Array(this.state.hobbies).fill(0);
     return (
       <div className="left-sidebar">
         <h1 className="font-test">Test BOOK</h1>
@@ -278,15 +239,13 @@ class LeftSidebar extends React.Component {
         />
 
         <h1 className="sidebar-section-name"> {"HOBBIES & INTERESTS"}</h1>
-        <button className="add-field-button" onClick={() => this.addMultiField("hobbies")}>ADD</button>
-        <button className="remove-field-button" onClick={() => this.removeMultiField("hobbies")}>REMOVE</button>
-        <div>
-          {hobbies.map((e, i) => {
-            return(
-              <input key={i} placeholder="hobby" />
-            )
-          })}
-        </div>
+        <ImageCategory 
+          addImageToField={this.props.addImageToField}
+          removeImageFromField={this.props.removeImageFromField}
+          field={"hobbies"}
+          state={this.props.state}
+          imageCategoryId={"5ec7570efc7837539dc1dc33"}
+        />
 
         <h1 className="sidebar-section-name">{"EDUCATION & EMPLOYMENT"}</h1>
 
@@ -338,14 +297,14 @@ class LeftSidebar extends React.Component {
         <div className="agencies-and-clearence">
           <div className="agencies">
             <h1 className="sidebar-section-name">FEDERAL AGENCIES</h1>
-            <button className="add-field-button" onClick={() => this.addMultiField("federalAgencies")}>ADD</button>
-            <button className="remove-field-button" onClick={() => this.removeMultiField("federalAgencies")}>REMOVE</button>
-            {federalAgencies.map((e, i) => {
-              
-              return(
-                <input key={i} className="education-input"/> 
-              )
-            })}
+            <ImageCategory name={"Federal Agencies"} 
+              imageCategoryId={"5ec7459c19eaed359f63641e"}
+              addImageToField={this.props.addImageToField}
+              removeImageFromField={this.props.removeImageFromField}
+              field={"federalAgencies"}
+              state={this.props.state}
+            /> 
+            
           </div>
 
           <div className="clearences">

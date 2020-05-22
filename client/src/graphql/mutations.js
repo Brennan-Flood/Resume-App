@@ -28,6 +28,7 @@ const Mutations = {
   CREATE_IMAGE: gql`
     mutation CreateImage($url: String!, $category: ID!) {
       createImage(url: $url, category: $category) {
+        _id
         url
         category{
           _id

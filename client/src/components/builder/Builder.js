@@ -24,14 +24,28 @@ class Builder extends React.Component {
       linkedinReviews: [[1, {author: "", body: ""}]],
       themeColor: {backgroundColor: "rgb(229, 229, 229)"},
       recruitingToolkit: [[1, {name: "", value: 50}]],
-      federalAgencies: [[1, {image: ""}]],
-      hobbies: [[1, {image: ""}]]
+      federalAgencies: {},
+      hobbies: {},
     }
 
     this.update = this.update.bind(this);
     this.updateMultiField = this.updateMultiField.bind(this);
     this.updateBackgroundColor = this.updateBackgroundColor.bind(this);
     this.updateClearenceLevel = this.updateClearenceLevel.bind(this);
+    this.addImageToField = this.addImageToField.bind(this);
+    this.removeImageFromField = this.removeImageFromField.bind(this);
+  }
+
+  addImageToField(field, url, id) {
+    let currentFieldState = this.state[field];
+    currentFieldState[id] = url;
+    this.setState({ [field]: currentFieldState })
+  }
+
+  removeImageFromField(field, id) {
+    let currentFieldState = this.state[field];
+    delete currentFieldState[id]
+    this.setState({ [field]: currentFieldState})
   }
 
   update(field, value) {
@@ -61,17 +75,8 @@ class Builder extends React.Component {
       pushObject = { name: "", value: 50};
       key = "recruitingToolkit";
       i = currentField.length
-    } else if (metaField === "federalAgencies") {
-      currentField = this.state.federalAgencies;
-      pushObject = { image: "" };
-      key = "federalAgencies";
-      i = currentField.length
-    } else if (metaField === "hobbies" ) {
-      currentField = this.state.hobbies;
-      pushObject = { image: "" };
-      key = "hobbies";
-      i = currentField.length;
-    }
+    } 
+
     let newField = newArr.concat(currentField);
 
     if (inputs > newField.length) {
@@ -97,11 +102,7 @@ class Builder extends React.Component {
         this.setState({ linkedinReviews: newField })
       } else if (key === "recruitingToolkit") {
         this.setState({recruitingToolkit: newField})
-      } else if (key === "federalAgencies") {
-        this.setState({ federalAgencies: newField })
-      } else if (key === "hobbies") {
-        this.setState({ hobbies: newField })
-      }
+      } 
     }
   }
 
@@ -123,7 +124,8 @@ class Builder extends React.Component {
         update={this.update} 
         updateMultiField={this.updateMultiField} 
         updateClearenceLevel={this.updateClearenceLevel}
-        updateRecruitingToolkit={this.updateRecruitingToolkit}
+        addImageToField={this.addImageToField}
+        removeImageFromField={this.removeImageFromField}
         state={this.state}
         />
 

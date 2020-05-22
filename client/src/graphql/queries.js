@@ -13,7 +13,7 @@ export default {
   `,
   FETCH_IMAGE: gql`
     query fetchImage($id: ID!) {
-      image(id: $id) {
+      image(_id: $id) {
         url
         category{
           name
@@ -35,9 +35,10 @@ export default {
   `,
   FETCH_CATEGORY: gql`
     query fetchCategory($id: ID!) {
-      imageCategory(id: $id) {
+      imageCategory(_id: $id) {
         name
         images {
+          _id
           url
         }
       }

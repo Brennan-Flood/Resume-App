@@ -1,6 +1,6 @@
 import React from "react";
 import { arc } from "d3-shape";
-
+import ClearenceLevels from "./resume-components/Clearences"
 class Resume extends React.Component {
   constructor(props) {
     super(props)
@@ -107,12 +107,9 @@ class Resume extends React.Component {
             <div className="hobbies-and-interests">
               <h1 className="title">{"HOBBIES & INTERESTS"}</h1>
               <div className="hobbies-images">
-              {this.props.state.hobbies.map((e, i) => {
-                let k = i * 2
+              {Object.values(this.props.state.hobbies).map((url, i) => {
                 return(
-                  <div key={k} className="image-placeholder-outer-2" width="50px" height="50px" >
-                    <h1 key={k + 1} className="image-placeholder-inner-2" width="48px" height="48px"> </h1>
-                  </div>
+                  <img key={i} className="hobbies-image" src={url} alt="hobby"/>
                 )
               })}
               </div>
@@ -151,64 +148,17 @@ class Resume extends React.Component {
 
             <div className="resume-federal-agencies">
               <h1 className="title">FEDERAL AGENCIES</h1>
-
-              {this.props.state.federalAgencies.map((e, i) => {
-                let k = i * 2
+              <div className="agencies-images">
+              {Object.values(this.props.state.federalAgencies).map((url, i) => {
                 return(
-                  <div key={k} className="image-placeholder-outer-2" width="50px" height="50px" >
-                    <h1 key={k + 1} className="image-placeholder-inner-2" width="48px" height="48px"> </h1>
-                  </div>
+                  <img key={i} className="federal-agency-icon" src={url} alt="federal-agency"/>
                 )
               })}
+              </div>
             </div>
-
-            <div className="clearence-levels">
-              <h1 className="title">CLEARENCE LEVELS</h1>
-                <h1 className="clearence-type">Secret</h1>
-                <div className="clearence-bar-outer"
-                >
-
-                  <div className="clearence-bar-inner"
-                  style={{width: `${this.props.state.clearenceLevels.secret}%`}}>
-                  </div>
-                </div>
-
-              <h1 className="clearence-type">Top Secret</h1>
-                <div className="clearence-bar-outer"
-                >
-
-                  <div className="clearence-bar-inner"
-                    style={{ width: `${this.props.state.clearenceLevels.topSecret}%` }}>
-                  </div>
-                </div>
-
-              <h1 className="clearence-type">TS/SCI</h1>
-                <div className="clearence-bar-outer"
-                >
-
-                  <div className="clearence-bar-inner"
-                    style={{ width: `${this.props.state.clearenceLevels.TSSCI}%` }}>
-                  </div>
-                </div>
-
-              <h1 className="clearence-type">TS/SCI CI Polygraph</h1>
-                <div className="clearence-bar-outer"
-                >
-
-                  <div className="clearence-bar-inner"
-                    style={{ width: `${this.props.state.clearenceLevels.TSSCICIPolygraph}%` }}>
-                  </div>
-                </div>
-
-              <h1 className="clearence-type">TS/SCI Full Scope Polygraph</h1>
-                <div className="clearence-bar-outer"
-                >
-
-                  <div className="clearence-bar-inner"
-                    style={{ width: `${this.props.state.clearenceLevels.TSSCIFullScopePolygraph}%` }}>
-                  </div>
-                </div>
-            </div>
+            
+              <ClearenceLevels state={this.props.state}/> 
+  
           </div>
 
           <div className="linkedin-review-div">
