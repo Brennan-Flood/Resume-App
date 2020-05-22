@@ -31,7 +31,6 @@ const uploadFile = (buffer, name, type) => {
 
 // Define POST route
 app.post('/test-upload', (request, response) => {
-  console.log("hitting request");
   const form = new multiparty.Form();
   form.parse(request, async (error, fields, files) => {
     if (error) throw new Error(error);
@@ -49,6 +48,18 @@ app.post('/test-upload', (request, response) => {
     }
   });
 });
+
+// <? xml version = "1.0" encoding = "UTF-8" ?>
+//   <CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+//     <CORSRule>
+//       <AllowedOrigin>*</AllowedOrigin>
+//       <AllowedMethod>GET</AllowedMethod>
+//       <AllowedMethod>POST</AllowedMethod>
+//       <AllowedMethod>PUT</AllowedMethod>
+//       <MaxAgeSeconds>3000</MaxAgeSeconds>
+//       <AllowedHeader>Authorization</AllowedHeader>
+//     </CORSRule>
+//   </CORSConfiguration>
 
 const port = process.env.PORT || 5000;
 

@@ -2,7 +2,7 @@ import React from "react";
 import Resume from "./Resume";
 import Nav from "../nav/Nav";
 import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
+import * as jsPDF from "jspdf" ;
 
 import { PanZoom } from 'react-easy-panzoom'
 
@@ -10,7 +10,6 @@ import { PanZoom } from 'react-easy-panzoom'
 const ResumeContainer = (props) => {
   const panZoomRef = React.createRef();
   const resumeRef = React.createRef();
-  
 
   const print = () => new Promise(resolve => {
     panZoomRef.current.reset(1);
@@ -23,14 +22,16 @@ const ResumeContainer = (props) => {
     setTimeout(() => {
       html2canvas(resumeRef.current, {
         scale: 5,
+        allowTaint: true,
         useCORS: true,
-        allowTaint: true
+        logging: true,
       })
         .then((canvas) => {
           const image = canvas.toDataURL('image/jpeg', 80 / 100);
           const doc = new jsPDF({
             orientation: 'portrait',
             unit: 'px',
+            format: 'a4'
           });
 
           const pageWidth = doc.internal.pageSize.getWidth();

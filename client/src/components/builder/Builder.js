@@ -26,6 +26,7 @@ class Builder extends React.Component {
       recruitingToolkit: [[1, {name: "", value: 50}]],
       federalAgencies: {},
       hobbies: {},
+      image: ""
     }
 
     this.update = this.update.bind(this);
@@ -34,6 +35,11 @@ class Builder extends React.Component {
     this.updateClearenceLevel = this.updateClearenceLevel.bind(this);
     this.addImageToField = this.addImageToField.bind(this);
     this.removeImageFromField = this.removeImageFromField.bind(this);
+    this.saveImageString = this.saveImageString.bind(this);
+  }
+
+  saveImageString(string) {
+    this.setState({image: string});
   }
 
   addImageToField(field, url, id) {
@@ -131,7 +137,7 @@ class Builder extends React.Component {
 
         <ResumeContainer state={this.state}/> 
 
-        <RightSidebar updateBackgroundColor={this.updateBackgroundColor} />
+        <RightSidebar saveImageString={this.saveImageString} updateBackgroundColor={this.updateBackgroundColor} />
 
       </div>
     )

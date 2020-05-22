@@ -1,0 +1,29 @@
+import React from "react";
+
+const Education = (props) => {
+  return (
+    <div className="education-and-employment-div">
+      <h1 className="title">{"EDUCATION & EMPLOYMENT HISTORY"}</h1>
+      <div className="experience-timeline">
+        {props.state.educationAndEmployment.map((e, i) => {
+          let k = i * 3;
+          return (
+            <div className="experience-node" key={i}>
+              <div className="image-placeholder-outer-3">
+                <h1 className="image-placeholder-inner-3"> </h1>
+              </div>
+              <h1 style={{ height: "14px" }} key={k + 1}>{e[1].title}</h1>
+              <h1 style={{ height: "14px" }} key={k + 2}>{e[1].entity}</h1>
+              <div className="experience-tag" style={props.state.backgroundColor}></div>
+              <h1 className="experience-years" key={k + 3}>{e[1].startTime}-{e[1].endTime}</h1>
+
+            </div>)
+        })}
+      </div>
+      <div className="experience-bar"></div>
+
+    </div>
+  )
+}
+
+export default Education;

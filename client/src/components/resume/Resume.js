@@ -5,17 +5,13 @@ import Hobbies from "./resume-components/Hobbies";
 import Searches from "./resume-components/RecentSearches";
 import Toolkit from "./resume-components/Toolkit";
 import CurrentPosition from "./resume-components/CurrentPos";
+import Education from "./resume-components/Education";
+
 class Resume extends React.Component {
   constructor(props) {
     super(props)
-
+    
     this.state = this.props.state;
-  }
-
-  componentDidUpdate(oldProps) {
-    if (oldProps !== this.props) {
-      this.setState(this.props.state);
-    }
   }
 
   render() {
@@ -25,7 +21,6 @@ class Resume extends React.Component {
         
         <Header state={this.props.state}/> 
         <div className="resume-row-1">
-
           <CurrentPosition state={this.props.state}/>
 
           <Toolkit state={this.props.state}/>
@@ -36,30 +31,11 @@ class Resume extends React.Component {
             <Hobbies state={this.props.state}/>
 
           </div>
-
+          
         </div>
 
-        <div className="education-and-employment-div">
-          <h1 className="title">{"EDUCATION & EMPLOYMENT HISTORY"}</h1>
-          <div className="experience-timeline">
-          {this.props.state.educationAndEmployment.map((e, i) => {
-            let k = i * 3;
-            return (
-            <div className="experience-node" key={i}>
-              <div className="image-placeholder-outer-3">
-                <h1 className="image-placeholder-inner-3"> </h1>
-              </div>
-              <h1 style={{height: "14px"}} key={k + 1}>{e[1].title}</h1>
-              <h1 style={{ height: "14px" }} key={k + 2}>{e[1].entity}</h1>
-              <div className="experience-tag" style={this.props.state.backgroundColor}></div>
-              <h1 className="experience-years" key={k + 3}>{e[1].startTime}-{e[1].endTime}</h1>
-              
-            </div>)
-          })}
-          </div>
-          <div className="experience-bar"></div>
-
-        </div>
+        <Education state={this.props.state}/>
+        
         <div className="resume-last-row">
 
           <div className="agencies-and-clearences">
@@ -69,7 +45,7 @@ class Resume extends React.Component {
               <div className="agencies-images">
               {Object.values(this.props.state.federalAgencies).map((url, i) => {
                 return(
-                  <img key={i} className="federal-agency-icon" src={url} alt="federal-agency"/>
+                  <img key={i} crossOrigin="anonymous" className="federal-agency-icon" src={url + "?" + new Date().getTime() } alt="federal-agency"/>
                 )
               })}
               </div>
