@@ -4,7 +4,7 @@ const EduEdit = (props) => {
   let eduInputs = new Array(props.state.educationInputs).fill(0);
 
   return (
-    <div id="edu-edit" className="education-field hidden-section">
+    <div id="edu-edit" className="education-field edit-section hidden-section">
       <button className="add-field-button" onClick={() => props.addMultiField("edu")}>ADD</button>
       <button className="remove-field-button" onClick={() => props.removeMultiField("edu")}>REMOVE</button>
       {eduInputs.map((e, i) => {

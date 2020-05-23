@@ -4,7 +4,7 @@ const LinkedinEdit = (props) => {
   let linkedinInputs = new Array(props.state.linkedinInputs).fill(0);
 
   return (
-    <div id="linkedin-edit" className="last-left-div hidden-section">
+    <div id="linkedin-edit" className="last-left-div edit-section hidden-section">
 
       <button className="add-field-button" onClick={() => props.addMultiField("linkedin")}>ADD</button>
       <button className="remove-field-button" onClick={() => props.removeMultiField("linkedin")}>REMOVE</button>

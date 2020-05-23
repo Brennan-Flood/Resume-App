@@ -37,7 +37,6 @@ class LeftSidebar extends React.Component {
   toggleEditSection(field) {
     let section = document.getElementById(field);
     section.classList.toggle("hidden-section");
-    section.classList.toggle("edit-section");
   }
 
   update(field) {
@@ -156,74 +155,124 @@ class LeftSidebar extends React.Component {
         <h1 className="font-comparison-4">Test LIGHT</h1> */}
         
         <h1 className="sidebar-header">INPUTS</h1>
-
-        <h1 className="sidebar-section-name"> Basic Info</h1>
         
-        <button onClick={e => this.toggleEditSection("basic")}> toggle </button>
-        <BasicInfoEdit update={this.update}/>
+        <div className="sidebar-section">
+
+          <div className="sidebar-section-header">
+            <h1 className="sidebar-section-name"> Basic Info </h1>
+            <button onClick={e => this.toggleEditSection("basic")}> <i className="fas fa-chevron-down"/> </button>
+          </div>
+          <BasicInfoEdit update={this.update}/>
+
+        </div>
+
+        <div className="sidebar-section">
         
-        <h1 className="sidebar-section-name"> Current Position</h1>
-
-        <button onClick={e => this.toggleEditSection("current-pos-edit")}> toggle </button>
-        <CurrentPosEdit update={this.update} />
-
-        <h1 className="sidebar-section-name"> Recruiting Toolkit </h1>
-        <button onClick={e => this.toggleEditSection("toolkit-edit")}> toggle </button>
-
-        <ToolkitEdit state={this.props.state} 
-          updateMultiField={this.updateMultiField}
-          addMultiField={this.addMultiField}
-          removeMultiField={this.removeMultiField}
-        />
-
-        <h1 className="sidebar-section-name"> Recent Searches</h1>
-        <button onClick={e => this.toggleEditSection("searches-edit")}> toggle </button>
-        <SearchesEdit update={this.update} />
+          <div className="sidebar-section-header">
+            <h1 className="sidebar-section-name"> Current Position</h1>
+            <button onClick={e => this.toggleEditSection("current-pos-edit")}> <i className="fas fa-chevron-down"/> </button>
+          </div>
         
+          <CurrentPosEdit update={this.update} />
 
-        <h1 className="sidebar-section-name"> {"HOBBIES & INTERESTS"}</h1>
-        <button className="show-modal" onClick={e => this.toggleModal("hobbies")}> Reveal </button>
-        <ImageCategory 
-          addImageToField={this.props.addImageToField}
-          removeImageFromField={this.props.removeImageFromField}
-          field={"hobbies"}
-          state={this.props.state}
-          imageCategoryId={"5ec7570efc7837539dc1dc33"}
-          toggleModal={this.toggleModal}
-        />
+        </div>
 
-        <h1 className="sidebar-section-name">{"EDUCATION & EMPLOYMENT"}</h1>
-        <button onClick={e => this.toggleEditSection("edu-edit")}> toggle </button>
-        <EduEdit updateMultiField={this.updateMultiField} 
-          addMultiField={this.addMultiField}
-          removeMultiField={this.removeMultiField}
-          state={this.props.state}
-        />
+        <div className="sidebar-section">
 
-        <h1 className="sidebar-section-name">FEDERAL AGENCIES</h1>
-        <button onClick={e => this.toggleModal("federalAgencies")}> Reveal </button>
 
-            <ImageCategory name={"Federal Agencies"} 
-              imageCategoryId={"5ec7459c19eaed359f63641e"}
-              addImageToField={this.props.addImageToField}
-              removeImageFromField={this.props.removeImageFromField}
-              field={"federalAgencies"}
-              state={this.props.state}
-              toggleModal={this.toggleModal}
-            /> 
-            
-        <h1 className="sidebar-section-name">CLEARENCE LEVELS</h1>
-        <button onClick={e => this.toggleEditSection("clearence-edit")}> toggle </button>
-        <ClearenceEdit state={this.props.state} updateClearenceSlider={this.updateClearenceSlider} />
+          <div className="sidebar-section-header">
+            <h1 className="sidebar-section-name"> Recruiting Toolkit </h1>
+            <button onClick={e => this.toggleEditSection("toolkit-edit")}> <i className="fas fa-chevron-down"/> </button>
+          </div>
 
-        <h1 className="sidebar-section-name">LinkedIn Reviews</h1>
-        <button onClick={e => this.toggleEditSection("linkedin-edit")}> toggle </button>
-        <LinkedinEdit addMultiField={this.addMultiField}
-          removeMultiField={this.removeMultiField}
-          updateMultiField={this.updateMultiField}
-          state={this.props.state}
-        />
+          <ToolkitEdit state={this.props.state} 
+            updateMultiField={this.updateMultiField}
+            addMultiField={this.addMultiField}
+            removeMultiField={this.removeMultiField}
+          />
+        </div>
+
+        <div className="sidebar-section">
+
+          <div className="sidebar-section-header">
+            <h1 className="sidebar-section-name"> Recent Searches</h1>
+            <button onClick={e => this.toggleEditSection("searches-edit")}> <i className="fas fa-chevron-down"></i> </button>
+          </div>
+          <SearchesEdit update={this.update} />
+
+          <div className="sidebar-section">
+        </div>
+
         
+          <div className="sidebar-section-header">
+            <h1 className="sidebar-section-name"> {"HOBBIES & INTERESTS"}</h1>
+            <button className="show-modal" onClick={e => this.toggleModal("hobbies")}> Reveal </button>
+          </div>
+
+          <ImageCategory 
+            addImageToField={this.props.addImageToField}
+            removeImageFromField={this.props.removeImageFromField}
+            field={"hobbies"}
+            state={this.props.state}
+            imageCategoryId={"5ec7570efc7837539dc1dc33"}
+            toggleModal={this.toggleModal}
+          />
+        </div>
+
+        <div className="sidebar-section">
+
+          <div className="sidebar-section-header">
+            <h1 className="sidebar-section-name">{"EDUCATION & EMPLOYMENT"}</h1>
+            <button onClick={e => this.toggleEditSection("edu-edit")}> <i className="fas fa-chevron-down"/> </button>
+          </div>
+
+          <EduEdit updateMultiField={this.updateMultiField} 
+            addMultiField={this.addMultiField}
+            removeMultiField={this.removeMultiField}
+            state={this.props.state}
+          />
+
+        </div>
+
+        <div className="sidebar-section">
+
+          <div className="sidebar-section-header">
+            <h1 className="sidebar-section-name">FEDERAL AGENCIES</h1>
+            <button onClick={e => this.toggleModal("federalAgencies")}> Reveal </button>
+          </div>
+
+              <ImageCategory name={"Federal Agencies"} 
+                imageCategoryId={"5ec7459c19eaed359f63641e"}
+                addImageToField={this.props.addImageToField}
+                removeImageFromField={this.props.removeImageFromField}
+                field={"federalAgencies"}
+                state={this.props.state}
+                toggleModal={this.toggleModal}
+              /> 
+         </div>
+
+        <div className="sidebar-section">
+          <div className="sidebar-section-header">
+            <h1 className="sidebar-section-name">CLEARENCE LEVELS</h1>
+            <button onClick={e => this.toggleEditSection("clearence-edit")}> <i className="fas fa-chevron-down"/> </button>
+          </div>
+
+          <ClearenceEdit state={this.props.state} updateClearenceSlider={this.updateClearenceSlider} />
+        </div>
+
+        <div className="sidebar-section">
+
+          <div className="sidebar-section-header">
+            <h1 className="sidebar-section-name">LinkedIn Reviews</h1>
+            <button onClick={e => this.toggleEditSection("linkedin-edit")}> <i className="fas fa-chevron-down"/> </button>
+          </div>
+
+          <LinkedinEdit addMultiField={this.addMultiField}
+            removeMultiField={this.removeMultiField}
+            updateMultiField={this.updateMultiField}
+            state={this.props.state}
+          />
+        </div>
 
       </div>
     )

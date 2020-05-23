@@ -2,7 +2,7 @@ import React from "react";
 
 const BasicInfoEdit = (props) => {
   return (
-    <div id="basic" className="basic-info-edit hidden-section">
+    <div id="basic" className="edit-section hidden-section">
       <input
         type="text"
         placeholder="First Name"

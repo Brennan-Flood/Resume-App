@@ -2,7 +2,7 @@ import React from "react";
 
 const CurrentPosEdit = (props) => {
   return (
-    <div id="current-pos-edit" className="current-pos-edit hidden-section">
+    <div id="current-pos-edit" className="current-pos-edit edit-section hidden-section">
       <input
         type="text"
         placeholder="Current Title"

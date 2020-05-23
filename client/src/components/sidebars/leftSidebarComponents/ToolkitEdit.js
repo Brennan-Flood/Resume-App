@@ -4,7 +4,7 @@ const ToolkitEdit = (props) => {
   let recruitingToolkitSliders = new Array(props.state.recruitingToolkitSliders).fill(0);
 
   return (
-    <div id="toolkit-edit" className="recruiting-toolkit-left-sidebar hidden-section">
+    <div id="toolkit-edit" className="recruiting-toolkit-left-sidebar edit-section hidden-section">
       <button className="add-field-button" onClick={() => props.addMultiField("recruitingToolkit")}>ADD</button>
       <button className="remove-field-button" onClick={() => props.removeMultiField("recruitingToolkit")}>REMOVE</button>
       {recruitingToolkitSliders.map((e, i) => {
