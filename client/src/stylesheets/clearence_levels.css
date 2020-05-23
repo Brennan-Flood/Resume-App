@@ -25,9 +25,10 @@
 
 .clearence-bar-inner {
   background-color: rgb(0, 167, 0);
-  height: 8px;
+  height: 10px;
   border-radius: 12px;
-  border: 1px solid rgb(0, 167, 0);
+  /* border: 1px solid rgb(0, 167, 0); */
+  /* padding-right: 1px; */
   position: relative;
   bottom: 1px;
   left: -1px;

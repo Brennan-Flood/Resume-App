@@ -20,7 +20,7 @@ class Builder extends React.Component {
       currentPositionParagraph: "",
       recentSearches: "",
       educationAndEmployment: [[1, { title: "", entity: "", startTime: "", endTime: "" }]],
-      clearenceLevels: {secret: 50, topSecret: 50, TSSCI: 50, TSSCICIPolygraph: 50, TSSCIFullScopePolygraph: 50},
+      clearenceLevels: {secret: 10, topSecret: 10, TSSCI: 10, TSSCICIPolygraph: 10, TSSCIFullScopePolygraph: 10},
       linkedinReviews: [[1, {author: "", body: ""}]],
       themeColor: {backgroundColor: "rgb(229, 229, 229)"},
       recruitingToolkit: [[1, {name: "", value: 10}]],

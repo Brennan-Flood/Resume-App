@@ -6,12 +6,14 @@ const { FETCH_CATEGORY } = Queries;
 
 const ImageCategory = (props) => {
 
-  const toggleImage = function(imageId, url) {
+  const toggleImage = function(e, imageId, url) {
     if (props.state[props.field][imageId] === undefined) {
       props.addImageToField(props.field, url, imageId);
     } else {
       props.removeImageFromField(props.field, imageId);
     }
+    // e.target.firstChild.classList.toggle("selected")
+    document.getElementById(imageId).classList.toggle("selected");
   };
 
   return (
@@ -27,8 +29,8 @@ const ImageCategory = (props) => {
             <ul className="image-select-list">
               {data.imageCategory.images.map((img, i) => {
                 return (
-                  <button key={i} className="image-toggle-button" onClick={e => toggleImage(img._id, img.url)}>
-                    <img className="toggle-image" key={i} src={img.url} alt={props.field} />
+                  <button  key={i} className="image-toggle-button" onClick={e => toggleImage(e, img._id, img.url)}>
+                    <img id={img._id} className="toggle-image" key={i} src={img.url} alt={props.field} />
                   </button>
                 )
               })}

@@ -24,21 +24,18 @@
 }
 
 .edit-section {
-  position: relative;
   display: flex;
   overflow: hidden;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 200px;
   width: 100%;
   margin: 10px;
-  max-height: auto;
-  transition: max-height 0.4s;
+  max-height: 500px;
+  transition: 0.4s;
 }
 
-.hidden-section {
-  overflow: hidden;
+.edit-section.hidden-section {
   max-height: 0px;
 }
 
@@ -75,7 +72,7 @@ textarea::placeholder {
 }
 
 .last-left-div {
-  margin-bottom: 60px;
+  margin-bottom: 20px;
 }
 
 .add-field-button, .remove-field-button {
@@ -135,4 +132,31 @@ textarea::placeholder {
 .font-comparison-4 {
   font-size: 30px;
   font-family: 'AvenirLTStd-light';
+}
+
+.sidebar-section {
+  width: 100%;
+}
+
+.collapse-button {
+  font-size: 20px;
+  margin-left: 10px;
+  color: green;
+  transition: transform 0.2s linear;
+}
+
+.collapse-button.collapsed {
+  transform: rotate(-90deg);
+  transition: transform 0.2s linear;
+  color: black;
+}
+
+.collapse-button:hover, .modal-button:hover {
+  cursor: pointer;
+  color: green;
+}
+
+.modal-button {
+  font-size: 20px;
+  margin-left: 10px;
 }

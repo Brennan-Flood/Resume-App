@@ -20,6 +20,7 @@ class LeftSidebar extends React.Component {
       linkedinValues: {1: {author: "", body: ""}},
       recruitingToolkitSliders: 1,
       recruitingToolkitValues: {1: {name: "", value: ""}},
+
     };
 
     this.addMultiField = this.addMultiField.bind(this);
@@ -27,6 +28,7 @@ class LeftSidebar extends React.Component {
     this.updateMultiField = this.updateMultiField.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
     this.update = this.update.bind(this);
+    this.updateClearenceSlider = this.updateClearenceSlider.bind(this);
   }
 
   toggleModal(field) {
@@ -34,9 +36,10 @@ class LeftSidebar extends React.Component {
     modal.classList.toggle("hidden-modal");
   }
 
-  toggleEditSection(field) {
+  toggleEditSection(e, field) {
     let section = document.getElementById(field);
     section.classList.toggle("hidden-section");
+    e.target.classList.toggle("collapsed");
   }
 
   update(field) {
@@ -155,12 +158,12 @@ class LeftSidebar extends React.Component {
         <h1 className="font-comparison-4">Test LIGHT</h1> */}
         
         <h1 className="sidebar-header">INPUTS</h1>
-        
+
         <div className="sidebar-section">
 
           <div className="sidebar-section-header">
+            <i onClick={e => this.toggleEditSection(e, "basic")} className="fas fa-chevron-down collapse-button collapsed" />
             <h1 className="sidebar-section-name"> Basic Info </h1>
-            <button onClick={e => this.toggleEditSection("basic")}> <i className="fas fa-chevron-down"/> </button>
           </div>
           <BasicInfoEdit update={this.update}/>
 
@@ -169,8 +172,10 @@ class LeftSidebar extends React.Component {
         <div className="sidebar-section">
         
           <div className="sidebar-section-header">
+            <i onClick={e => this.toggleEditSection(e, "current-pos-edit")} className="fas fa-chevron-down collapse-button collapsed" />
+
             <h1 className="sidebar-section-name"> Current Position</h1>
-            <button onClick={e => this.toggleEditSection("current-pos-edit")}> <i className="fas fa-chevron-down"/> </button>
+
           </div>
         
           <CurrentPosEdit update={this.update} />
@@ -181,8 +186,10 @@ class LeftSidebar extends React.Component {
 
 
           <div className="sidebar-section-header">
+            <i onClick={e => this.toggleEditSection(e, "toolkit-edit")} className="fas fa-chevron-down collapse-button collapsed" />
             <h1 className="sidebar-section-name"> Recruiting Toolkit </h1>
-            <button onClick={e => this.toggleEditSection("toolkit-edit")}> <i className="fas fa-chevron-down"/> </button>
+
+            
           </div>
 
           <ToolkitEdit state={this.props.state} 
@@ -195,8 +202,9 @@ class LeftSidebar extends React.Component {
         <div className="sidebar-section">
 
           <div className="sidebar-section-header">
+            <i onClick={e => this.toggleEditSection(e, "searches-edit")} className="fas fa-chevron-down collapse-button collapsed" />
             <h1 className="sidebar-section-name"> Recent Searches</h1>
-            <button onClick={e => this.toggleEditSection("searches-edit")}> <i className="fas fa-chevron-down"></i> </button>
+
           </div>
           <SearchesEdit update={this.update} />
 
@@ -205,8 +213,9 @@ class LeftSidebar extends React.Component {
 
         
           <div className="sidebar-section-header">
-            <h1 className="sidebar-section-name"> {"HOBBIES & INTERESTS"}</h1>
-            <button className="show-modal" onClick={e => this.toggleModal("hobbies")}> Reveal </button>
+            <i onClick={e => this.toggleModal("hobbies")} className="fas fa-plus-square modal-button"></i>
+            <h1 className="sidebar-section-name"> {"Hobbies & Interests"}</h1>
+
           </div>
 
           <ImageCategory 
@@ -222,8 +231,9 @@ class LeftSidebar extends React.Component {
         <div className="sidebar-section">
 
           <div className="sidebar-section-header">
-            <h1 className="sidebar-section-name">{"EDUCATION & EMPLOYMENT"}</h1>
-            <button onClick={e => this.toggleEditSection("edu-edit")}> <i className="fas fa-chevron-down"/> </button>
+            <i onClick={e => this.toggleEditSection(e, "edu-edit")} className="fas fa-chevron-down collapse-button collapsed" />
+            <h1 className="sidebar-section-name">{"Education & Employment"}</h1>
+
           </div>
 
           <EduEdit updateMultiField={this.updateMultiField} 
@@ -237,8 +247,8 @@ class LeftSidebar extends React.Component {
         <div className="sidebar-section">
 
           <div className="sidebar-section-header">
-            <h1 className="sidebar-section-name">FEDERAL AGENCIES</h1>
-            <button onClick={e => this.toggleModal("federalAgencies")}> Reveal </button>
+            <i onClick={e => this.toggleModal("federalAgencies")} className="fas fa-plus-square modal-button"></i>
+            <h1 className="sidebar-section-name">Federal Agencies</h1>
           </div>
 
               <ImageCategory name={"Federal Agencies"} 
@@ -253,8 +263,9 @@ class LeftSidebar extends React.Component {
 
         <div className="sidebar-section">
           <div className="sidebar-section-header">
-            <h1 className="sidebar-section-name">CLEARENCE LEVELS</h1>
-            <button onClick={e => this.toggleEditSection("clearence-edit")}> <i className="fas fa-chevron-down"/> </button>
+            <i onClick={e => this.toggleEditSection(e, "clearence-edit")} className="fas fa-chevron-down collapse-button collapsed" />
+            <h1 className="sidebar-section-name">Clearence Levels</h1>
+
           </div>
 
           <ClearenceEdit state={this.props.state} updateClearenceSlider={this.updateClearenceSlider} />
@@ -263,8 +274,9 @@ class LeftSidebar extends React.Component {
         <div className="sidebar-section">
 
           <div className="sidebar-section-header">
+            <i onClick={e => this.toggleEditSection(e, "linkedin-edit")} className="fas fa-chevron-down collapse-button collapsed" />
+
             <h1 className="sidebar-section-name">LinkedIn Reviews</h1>
-            <button onClick={e => this.toggleEditSection("linkedin-edit")}> <i className="fas fa-chevron-down"/> </button>
           </div>
 
           <LinkedinEdit addMultiField={this.addMultiField}
