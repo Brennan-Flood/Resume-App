@@ -14,6 +14,38 @@
   z-index: 3;
 }
 
+.sidebar-header {
+  position: relative;
+  border-bottom: 1px solid grey;
+  margin: 10px;
+  text-align: center;
+  font-size: 18px;
+}
+@keyframes expand {
+  0% {
+    height: 0px;
+  }
+  100% {
+    height: auto;
+  }
+}
+
+@keyframes collapse {
+  0% { height: 200px; }
+  50% { height: 100px; }
+  100% {height: 0px;}
+}
+
+.hidden-section {
+  height: 200px;
+  animation: collapse 2s linear ease-in-out;
+  overflow: hidden;
+}
+
+.section-edit {
+  /* animation: expand-section 1s; */
+}
+
 .education-input, .left-sidebar > input{
   display: flex;
   flex-wrap: wrap;
@@ -32,29 +64,7 @@ textarea::placeholder {
   color: rgb(192, 192, 192);
 }
 
-.linkedin-teaxtarea, textarea, .left-sidebar > textarea {
-  border-radius: 8px;
-  margin: 10px;
-  padding: 5px;
-  border: 2px solid gray;
-  box-shadow: 1px 0px 1px grey;
-  min-height: 100px;
-  max-width: 200px;
-  max-height: 200px;
-}
 
-.education-input:hover, .left-sidebar > input:hover {
-  border: 1px solid rgb(20, 178, 75); 
-  box-shadow: 2px 1px 1px grey;
-}
-
-.sidebar-header {
-  position: relative;
-  border-bottom: 1px solid grey;
-  margin: 10px;
-  text-align: center;
-  font-size: 18px;
-}
 
 .sidebar-section-name { 
   margin: 5px;

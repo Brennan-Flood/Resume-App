@@ -11,17 +11,17 @@ const Toolkit = (props) => {
             .innerRadius(20)
             .outerRadius(16)
             .startAngle(0)
-            .endAngle((e[1].value / 100) * 6.3)
+            .endAngle((e[1].value / 20) * 6.3)
             .padAngle(0)
             .cornerRadius(0)
 
           const arcPath = arcGenerator()
-          const k = i * 2
+          let k = i * 3
           return (
-            <div className="arc-container">
-              <svg key={k} width="40" height="40"
+            <div key={k} className="arc-container">
+              <svg key={k + 1} width="40" height="40"
               >
-                <path
+                <path key={k + 2}
                   fill="rgb(0, 167, 0)"
                   d={arcPath}
                   style={{ transform: "translate(50%, 50%)" }}

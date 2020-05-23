@@ -1,5 +1,12 @@
 import React from "react";
-import ImageCategory from "./leftSidebarComponents/imageCategory";
+import ImageCategory from "./leftSidebarComponents/ImageCategory";
+import BasicInfoEdit from "./leftSidebarComponents/BasicInfoEdit";
+import CurrentPosEdit from "./leftSidebarComponents/CurrentPosEdit";
+import ToolkitEdit from "./leftSidebarComponents/ToolkitEdit";
+import SearchesEdit from "./leftSidebarComponents/SearchesEdit";
+import EduEdit from "./leftSidebarComponents/EducationEdit";
+import ClearenceEdit from "./leftSidebarComponents/ClearenceEdit";
+import LinkedinEdit from "./leftSidebarComponents/LinkedinEdit";
 
 class LeftSidebar extends React.Component {
   constructor(props) {
@@ -19,12 +26,18 @@ class LeftSidebar extends React.Component {
     this.removeMultiField = this.removeMultiField.bind(this);
     this.updateMultiField = this.updateMultiField.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
+    this.update = this.update.bind(this);
   }
 
   toggleModal(field) {
     let modal = document.getElementById(field);
     modal.classList.toggle("hidden-modal");
-    console.log(modal);
+  }
+
+  toggleEditSection(field) {
+    let section = document.getElementById(field);
+    section.classList.toggle("hidden-section");
+    section.classList.toggle("edit-section");
   }
 
   update(field) {
@@ -35,8 +48,7 @@ class LeftSidebar extends React.Component {
   }
   }
 
-  addMultiField(field) {
-    
+  addMultiField(field) {    
     let newValues;
     let inputs;
     if (field === "edu") {
@@ -135,118 +147,42 @@ class LeftSidebar extends React.Component {
 
   render() {
 
-    let eduInputs = new Array(this.state.educationInputs).fill(0);
-    let linkedinInputs = new Array(this.state.linkedinInputs).fill(0);
-    let recruitingToolkitSliders = new Array(this.state.recruitingToolkitSliders).fill(0);
     return (
       <div className="left-sidebar">
-        <h1 className="font-test">Test BOOK</h1>
+        {/* <h1 className="font-test">Test BOOK</h1>
         <h1 className="font-comparison-1">Test MEDIUM</h1>
         <h1 className="font-comparison-2">Test ROMAN</h1>
         <h1 className="font-comparison-3">Test BLACK</h1>
-        <h1 className="font-comparison-4">Test LIGHT</h1>
+        <h1 className="font-comparison-4">Test LIGHT</h1> */}
         
         <h1 className="sidebar-header">INPUTS</h1>
 
         <h1 className="sidebar-section-name"> Basic Info</h1>
-
-        <input 
-        type="text"
-        placeholder="First Name"
-        onChange={this.update("firstName")}
-        />
-
-        <input
-          type="text"
-          placeholder="Last Name"
-          onChange={this.update("lastName")}
-        />
-
-        <input
-          type="text"
-          placeholder="Title"
-          onChange={this.update("title")}
-        />
-
-        <input 
-        type="number"
-        placeholder="Years of Experience"
-        onChange={this.update("yearsExperience")}
-        />
+        
+        <button onClick={e => this.toggleEditSection("basic")}> toggle </button>
+        <BasicInfoEdit update={this.update}/>
         
         <h1 className="sidebar-section-name"> Current Position</h1>
 
-        <input 
-        type="text"
-        placeholder="Current Title"
-        onChange={this.update("currentTitle")}
-        />
-
-        <input
-          type="text"
-          placeholder="Current Company"
-          onChange={this.update("currentCompany")}
-        />
-
-        <input 
-        type="number"
-        placeholder="Starting Year"
-        onChange={this.update("currentPositionStartTime")}
-        />
-
-        <input
-          type="number"
-          placeholder="Current Year"
-          onChange={this.update("currentPositionTime")}
-        />
-
-        <textarea
-          placeholder="Description"
-          onChange={this.update("currentPositionParagraph")}
-        />
+        <button onClick={e => this.toggleEditSection("current-pos-edit")}> toggle </button>
+        <CurrentPosEdit update={this.update} />
 
         <h1 className="sidebar-section-name"> Recruiting Toolkit </h1>
+        <button onClick={e => this.toggleEditSection("toolkit-edit")}> toggle </button>
 
-        <div className="recruiting-toolkit-left-sidebar">
-          <button className="add-field-button" onClick={() => this.addMultiField("recruitingToolkit")}>ADD</button>
-          <button className="remove-field-button" onClick={() => this.removeMultiField("recruitingToolkit")}>REMOVE</button>
-          {recruitingToolkitSliders.map((e, i) => {
-            let k = i * 2
-            return(
-            <div>
-              <input
-                key={k}
-                onChange={this.updateMultiField("recruitingToolkit", i + 1, "name")}
-                type="text"
-                className="education-input"
-                placeholder="Recruiting Tool"
-              />
-              <input
-                key={k + 1}
-                onChange={this.updateMultiField("recruitingToolkit", i + 1, "value")}
-                type="range"
-                min="0"
-                max="100"
-                value={this.props.state.recruitingToolkit.linkedIn}
-                className="slider"
-                id="myRange"
-              />
-            </div>
-            )
-          })}
-        
-        </div>
-
-        <h1 className="sidebar-section-name"> Recent Searches</h1>
-
-        <textarea 
-        type="text"
-        placeholder="Recent Searches"
-        onChange={this.update("recentSearches")}
+        <ToolkitEdit state={this.props.state} 
+          updateMultiField={this.updateMultiField}
+          addMultiField={this.addMultiField}
+          removeMultiField={this.removeMultiField}
         />
 
+        <h1 className="sidebar-section-name"> Recent Searches</h1>
+        <button onClick={e => this.toggleEditSection("searches-edit")}> toggle </button>
+        <SearchesEdit update={this.update} />
+        
+
         <h1 className="sidebar-section-name"> {"HOBBIES & INTERESTS"}</h1>
-        <button onClick={e => this.toggleModal("hobbies")}> Reveal </button>
+        <button className="show-modal" onClick={e => this.toggleModal("hobbies")}> Reveal </button>
         <ImageCategory 
           addImageToField={this.props.addImageToField}
           removeImageFromField={this.props.removeImageFromField}
@@ -257,56 +193,16 @@ class LeftSidebar extends React.Component {
         />
 
         <h1 className="sidebar-section-name">{"EDUCATION & EMPLOYMENT"}</h1>
+        <button onClick={e => this.toggleEditSection("edu-edit")}> toggle </button>
+        <EduEdit updateMultiField={this.updateMultiField} 
+          addMultiField={this.addMultiField}
+          removeMultiField={this.removeMultiField}
+          state={this.props.state}
+        />
 
-        <div className="education-field">
-          <button className="add-field-button" onClick={() => this.addMultiField("edu")}>ADD</button>
-          <button className="remove-field-button" onClick={() => this.removeMultiField("edu")}>REMOVE</button>
-          {eduInputs.map((e, i) => {
-            let k = i * 5;
-            return (
-            <div key={k} className="education-cluster">
-              <h1 className="education-index">Experience #{i + 1}</h1>
-              <input
-                type="text"
-                id={k + 1}
-                key={k + 1}
-                className="education-input"
-                placeholder="Study or Title"
-                onChange={this.updateMultiField("edu", i + 1, "title")}
-              />
-              <input
-                  type="text"
-                  id={k + 2}
-                  key={k + 2}
-                  className="education-input"
-                  placeholder="School or Company"
-                  onChange={this.updateMultiField("edu", i + 1, "entity")}
-              />
-                <input
-                  type="text"
-                  id={k + 3}
-                  key={k + 3}
-                  className="education-input"
-                  placeholder="Starting Year"
-                  onChange={this.updateMultiField("edu", i + 1, "startTime")}
-                />
-                <input
-                  type="text"
-                  id={k + 4}
-                  key={k + 4}
-                  className="education-input"
-                  placeholder="Ending Year"
-                  onChange={this.updateMultiField("edu", i + 1, "endTime")}
-                />
-            </div>
-            )
-          })}
-        </div>
+        <h1 className="sidebar-section-name">FEDERAL AGENCIES</h1>
+        <button onClick={e => this.toggleModal("federalAgencies")}> Reveal </button>
 
-        <div className="agencies-and-clearence">
-          <div className="agencies">
-            <h1 className="sidebar-section-name">FEDERAL AGENCIES</h1>
-            <button onClick={e => this.toggleModal("federalAgencies")}> Reveal </button>
             <ImageCategory name={"Federal Agencies"} 
               imageCategoryId={"5ec7459c19eaed359f63641e"}
               addImageToField={this.props.addImageToField}
@@ -316,88 +212,18 @@ class LeftSidebar extends React.Component {
               toggleModal={this.toggleModal}
             /> 
             
-          </div>
+        <h1 className="sidebar-section-name">CLEARENCE LEVELS</h1>
+        <button onClick={e => this.toggleEditSection("clearence-edit")}> toggle </button>
+        <ClearenceEdit state={this.props.state} updateClearenceSlider={this.updateClearenceSlider} />
 
-          <div className="clearences">
-            <h1 className="sidebar-section-name">CLEARENCE LEVELS</h1>
-            <div className="clearence-div">
-              <h1>Secret: {this.props.state.clearenceLevels.secret}%</h1>
-              <input onChange={this.updateClearenceSlider("secret")} 
-                type="range" 
-                min="0" 
-                max="100" 
-                value={this.props.state.clearenceLevels.secret} 
-                className="slider" 
-                id="myRange" 
-                />
-            </div>
-
-            <div className="clearence-div">
-              <h1>Top Secret: {this.props.state.clearenceLevels.topSecret}%</h1>
-              <input onChange={this.updateClearenceSlider("topSecret")}
-                type="range"
-                min="0"
-                max="100"
-                value={this.props.state.clearenceLevels.topSecret}
-                className="slider"
-                id="myRange"
-              />
-            </div>
-
-            <div className="clearence-div">
-              <h1>TS/SCI: {this.props.state.clearenceLevels.TSSCI}%</h1>
-              <input onChange={this.updateClearenceSlider("TSSCI")}
-                type="range"
-                min="0"
-                max="100"
-                value={this.props.state.clearenceLevels.TSSCI}
-                className="slider"
-                id="myRange"
-              />
-            </div>
-
-            <div className="clearence-div">
-              <h1>TS/SCI CI Polygraph: {this.props.state.clearenceLevels.TSSCICIPolygraph}%</h1>
-              <input onChange={this.updateClearenceSlider("TSSCICIPolygraph")}
-                type="range"
-                min="0"
-                max="100"
-                value={this.props.state.clearenceLevels.TSSCICIPolygraph}
-                className="slider"
-                id="myRange"
-              />
-            </div>
-
-            <div className="clearence-div">
-              <h1>TS/SCI Full Scope Polygraph: {this.props.state.clearenceLevels.TSSCIFullScopePolygraph}%</h1>
-              <input onChange={this.updateClearenceSlider("TSSCIFullScopePolygraph")}
-                type="range"
-                min="0"
-                max="100"
-                value={this.props.state.clearenceLevels.TSSCIFullScopePolygraph}
-                className="slider"
-                id="myRange"
-              />
-            </div>
-
-          </div>
-        </div>
-
-        <div className="last-left-div">
-          <h1 className="sidebar-section-name">LinkedIn Reviews</h1>
-
-          <button className="add-field-button" onClick={() => this.addMultiField("linkedin")}>ADD</button>
-          <button className="remove-field-button" onClick={() => this.removeMultiField("linkedin")}>REMOVE</button>
-          {linkedinInputs.map((e, i) => {
-            let k = i*3
-            return (
-              <div key={k} className="linkedin-cluster">
-                <textarea key={k + 1} id={i} className="linkedin-textarea" placeholder="Author Info" onChange={this.updateMultiField("linkedin", i + 1, "author")} />
-                <textarea key={k + 2} id={i} className="linkedin-textarea" placeholder="Review" onChange={this.updateMultiField("linkedin", i + 1, "body")} />
-              </div>
-            )
-          })}
-        </div>
+        <h1 className="sidebar-section-name">LinkedIn Reviews</h1>
+        <button onClick={e => this.toggleEditSection("linkedin-edit")}> toggle </button>
+        <LinkedinEdit addMultiField={this.addMultiField}
+          removeMultiField={this.removeMultiField}
+          updateMultiField={this.updateMultiField}
+          state={this.props.state}
+        />
+        
 
       </div>
     )

@@ -1,7 +1,7 @@
 import React from "react";
 import { Query } from "react-apollo";
 import Queries from "../../../graphql/queries";
-import Upload from "./upload";
+import Upload from "./Upload";
 const { FETCH_CATEGORY } = Queries;
 
 const ImageCategory = (props) => {
@@ -27,7 +27,7 @@ const ImageCategory = (props) => {
             <ul className="image-select-list">
               {data.imageCategory.images.map((img, i) => {
                 return (
-                  <button className="image-toggle-button" onClick={e => toggleImage(img._id, img.url)}>
+                  <button key={i} className="image-toggle-button" onClick={e => toggleImage(img._id, img.url)}>
                     <img className="toggle-image" key={i} src={img.url} alt={props.field} />
                   </button>
                 )

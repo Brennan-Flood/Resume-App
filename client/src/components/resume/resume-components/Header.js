@@ -3,7 +3,7 @@ import React from "react";
 const Header = (props) => {
   return (
     <div className="resume-header">
-      <img className="logo" src="talent-spring-logo.jpg"/>
+      <img className="logo" src="talent-spring-logo.jpg" alt="TS logo"/>
       <div className="resume-name">
         <h1 className="first-name">{props.state.firstName}</h1>
         <h1 className="last-name">{props.state.lastName}</h1>
