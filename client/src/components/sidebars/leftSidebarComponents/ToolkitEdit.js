@@ -1,7 +1,7 @@
 import React from "react";
 
 const ToolkitEdit = (props) => {
-  let recruitingToolkitSliders = new Array(props.state.recruitingToolkitSliders).fill(0);
+  let recruitingToolkitSliders = new Array(props.recruitingToolkitSliders).fill(0);
 
   return (
     <div id="toolkit-edit" className="recruiting-toolkit-left-sidebar edit-section hidden-section">

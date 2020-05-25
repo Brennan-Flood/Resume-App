@@ -196,6 +196,7 @@ class LeftSidebar extends React.Component {
             updateMultiField={this.updateMultiField}
             addMultiField={this.addMultiField}
             removeMultiField={this.removeMultiField}
+            recruitingToolkitSliders={this.state.recruitingToolkitSliders}
           />
         </div>
 
@@ -259,7 +260,7 @@ class LeftSidebar extends React.Component {
                 state={this.props.state}
                 toggleModal={this.toggleModal}
               /> 
-         </div>
+        </div>
 
         <div className="sidebar-section">
           <div className="sidebar-section-header">

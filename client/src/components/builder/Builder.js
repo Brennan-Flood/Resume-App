@@ -13,6 +13,7 @@ class Builder extends React.Component {
       lastName: "",
       title: "",
       yearsExperience: "",
+      currentImage: "",
       currentTitle: "",
       currentCompany: "",
       currentPositionStartTime: "",

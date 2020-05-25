@@ -12,8 +12,8 @@ const LinkedinEdit = (props) => {
         let k = i * 3
         return (
           <div key={k} className="linkedin-cluster">
-            <textarea key={k + 1} id={i} className="linkedin-textarea" placeholder="Author Info" onChange={props.updateMultiField("linkedin", i + 1, "author")} />
-            <textarea key={k + 2} id={i} className="linkedin-textarea" placeholder="Review" onChange={props.updateMultiField("linkedin", i + 1, "body")} />
+            <textarea key={k + 1} id={i} className="left-text" placeholder="Author Info" onChange={props.updateMultiField("linkedin", i + 1, "author")} />
+            <textarea key={k + 2} id={i} className="left-text" placeholder="Review" onChange={props.updateMultiField("linkedin", i + 1, "body")} />
           </div>
         )
       })}

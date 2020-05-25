@@ -53,7 +53,7 @@
 }
 
 .education-input::placeholder , .left-sidebar > input::placeholder, 
-textarea::placeholder {
+textarea::placeholder, .left-input::placeholder {
   color: rgb(192, 192, 192);
 }
 
@@ -160,3 +160,21 @@ textarea::placeholder {
   font-size: 20px;
   margin-left: 10px;
 }
+
+.left-input, .left-text {
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 8px;
+  width: 200px;
+  padding: 5px;
+  margin: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  border: 1px solid gray; 
+  box-shadow: 1px 0px 1px grey;
+  max-width: 200px;
+  max-height: 300px;
+  min-width: 200px;
+}
+

@@ -8,9 +8,7 @@ const CurrentPosition = (props) => {
 
       <div className="current-position-header">
 
-        <div className="image-placeholder-outer" width="50px" height="50px" >
-          <h1 className="image-placeholder-inner" width="48px" height="48px"> </h1>
-        </div>
+        <img className="current-image" src={props.state.currentImage}></img>
 
         <ul className="current-position-list">
 

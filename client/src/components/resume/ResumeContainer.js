@@ -31,7 +31,6 @@ const ResumeContainer = (props) => {
         scale: 5,
         allowTaint: true,
         useCORS: true,
-        logging: true,
       })
         .then((canvas) => {
           const image = canvas.toDataURL('image/jpeg', 80 / 100);
@@ -65,7 +64,7 @@ const ResumeContainer = (props) => {
   return (
     <div className="pan-zoom-container">
     <PanZoom
-      style={{width: "100%"}}
+      // style={{width: "100%"}}
       ref={panZoomRef}
       keyMapping={{
         '87': { x: 0, y: -1, z: 0 },
