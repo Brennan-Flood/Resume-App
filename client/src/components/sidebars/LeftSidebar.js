@@ -1,12 +1,12 @@
 import React from "react";
-import ImageCategory from "./leftSidebarComponents/imageCategory";
-import BasicInfoEdit from "./leftSidebarComponents/basicInfoEdit";
-import CurrentPosEdit from "./leftSidebarComponents/currentPosEdit";
-import ToolkitEdit from "./leftSidebarComponents/toolkitEdit";
-import SearchesEdit from "./leftSidebarComponents/searchesEdit";
-import EduEdit from "./leftSidebarComponents/educationEdit";
-import ClearenceEdit from "./leftSidebarComponents/clearenceEdit";
-import LinkedinEdit from "./leftSidebarComponents/linkedinEdit";
+import ImageCategory from "./leftSidebarComponents/imageCategory.js";
+import BasicInfoEdit from "./leftSidebarComponents/basicInfoEdit.js";
+import CurrentPosEdit from "./leftSidebarComponents/currentPosEdit.js";
+import ToolkitEdit from "./leftSidebarComponents/toolkitEdit.js";
+import SearchesEdit from "./leftSidebarComponents/searchesEdit.js";
+import EduEdit from "./leftSidebarComponents/educationEdit.js";
+import ClearenceEdit from "./leftSidebarComponents/clearenceEdit.js";
+import LinkedinEdit from "./leftSidebarComponents/linkedinEdit.js";
 
 class LeftSidebar extends React.Component {
   constructor(props) {

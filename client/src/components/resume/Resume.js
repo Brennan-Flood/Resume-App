@@ -1,11 +1,11 @@
 import React from "react";
-import ClearenceLevels from "./resume-components/Clearences";
-import Header from "./resume-components/Header";
-import Hobbies from "./resume-components/Hobbies";
-import Searches from "./resume-components/RecentSearches";
-import Toolkit from "./resume-components/Toolkit";
-import CurrentPosition from "./resume-components/CurrentPos";
-import Education from "./resume-components/Education";
+import ClearenceLevels from "./resume-components/Clearences.js";
+import Header from "./resume-components/Header.js";
+import Hobbies from "./resume-components/Hobbies.js";
+import Searches from "./resume-components/RecentSearches.js";
+import Toolkit from "./resume-components/Toolkit.js";
+import CurrentPosition from "./resume-components/CurrentPos.js";
+import Education from "./resume-components/Education.js";
 
 class Resume extends React.Component {
   constructor(props) {
