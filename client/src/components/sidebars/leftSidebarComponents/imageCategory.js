@@ -1,7 +1,7 @@
 import React from "react";
 import { Query } from "react-apollo";
 import Queries from "../../../graphql/queries";
-import Upload from "./Upload";
+import Upload from "./upload";
 const { FETCH_CATEGORY } = Queries;
 
 const ImageCategory = (props) => {
