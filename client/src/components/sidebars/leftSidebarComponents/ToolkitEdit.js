@@ -1,5 +1,5 @@
 import React from "react";
-import ImageCategory from "./ImageCategory";
+import ImageCategory from "./imageCategory";
 
 const ToolkitEdit = (props) => {
   

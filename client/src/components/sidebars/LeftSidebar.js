@@ -1,5 +1,5 @@
 import React from "react";
-import ImageCategory from "./leftSidebarComponents/ImageCategory";
+import ImageCategory from "./leftSidebarComponents/imageCategory";
 import BasicInfoEdit from "./leftSidebarComponents/BasicInfoEdit";
 import CurrentPosEdit from "./leftSidebarComponents/CurrentPosEdit";
 import ToolkitEdit from "./leftSidebarComponents/ToolkitEdit";
