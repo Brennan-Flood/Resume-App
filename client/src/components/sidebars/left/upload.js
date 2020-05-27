@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
-import './node_modules/react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 import { Mutation} from "react-apollo";
 import Mutations from "../../../graphql/mutations";
 import Queries from "../../../graphql/queries";
