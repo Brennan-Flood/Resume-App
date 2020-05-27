@@ -8,7 +8,7 @@ const CurrentPosition = (props) => {
 
       <div className="current-position-header">
 
-        <img className="current-image" src={props.state.currentImage}></img>
+        <img className="current-image" src={props.state.currentImage ? props.state.currentImage : "image-placeholder.jpg"} alt="profile-photo" ></img>
 
         <ul className="current-position-list">
 

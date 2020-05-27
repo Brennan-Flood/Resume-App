@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Mutation} from "react-apollo";
 import Mutations from "../../../graphql/mutations";
 import Queries from "../../../graphql/queries";
@@ -47,6 +49,7 @@ class FileUpload extends Component {
           }
         }
       })
+      toast(`${this.state.file[0].name} uploaded successfully!`, {type: "success"});
       this.setState({file: "", uploading: false})
     }
   }
@@ -54,6 +57,7 @@ class FileUpload extends Component {
   submitFile = (event, createImage) => {
     event.preventDefault();
     const formData = new FormData();
+    if (this.state.file) {
     formData.append('file', this.state.file[0]);
     axios.post(`http://localhost:5000/test-upload`, formData, {
       headers: {
@@ -73,6 +77,9 @@ class FileUpload extends Component {
     }).catch(error => {
       console.log(error);
     });
+    } else {
+      toast("Please select a file first", {type: "error"});
+    }
   }
 
   handleFileUpload = (event) => {
@@ -82,6 +89,8 @@ class FileUpload extends Component {
   render() {
     return (
       <div className="image-upload-modal">
+        <ToastContainer />
+
         <Mutation
           mutation={CREATE_IMAGE}
           update={(cache, data) => this.updateCache(cache, data)}

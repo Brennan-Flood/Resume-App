@@ -19,3 +19,12 @@
   flex-wrap: wrap;
   width: 140px
 }
+
+.arc-image {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  margin: 8px;
+  bottom: 46px;
+  border-radius: 100%;
+}

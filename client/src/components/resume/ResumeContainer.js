@@ -64,7 +64,7 @@ const ResumeContainer = (props) => {
   return (
     <div className="pan-zoom-container">
     <PanZoom
-      // style={{width: "100%"}}
+      style={{width: "100%"}}
       ref={panZoomRef}
       keyMapping={{
         '87': { x: 0, y: -1, z: 0 },

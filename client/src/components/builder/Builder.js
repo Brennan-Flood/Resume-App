@@ -24,10 +24,10 @@ class Builder extends React.Component {
       clearenceLevels: {secret: 10, topSecret: 10, TSSCI: 10, TSSCICIPolygraph: 10, TSSCIFullScopePolygraph: 10},
       linkedinReviews: [[1, {author: "", body: ""}]],
       themeColor: {backgroundColor: "rgb(229, 229, 229)"},
-      recruitingToolkit: [[1, {name: "", value: 10}]],
       federalAgencies: {},
       hobbies: {},
-      image: ""
+      image: "",
+      toolkit: {}
     }
 
     this.update = this.update.bind(this);
@@ -37,6 +37,7 @@ class Builder extends React.Component {
     this.addImageToField = this.addImageToField.bind(this);
     this.removeImageFromField = this.removeImageFromField.bind(this);
     this.saveImageString = this.saveImageString.bind(this);
+    this.updateToolkit = this.updateToolkit.bind(this);
   }
 
   saveImageString(string) {
@@ -45,8 +46,22 @@ class Builder extends React.Component {
 
   addImageToField(field, url, id) {
     let currentFieldState = this.state[field];
-    currentFieldState[id] = url;
-    this.setState({ [field]: currentFieldState })
+    if (field !== "toolkit") {
+      currentFieldState[id] = url;
+      this.setState({ [field]: currentFieldState })
+    } else {
+      currentFieldState[id] = {url: url, value: 10}
+      this.setState({ [field]: currentFieldState});
+    }
+  }
+
+  updateToolkit(e, id) {
+    console.log(e.target.value, id);
+    let currentToolkit = this.state.toolkit;
+    let currentNode = currentToolkit[id];
+    currentNode.value = e.target.value;
+    currentToolkit[id] = currentNode;
+    this.setState({toolkit: currentToolkit})
   }
 
   removeImageFromField(field, id) {
@@ -134,6 +149,7 @@ class Builder extends React.Component {
         addImageToField={this.addImageToField}
         removeImageFromField={this.removeImageFromField}
         state={this.state}
+        updateToolkit={this.updateToolkit}
         />
 
         <ResumeContainer state={this.state}/> 

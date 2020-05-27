@@ -50,6 +50,8 @@ class LeftSidebar extends React.Component {
   }
   }
 
+
+
   addMultiField(field) {    
     let newValues;
     let inputs;
@@ -192,11 +194,17 @@ class LeftSidebar extends React.Component {
             
           </div>
 
-          <ToolkitEdit state={this.props.state} 
+          <ToolkitEdit 
+            imageCategoryId="5ecdde99c55fc37c75307070"
+            addImageToField={this.props.addImageToField}
+            removeImageFromField={this.props.removeImageFromField}
+            field={"toolkit"}
+            state={this.props.state} 
             updateMultiField={this.updateMultiField}
             addMultiField={this.addMultiField}
             removeMultiField={this.removeMultiField}
-            recruitingToolkitSliders={this.state.recruitingToolkitSliders}
+            toggleModal={this.toggleModal}
+            updateToolkit={this.props.updateToolkit}
           />
         </div>
 
