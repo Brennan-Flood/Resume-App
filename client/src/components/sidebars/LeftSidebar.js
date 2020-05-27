@@ -153,11 +153,11 @@ class LeftSidebar extends React.Component {
 
     return (
       <div className="left-sidebar">
-        <h1 className="font-test">Test BOOK</h1>
+        {/* <h1 className="font-test">Test BOOK</h1>
         <h1 className="font-comparison-1">Test MEDIUM</h1>
         <h1 className="font-comparison-2">Test ROMAN</h1>
         <h1 className="font-comparison-3">Test BLACK</h1>
-        <h1 className="font-comparison-4">Test LIGHT</h1>
+        <h1 className="font-comparison-4">Test LIGHT</h1> */}
         
         <h1 className="sidebar-header">INPUTS</h1>
 
