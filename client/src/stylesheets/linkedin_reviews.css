@@ -3,8 +3,28 @@
   padding: 10px;
   align-content: center;
 }
+
 .hobbies-and-interests {
   flex-direction: column;
   margin-top: 10px;
 }
 
+.linkedin-resume {
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.linkedin-resume > p, .linkedin-resume > h1, .recent-searches-div {
+  margin-top: 5px;
+  width: 210px;
+  text-overflow: wrap;
+  font-family: 'AvenirLTStd-light';
+}
+
+.linkedin-resume > p, .recent-searches {
+  font-size: 12px;
+}
+
+.linkedin-resume > h1 {
+  font-size: 12px;
+}

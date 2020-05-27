@@ -7,7 +7,6 @@ const ToolkitEdit = (props) => {
   let toolkit = props.state.toolkit;
   return (
     <div id="toolkit-edit" className="recruiting-toolkit-left-sidebar edit-section hidden-section">
-      <i onClick={e => props.toggleModal("toolkit")} className="fas fa-plus-square modal-button"></i>
       <ImageCategory 
         addImageToField={props.addImageToField}
         removeImageFromField={props.removeImageFromField}

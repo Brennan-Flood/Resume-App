@@ -9,9 +9,7 @@ const Education = (props) => {
           let k = i * 3;
           return (
             <div className="experience-node" key={i}>
-              <div className="image-placeholder-outer-3">
-                <h1 className="image-placeholder-inner-3"> </h1>
-              </div>
+              <img className="edu-image" src={(e[1] && e[1].image) ? e[1].image : "image-placeholder.jpg"} alt="edu-photo" ></img>
               <h1 className="experience-title" style={{ height: "14px" }} key={k + 1}>{e[1].title}</h1>
               <h1 className="experience-loc" style={{ height: "14px" }} key={k + 2}>{e[1].entity}</h1>
               <div className="experience-tag" style={props.state.backgroundColor}></div>

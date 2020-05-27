@@ -18,7 +18,7 @@ const ClearenceLevels = (props) => {
       >
 
         <div className="clearence-bar-inner"
-          style={{ width: `${props.state.clearenceLevels.topSecret * 5}%`, padding: `${props.state.clearenceLevels.topsSecret > 0 ? 2 : 0}` }}>
+          style={{ width: `${props.state.clearenceLevels.topSecret * 5}%`, paddingRight: `${props.state.clearenceLevels.topSecret > 0 ? 2 : 0}px` }}>
         </div>
       </div>
 
@@ -27,7 +27,7 @@ const ClearenceLevels = (props) => {
       >
 
         <div className="clearence-bar-inner"
-          style={{ width: `${props.state.clearenceLevels.TSSCI * 5}%`, padding: `${props.state.clearenceLevels.TSSCI > 0 ? 2 : 0}` }}>
+          style={{ width: `${props.state.clearenceLevels.TSSCI * 5}%`, paddingRight: `${props.state.clearenceLevels.TSSCI > 0 ? 2 : 0}px` }}>
         </div>
       </div>
 
@@ -36,7 +36,7 @@ const ClearenceLevels = (props) => {
       >
 
         <div className="clearence-bar-inner"
-          style={{ width: `${props.state.clearenceLevels.TSSCICIPolygraph * 5}%`, padding: `${props.state.clearenceLevels.TSSCICIPolygraph > 0 ? 2 : 0}` }}>
+          style={{ width: `${props.state.clearenceLevels.TSSCICIPolygraph * 5}%`, paddingRight: `${props.state.clearenceLevels.TSSCICIPolygraph > 0 ? 2 : 0}px` }}>
         </div>
       </div>
 
@@ -45,7 +45,7 @@ const ClearenceLevels = (props) => {
       >
 
         <div className="clearence-bar-inner"
-          style={{ width: `${props.state.clearenceLevels.TSSCIFullScopePolygraph * 5}%` }}>
+          style={{ width: `${props.state.clearenceLevels.TSSCIFullScopePolygraph * 5}%`, paddingRight: `${props.state.clearenceLevels.TSSCIFullScopePolygraph > 0 ? 2 : 0}px` }}>
         </div>
       </div>
     </div>

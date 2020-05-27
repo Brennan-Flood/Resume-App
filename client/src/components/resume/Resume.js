@@ -62,8 +62,8 @@ class Resume extends React.Component {
               this.props.state.linkedinReviews.map((e, i) => {
                 let k = i * 3
                 return (
-                  <div key={k}>
-                    <h1 key={k + 1}>{e[1].author}</h1>
+                  <div className="linkedin-resume" key={k}>
+                    <h1 key={k + 1}>{e[1].author.toUpperCase()}</h1>
                     <p key={k + 2}>{e[1].body}</p>
                   </div>
                 )

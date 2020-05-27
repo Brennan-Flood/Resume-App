@@ -60,3 +60,10 @@
 .experience-loc {
   margin-top: 2px;
 }
+
+.edu-image {
+  width: 21px;
+  height: 21px;
+  border-radius: 100%;
+  border: 1px solid black;
+}

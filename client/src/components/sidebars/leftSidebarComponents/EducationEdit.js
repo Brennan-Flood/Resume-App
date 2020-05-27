@@ -1,8 +1,7 @@
 import React from "react";
 
 const EduEdit = (props) => {
-  let eduInputs = new Array(props.state.educationInputs).fill(0);
-
+  const eduInputs = Object.values(props.state.educationAndEmployment)
   return (
     <div id="edu-edit" className="education-field edit-section hidden-section">
       <button className="add-field-button" onClick={() => props.addMultiField("edu")}>ADD</button>
@@ -12,6 +11,12 @@ const EduEdit = (props) => {
         return (
           <div key={k} className="education-cluster">
             <h1 className="education-index">Experience #{i + 1}</h1>
+            <input 
+              type="text"
+              className="education-input"
+              placeholder="www.imgur.com"
+              onChange={props.updateMultiField("edu", i + 1, "image")}
+            />
             <input
               type="text"
               id={k + 1}

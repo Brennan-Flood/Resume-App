@@ -153,11 +153,11 @@ class LeftSidebar extends React.Component {
 
     return (
       <div className="left-sidebar">
-        {/* <h1 className="font-test">Test BOOK</h1>
+        <h1 className="font-test">Test BOOK</h1>
         <h1 className="font-comparison-1">Test MEDIUM</h1>
         <h1 className="font-comparison-2">Test ROMAN</h1>
         <h1 className="font-comparison-3">Test BLACK</h1>
-        <h1 className="font-comparison-4">Test LIGHT</h1> */}
+        <h1 className="font-comparison-4">Test LIGHT</h1>
         
         <h1 className="sidebar-header">INPUTS</h1>
 
@@ -189,6 +189,7 @@ class LeftSidebar extends React.Component {
 
           <div className="sidebar-section-header">
             <i onClick={e => this.toggleEditSection(e, "toolkit-edit")} className="fas fa-chevron-down collapse-button collapsed" />
+            <i onClick={e => this.toggleModal("toolkit")} className="fas fa-plus-square modal-button"></i>
             <h1 className="sidebar-section-name"> Recruiting Toolkit </h1>
 
             

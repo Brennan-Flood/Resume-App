@@ -20,7 +20,7 @@ class Builder extends React.Component {
       currentPositionTime: "",
       currentPositionParagraph: "",
       recentSearches: "",
-      educationAndEmployment: [[1, { title: "", entity: "", startTime: "", endTime: "" }]],
+      educationAndEmployment: [[1, { title: "", entity: "", startTime: "", endTime: "", image: "" }]],
       clearenceLevels: {secret: 10, topSecret: 10, TSSCI: 10, TSSCICIPolygraph: 10, TSSCIFullScopePolygraph: 10},
       linkedinReviews: [[1, {author: "", body: ""}]],
       themeColor: {backgroundColor: "rgb(229, 229, 229)"},
@@ -81,10 +81,10 @@ class Builder extends React.Component {
     let key;
     let i;
 
-
+    console.log(metaField, inputs, index, field, value)
     if (metaField === "edu") {
       currentField = this.state.educationAndEmployment;
-      pushObject = { title: "", entity: "", startTime: "", endTime: "" };
+      pushObject = { title: "", entity: "", startTime: "", endTime: "", image: "" };
       key = "educationAndEmployment";
       i = currentField.length;
     } else if (metaField === "linkedin" ) {
@@ -126,6 +126,7 @@ class Builder extends React.Component {
         this.setState({recruitingToolkit: newField})
       } 
     }
+    console.log(this.state.educationAndEmployment)
   }
 
   updateBackgroundColor(color) {

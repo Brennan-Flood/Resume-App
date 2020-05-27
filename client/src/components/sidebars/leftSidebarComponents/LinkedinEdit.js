@@ -1,7 +1,7 @@
 import React from "react";
 
 const LinkedinEdit = (props) => {
-  let linkedinInputs = new Array(props.state.linkedinInputs).fill(0);
+  let linkedinInputs = Object.values(props.state.linkedinReviews);
 
   return (
     <div id="linkedin-edit" className="last-left-div edit-section hidden-section">

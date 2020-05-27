@@ -25,18 +25,19 @@
 
 .edit-section {
   display: flex;
-  overflow: hidden;
+  overflow: scroll;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
   margin: 10px;
-  max-height: 500px;
+  max-height: 2000px;
   transition: 0.4s;
 }
 
 .edit-section.hidden-section {
   max-height: 0px;
+  overflow: hidden;
 }
 
 .education-input, .left-sidebar > input{
