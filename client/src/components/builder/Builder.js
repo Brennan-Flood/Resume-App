@@ -2,7 +2,7 @@ import React from "react";
 import LeftSidebar from "../sidebars/LeftSidebar";
 import RightSidebar from "../sidebars/RightSidebar";
 import ResumeContainer from "../resume/ResumeContainer";
-
+import Pending from "../pending/Pending";
 
 class Builder extends React.Component {
   constructor(props) {
@@ -141,23 +141,25 @@ class Builder extends React.Component {
 
   render() {
     return(
+      
       <div className="builder">
 
-        <LeftSidebar 
-        update={this.update} 
-        updateMultiField={this.updateMultiField} 
+      <LeftSidebar
+        update={this.update}
+        updateMultiField={this.updateMultiField}
         updateClearenceLevel={this.updateClearenceLevel}
         addImageToField={this.addImageToField}
         removeImageFromField={this.removeImageFromField}
         state={this.state}
         updateToolkit={this.updateToolkit}
-        />
+       />
 
-        <ResumeContainer state={this.state}/> 
+      <ResumeContainer state={this.state} />
 
-        <RightSidebar saveImageString={this.saveImageString} updateBackgroundColor={this.updateBackgroundColor} />
+      <RightSidebar saveImageString={this.saveImageString} updateBackgroundColor={this.updateBackgroundColor} />
 
-      </div>
+       </div>
+                  
     )
   }
 

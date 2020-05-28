@@ -34,6 +34,11 @@ class LeftSidebar extends React.Component {
   toggleModal(field) {
     let modal = document.getElementById(field);
     modal.classList.toggle("hidden-modal");
+    let upload = document.getElementById(`${field}-upload`);
+    if (upload.classList.contains("uploading")) {
+      upload.classList.toggle("uploading");
+    }
+
   }
 
   toggleEditSection(e, field) {

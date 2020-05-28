@@ -61,7 +61,6 @@ async function populateCache() {
       .mutate({ mutation: VERIFY_USER, variables: { token } })
       .then(({ data }) => {
         currentUserId = data.verifyUser._id
-
         cache.writeData({
           data: {
             isLoggedIn: data.verifyUser.loggedIn,

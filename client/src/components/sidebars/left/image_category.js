@@ -16,6 +16,10 @@ const ImageCategory = (props) => {
     document.getElementById(imageId).classList.toggle("selected");
   };
 
+  const toggleUpload = function(field) {
+    document.getElementById(`${field}-upload`).classList.toggle("uploading");
+  };
+
   return (
     <Query query={FETCH_CATEGORY} variables={{ id: props.imageCategoryId }}>
       {({ loading, error, data }) => {
@@ -35,7 +39,8 @@ const ImageCategory = (props) => {
                 )
               })}
             </ul>
-            <Upload name={data.imageCategory.name} imageCategoryId={props.imageCategoryId} />
+            <button onClick={e => toggleUpload(props.field)}> Add an Image </button>
+            <Upload name={data.imageCategory.name} imageCategoryId={props.imageCategoryId} field={props.field}/>
 
             </div>
             <div onClick={e => props.toggleModal(props.field)} className="close-modal" />

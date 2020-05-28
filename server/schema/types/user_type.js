@@ -10,6 +10,9 @@ const UserType = new GraphQLObjectType({
     email: { type: GraphQLString },
     token: { type: GraphQLString },
     loggedIn: { type: GraphQLBoolean },
+    admin: {type: GraphQLBoolean },
+    rootAdmin: {type: GraphQLBoolean },
+    member: {type: GraphQLBoolean }
   })
 });
 

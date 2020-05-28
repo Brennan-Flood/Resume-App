@@ -96,6 +96,33 @@ const mutation = new GraphQLObjectType({
           return Image.addImageToCategory(args.imageId, args.categoryId);
         }
     },
+    toggleUserMembership: {
+      type: UserType,
+      args: {
+        _id: {type: GraphQLID }
+      },
+      resolve(_, args) {
+        return User.toggleUserMembership(args._id);
+      }
+    },
+    toggleUserAdmin: {
+      type: UserType,
+      args: {
+        _id: { type: GraphQLID }
+      },
+      resolve(_, args) {
+        return User.toggleAdmin(args._id);
+      }
+    },
+    toggleUserRootAdmin: {
+      type: UserType,
+      args: {
+        _id: { type: GraphQLID }
+      },
+      resolve(_, args) {
+        return User.toggleRootAdmin(args._id);
+      }
+    }
   }
 });
 

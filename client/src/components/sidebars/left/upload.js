@@ -50,7 +50,7 @@ class FileUpload extends Component {
         }
       })
       toast(`${this.state.file[0].name} uploaded successfully!`, {type: "success"});
-      this.setState({file: "", uploading: false})
+      this.setState({file: null, uploading: false})
     }
   }
 
@@ -75,7 +75,7 @@ class FileUpload extends Component {
       })
 
     }).catch(error => {
-      console.log(error);
+      toast(error, {type: "error"});
     });
     } else {
       toast("Please select a file first", {type: "error"});
@@ -84,11 +84,12 @@ class FileUpload extends Component {
 
   handleFileUpload = (event) => {
     this.setState({ file: event.target.files, uploading: true });
+    console.log(event.target.files)
   }
 
   render() {
     return (
-      <div className="image-upload-modal">
+      <div id={`${this.props.field}-upload`} className="image-upload-modal">
         <ToastContainer />
 
         <Mutation
@@ -98,8 +99,13 @@ class FileUpload extends Component {
           {(createImage, {data}) => {
             return (             
               <form className="image-upload-form" onSubmit={e => this.submitFile(e, createImage)}>
-                <input className="upload-input" label='upload file' type='file' onChange={this.handleFileUpload}></input>
-                <button className="upload-button" type='submit'>Upload File</button>
+                <input id="file" name="file" className="upload-input" label='upload file' type='file' onChange={this.handleFileUpload}></input>
+                <h1 className="file-name" style={this.state.file ? {color: "green"} : {color: "red"}}>
+                  {this.state.file ? this.state.file[0].name : "No File Chosen"}
+                </h1>
+                <label className="upload-label" for="file">{"1). Choose a file to upload"}</label>
+                <h1>then</h1>
+                <button className="upload-button" type='submit'>{"2). Upload the file to the App"}</button>
               </form>
             )
           }}

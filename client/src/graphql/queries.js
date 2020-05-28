@@ -11,6 +11,18 @@ export default {
       currentUserId @client
     }
   `,
+  CURRENT_USER_INFO: gql`
+    query user($id: ID!) {
+      user(_id: $id) {
+        name
+        email
+        member
+        admin
+        rootAdmin
+      }
+      
+    }
+  `,
   FETCH_IMAGE: gql`
     query fetchImage($id: ID!) {
       image(_id: $id) {

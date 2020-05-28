@@ -97,8 +97,62 @@
   padding: 10px;
   border: 1px solid gray;
   border-radius: 10px;
+  font-size: 15px;
 }
 
 .toggle-image.selected {
   border: 4px solid green;
+}
+
+.image-upload-modal {
+  max-height: 0px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.image-upload-modal.uploading {
+  max-height: 400px;
+}
+
+.upload-input {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.upload-input + .upload-label {
+    font-size: 1.25em;
+    font-weight: 700;
+    display: inline-block;
+    padding: 10px;
+    margin: 5px;  
+}
+
+.upload-input:focus + .upload-label,
+.upload-input + .upload-label:hover {
+    background-color: red;
+    cursor: pointer;
+}
+
+.file-name {
+  display: flex;
+  z-index: 100;
+  opacity: 1;
+  padding: 10px;
+  margin: 5px;
+}
+
+.upload-label {
+  padding: 10px;
+  margin: 5px;
+  font-size: 15px;
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+
+.upload-label:hover {
+  cursor: pointer;
 }
