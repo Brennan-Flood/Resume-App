@@ -58,7 +58,10 @@ const Nav = (props) => {
                     <h1> Zoom OUT</h1>
                   </button>
 
-                    <Link to="/admin"> admin page</Link>
+                  <Link className="admin-button" to="/admin"> 
+                   <i className="fas fa-users"></i>
+                    <h1>Admin Page</h1>
+                  </Link>
                 </div>
               );
             } else {

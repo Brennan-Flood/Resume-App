@@ -72,6 +72,10 @@ textarea::placeholder, .left-input::placeholder {
   width: 90%;
 }
 
+.sidebar-section-header.disabled {
+  color: gray;
+}
+
 .last-left-div {
   margin-bottom: 20px;
 }
@@ -171,6 +175,16 @@ textarea::placeholder, .left-input::placeholder {
   transform: rotate(-90deg);
   transition: transform 0.2s linear;
   color: black;
+}
+
+.collapse-button.disabled, .collapse-button.disabled:hover {
+  cursor: default;
+  color: gray;
+}
+
+.modal-button.disabled:hover, .modal-button.disabled {
+  color: gray;
+  cursor: default;
 }
 
 .collapse-button:hover, .modal-button:hover {
