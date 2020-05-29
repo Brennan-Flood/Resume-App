@@ -57,6 +57,34 @@ const Mutations = {
         }
       }
     }
-  `
+  `,
+  TOGGLE_USER_MEMBERSHIP: gql`
+    mutation ToggleUserMembership($userId: ID!) {
+      toggleUserMembership(_id: $userId) {
+        user{
+          name
+          _id
+          member
+          admin
+          rootAdmin
+          email
+        }
+      }
+    }
+  `,
+  TOGGLE_USER_ADMIN: gql`
+    mutation ToggleUserMembership($userId: ID!) {
+      toggleUserAdmin(_id: $userId) {
+        user{
+          name
+          _id
+          member
+          admin
+          rootAdmin
+          email
+        }
+      }
+    }
+  `,
 };
 export default Mutations;

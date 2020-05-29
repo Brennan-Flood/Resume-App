@@ -27,7 +27,9 @@ class Builder extends React.Component {
       federalAgencies: {},
       hobbies: {},
       image: "",
-      toolkit: {}
+      toolkit: {},
+      ats: {},
+      federalExperience: true,
     }
 
     this.update = this.update.bind(this);
@@ -38,6 +40,12 @@ class Builder extends React.Component {
     this.removeImageFromField = this.removeImageFromField.bind(this);
     this.saveImageString = this.saveImageString.bind(this);
     this.updateToolkit = this.updateToolkit.bind(this);
+    this.toggleFederalExperience = this.toggleFederalExperience.bind(this);
+    this.updateAts = this.updateAts.bind(this);
+  }
+
+  toggleFederalExperience() {
+    this.setState({federalExperience: !this.state.federalExperience});
   }
 
   saveImageString(string) {
@@ -46,22 +54,31 @@ class Builder extends React.Component {
 
   addImageToField(field, url, id) {
     let currentFieldState = this.state[field];
-    if (field !== "toolkit") {
+    if (field !== "toolkit" && field !== "ats") {
       currentFieldState[id] = url;
       this.setState({ [field]: currentFieldState })
     } else {
       currentFieldState[id] = {url: url, value: 10}
       this.setState({ [field]: currentFieldState});
     }
+
+    console.log(this.state.ats)
   }
 
   updateToolkit(e, id) {
-    console.log(e.target.value, id);
     let currentToolkit = this.state.toolkit;
     let currentNode = currentToolkit[id];
     currentNode.value = e.target.value;
     currentToolkit[id] = currentNode;
     this.setState({toolkit: currentToolkit})
+  }
+
+  updateAts(e, id) {
+    let currentAts = this.state.ats;
+    let currentNode = currentAts[id];
+    currentNode.value = e.target.value;
+    currentAts[id] = currentNode;
+    this.setState({ ats: currentAts })
   }
 
   removeImageFromField(field, id) {
@@ -145,6 +162,7 @@ class Builder extends React.Component {
       <div className="builder">
 
       <LeftSidebar
+        toggleFederalExperience={this.toggleFederalExperience}
         update={this.update}
         updateMultiField={this.updateMultiField}
         updateClearenceLevel={this.updateClearenceLevel}
@@ -152,6 +170,7 @@ class Builder extends React.Component {
         removeImageFromField={this.removeImageFromField}
         state={this.state}
         updateToolkit={this.updateToolkit}
+        updateAts={this.updateAts}
        />
 
       <ResumeContainer state={this.state} />

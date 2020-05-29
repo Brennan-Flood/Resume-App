@@ -57,6 +57,8 @@ const Nav = (props) => {
                     <i className="fas fa-search-minus"></i>
                     <h1> Zoom OUT</h1>
                   </button>
+
+                    <Link to="/admin"> admin page</Link>
                 </div>
               );
             } else {

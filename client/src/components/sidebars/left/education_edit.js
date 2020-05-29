@@ -4,8 +4,10 @@ const EduEdit = (props) => {
   const eduInputs = Object.values(props.state.educationAndEmployment)
   return (
     <div id="edu-edit" className="education-field edit-section hidden-section">
-      <button className="add-field-button" onClick={() => props.addMultiField("edu")}>ADD</button>
-      <button className="remove-field-button" onClick={() => props.removeMultiField("edu")}>REMOVE</button>
+      <div className="edit-buttons">
+      <button className="add-field-button" onClick={() => props.addMultiField("edu")}><i className="fas fa-plus"></i></button>
+      <button className="remove-field-button" onClick={() => props.removeMultiField("edu")}><i className="fas fa-minus"></i></button>
+      </div>
       {eduInputs.map((e, i) => {
         let k = i * 5;
         return (

@@ -65,5 +65,17 @@ export default {
         }
       }
     }
+  `,
+  FETCH_USERS: gql`
+    query fetchUsers {
+      users{
+        name
+        email
+        _id
+        admin
+        rootAdmin
+        member
+      }
+    }
   `
 };

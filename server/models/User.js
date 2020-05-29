@@ -41,6 +41,8 @@ UserSchema.statics.toggleUserMembership = function (id) {
       user.member = true;
     } else {
       user.member = false;
+      user.admin = false;
+      user.rootAdmin = false;
     }
     return Promise.all([user.save()])
       .then(([user]) => user);
@@ -54,6 +56,7 @@ UserSchema.statics.toggleAdmin = function (id) {
         user.admin = true;
       } else {
         user.admin = false;
+        user.rootAdmin = false;
       }
       return Promise.all([user.save()])
         .then(([user]) => user);

@@ -78,10 +78,31 @@ textarea::placeholder, .left-input::placeholder {
 
 .add-field-button, .remove-field-button {
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 10px;
   margin: 10px;
-  border: 1px solid gray;
+  border: 2px solid gray;
   border-radius: 8px;
+  box-shadow: 1px 1px 1px black;
+}
+
+.add-field-button:hover {
+  background-color: rgba(1, 185, 1, 0.473);
+  bottom: 1px;
+  box-shadow: 2px 2px 1px black;
+}
+
+.remove-field-button:hover {
+  background-color: rgba(255, 0, 0, 0.507);
+  bottom: -1px;
+  box-sizing: 0px 0px 0px black;
+}
+
+.edit-buttons {
+  display: flex;
+  flex-direction: row;
 }
 
 .education-cluster, .linkedin-cluster {

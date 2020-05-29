@@ -83,8 +83,9 @@ class FileUpload extends Component {
   }
 
   handleFileUpload = (event) => {
-    this.setState({ file: event.target.files, uploading: true });
     console.log(event.target.files)
+    this.setState({ file: event.target.files, uploading: true });
+    console.log(this.state)
   }
 
   render() {
@@ -97,13 +98,14 @@ class FileUpload extends Component {
           update={(cache, data) => this.updateCache(cache, data)}
         >
           {(createImage, {data}) => {
+
             return (             
-              <form className="image-upload-form" onSubmit={e => this.submitFile(e, createImage)}>
-                <input id="file" name="file" className="upload-input" label='upload file' type='file' onChange={this.handleFileUpload}></input>
+              <form id={this.props.imageCategoryId} className="image-upload-form" onSubmit={e => this.submitFile(e, createImage)}>
+                <input id={`${this.props.field}-file`} name="file" className="upload-input" label='upload file' type='file' onChange={this.handleFileUpload}></input>
                 <h1 className="file-name" style={this.state.file ? {color: "green"} : {color: "red"}}>
-                  {this.state.file ? this.state.file[0].name : "No File Chosen"}
+                  {this.state.file && this.state.file[0] ? this.state.file[0].name : "No File Chosen"}
                 </h1>
-                <label className="upload-label" for="file">{"1). Choose a file to upload"}</label>
+                <label className="upload-label" htmlFor={`${this.props.field}-file`}>{"1). Choose a file to upload"}</label>
                 <h1>then</h1>
                 <button className="upload-button" type='submit'>{"2). Upload the file to the App"}</button>
               </form>

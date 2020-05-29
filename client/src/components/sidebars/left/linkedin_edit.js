@@ -5,9 +5,10 @@ const LinkedinEdit = (props) => {
 
   return (
     <div id="linkedin-edit" className="last-left-div edit-section hidden-section">
-
-      <button className="add-field-button" onClick={() => props.addMultiField("linkedin")}>ADD</button>
-      <button className="remove-field-button" onClick={() => props.removeMultiField("linkedin")}>REMOVE</button>
+      <div className="edit-buttons">
+        <button className="add-field-button" onClick={() => props.addMultiField("linkedin")}><i className="fas fa-plus"/></button>
+        <button className="remove-field-button" onClick={() => props.removeMultiField("linkedin")}><i className="fas fa-minus"/></button>
+      </div>
       {linkedinInputs.map((e, i) => {
         let k = i * 3
         return (

@@ -6,6 +6,7 @@ import Searches from "./resume-components/RecentSearches.js";
 import Toolkit from "./resume-components/Toolkit.js";
 import CurrentPosition from "./resume-components/CurrentPos.js";
 import Education from "./resume-components/Education.js";
+import Ats from "./resume-components/Ats";
 
 class Resume extends React.Component {
   constructor(props) {
@@ -37,23 +38,28 @@ class Resume extends React.Component {
         <Education state={this.props.state}/>
         
         <div className="resume-last-row">
+          {this.props.state.federalExperience && 
+            <div className="agencies-and-clearences">
 
-          <div className="agencies-and-clearences">
-
-            <div className="resume-federal-agencies">
-              <h1 className="title">FEDERAL AGENCIES</h1>
-              <div className="agencies-images">
-              {Object.values(this.props.state.federalAgencies).map((url, i) => {
-                return(
-                  <img key={i} crossOrigin="anonymous" className="federal-agency-icon" src={url + "?" + new Date().getTime() } alt="federal-agency"/>
-                )
-              })}
+              <div className="resume-federal-agencies">
+                <h1 className="title">FEDERAL AGENCIES</h1>
+                <div className="agencies-images">
+                  {Object.values(this.props.state.federalAgencies).map((url, i) => {
+                    return (
+                      <img key={i} crossOrigin="anonymous" className="federal-agency-icon" src={url + "?" + new Date().getTime()} alt="federal-agency" />
+                    )
+                  })}
+                </div>
               </div>
-            </div>
 
-              <ClearenceLevels state={this.props.state}/> 
-  
-          </div>
+              <ClearenceLevels state={this.props.state} />
+
+            </div>
+          }
+          
+          {
+            this.props.state.federalExperience || <Ats state={this.props.state}/>
+          }
 
           <div className="linkedin-review-div">
             

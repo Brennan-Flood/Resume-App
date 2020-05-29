@@ -7,6 +7,7 @@ import SearchesEdit from "./left/searches_edit.js";
 import EduEdit from "./left/education_edit.js";
 import ClearenceEdit from "./left/clearence_edit.js";
 import LinkedinEdit from "./left/linkedin_edit.js";
+import AtsEdit from "./left/ats_edit.js";
 
 class LeftSidebar extends React.Component {
   constructor(props) {
@@ -43,6 +44,7 @@ class LeftSidebar extends React.Component {
 
   toggleEditSection(e, field) {
     let section = document.getElementById(field);
+    console.log(section);
     section.classList.toggle("hidden-section");
     e.target.classList.toggle("collapsed");
   }
@@ -260,30 +262,81 @@ class LeftSidebar extends React.Component {
         </div>
 
         <div className="sidebar-section">
-
-          <div className="sidebar-section-header">
-            <i onClick={e => this.toggleModal("federalAgencies")} className="fas fa-plus-square modal-button"></i>
-            <h1 className="sidebar-section-name">Federal Agencies</h1>
-          </div>
-
-              <ImageCategory name={"Federal Agencies"} 
-                imageCategoryId={"5ec7459c19eaed359f63641e"}
-                addImageToField={this.props.addImageToField}
-                removeImageFromField={this.props.removeImageFromField}
-                field={"federalAgencies"}
-                state={this.props.state}
-                toggleModal={this.toggleModal}
-              /> 
+          
+            {this.props.state.federalExperience ? (
+              <div className="sidebar-section-header">
+              <i onClick={e => this.toggleModal("federalAgencies")} className="fas fa-plus-square modal-button"></i>
+              <h1 className="sidebar-section-name">Federal Agencies</h1>
+              <button onClick={this.props.toggleFederalExperience}> TOGGLE </button>
+              </div>
+            ) : (
+              <div className="sidebar-section-header">
+                <i className="fas fa-plus-square modal-button"></i>
+                <h1 className="sidebar-section-name disabled">Federal Agencies</h1>
+                <button onClick={this.props.toggleFederalExperience}> TOGGLE </button>
+              </div>
+            )}
+            
+            <ImageCategory name={"Federal Agencies"}
+              imageCategoryId={"5ec7459c19eaed359f63641e"}
+              addImageToField={this.props.addImageToField}
+              removeImageFromField={this.props.removeImageFromField}
+              field={"federalAgencies"}
+              state={this.props.state}
+              toggleModal={this.toggleModal}
+            /> 
+              
         </div>
 
         <div className="sidebar-section">
-          <div className="sidebar-section-header">
-            <i onClick={e => this.toggleEditSection(e, "clearence-edit")} className="fas fa-chevron-down collapse-button collapsed" />
-            <h1 className="sidebar-section-name">Clearence Levels</h1>
 
-          </div>
-
+          {this.props.state.federalExperience ? (
+            <div className="sidebar-section-header">
+              <i onClick={e => this.toggleEditSection(e, "clearence-edit")} className="fas fa-chevron-down collapse-button collapsed" />
+              <h1 className="sidebar-section-name">Clearence Levels</h1>
+              <button onClick={this.props.toggleFederalExperience}> TOGGLE </button>
+            </div>
+          ) : (
+              <div className="sidebar-section-header">
+                <i className="fas fa-chevron-down collapse-button collapsed" />
+                <h1 className="sidebar-section-name disabled">Clearence Levels</h1>
+                <button onClick={this.props.toggleFederalExperience}> TOGGLE </button>
+              </div>
+            )}
+          
           <ClearenceEdit state={this.props.state} updateClearenceSlider={this.updateClearenceSlider} />
+          
+        </div>
+
+        <div className="sidebar-section">
+
+          {!this.props.state.federalExperience ? (
+            <div className="sidebar-section-header">
+              <i onClick={e => this.toggleEditSection(e, "ats-edit")} className="fas fa-chevron-down collapse-button collapsed" />
+              <i onClick={e => this.toggleModal("ats")} className="fas fa-plus-square modal-button"></i>
+              <h1 className="sidebar-section-name">Applicant Tracking Systems</h1>
+              <button onClick={this.props.toggleFederalExperience}> TOGGLE </button>
+            </div>
+          ) : (
+              <div className="sidebar-section-header">
+                <i className="fas fa-chevron-down collapse-button collapsed" />
+                <i className="fas fa-plus-square modal-button"></i>
+                <h1 className="sidebar-section-name disabled">Applicant Tracking Systems</h1>
+                <button onClick={this.props.toggleFederalExperience}> TOGGLE </button>
+              </div>
+            )}
+          
+            <AtsEdit
+              addImageToField={this.props.addImageToField}
+              removeImageFromField={this.props.removeImageFromField}
+              field={"ats"}
+              state={this.props.state}
+              updateMultiField={this.updateMultiField}
+              addMultiField={this.addMultiField}
+              removeMultiField={this.removeMultiField}
+              toggleModal={this.toggleModal}
+              updateAts={this.props.updateAts} />
+          
         </div>
 
         <div className="sidebar-section">
