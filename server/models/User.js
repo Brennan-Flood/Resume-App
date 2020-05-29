@@ -52,6 +52,7 @@ UserSchema.statics.toggleUserMembership = function (id) {
 UserSchema.statics.toggleAdmin = function (id) {
   return this.findById(id)
     .then((user) => {
+      console.log(user);
       if (!user.admin) {
         user.admin = true;
       } else {

@@ -59,30 +59,26 @@ const Mutations = {
     }
   `,
   TOGGLE_USER_MEMBERSHIP: gql`
-    mutation ToggleUserMembership($userId: ID!) {
-      toggleUserMembership(_id: $userId) {
-        user{
-          name
-          _id
-          member
-          admin
-          rootAdmin
-          email
-        }
+    mutation ToggleUserMembership($id: ID!) {
+      toggleUserMembership(_id: $id) {
+        _id
+        name
+        email
+        admin
+        member
+        rootAdmin
       }
     }
   `,
   TOGGLE_USER_ADMIN: gql`
-    mutation ToggleUserMembership($userId: ID!) {
-      toggleUserAdmin(_id: $userId) {
-        user{
-          name
-          _id
-          member
-          admin
-          rootAdmin
-          email
-        }
+    mutation ToggleUserAdmin($id: ID!) {
+      toggleUserAdmin(_id: $id) { 
+        name
+        _id
+        member
+        admin
+        rootAdmin
+        email
       }
     }
   `,

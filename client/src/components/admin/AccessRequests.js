@@ -9,7 +9,7 @@ const AccessRequests = (props) => {
     console.log(toggleUserMembership, userId);
     toggleUserMembership({
       variables: {
-        userId: userId
+        id: userId
       }}
     )
   }
@@ -19,19 +19,21 @@ const AccessRequests = (props) => {
   }
 
   return (
-    <div>
-      Access Requests
+    <div className="user-index">
       <Mutation mutation={TOGGLE_USER_MEMBERSHIP} update={(cache, data) => updateCache(cache, data)} >
         {(toggleUserMembership, {data}) => {
           console.log(toggleUserMembership);
           return (
-            <ul>
+            <ul className="user-list">
               {Object.values(props.users).map((user, i) => {
                 if (!user.member) {
                   return (
-                    <div key={i}>
+                    <div className="user-node" key={i}>
+                      <div className="user-info">
                       <h1>{user.name}</h1>
-                      <button onClick={e => toggleMembership(toggleUserMembership, user._id)}>Toggle</button>
+                      <h1>{user.email}</h1>
+                      </div>
+                      { props.user.admin && <button onClick={e => toggleMembership(toggleUserMembership, user._id)}>Accept User</button> }
                     </div>
 
                   )

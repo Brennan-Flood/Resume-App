@@ -17,7 +17,7 @@ const Nav = (props) => {
           {({ data }) => {
             if (data.isLoggedIn) {
               return (
-                <div className="nav" style={{left: "50vw - 110px"}}>
+                <div className="nav" style={{left: "50vw", marginLeft: "-130px"}}>
                   <button
                     className="logout-button"
                     onClick={e => {
