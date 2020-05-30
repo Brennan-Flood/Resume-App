@@ -2,7 +2,6 @@ import React from "react";
 import LeftSidebar from "../sidebars/LeftSidebar";
 import RightSidebar from "../sidebars/RightSidebar";
 import ResumeContainer from "../resume/ResumeContainer";
-import Pending from "../pending/Pending";
 
 class Builder extends React.Component {
   constructor(props) {
@@ -178,7 +177,7 @@ class Builder extends React.Component {
         updateAts={this.updateAts}
        />
 
-      <ResumeContainer state={this.state} />
+      <ResumeContainer state={this.state} user={this.props.user}/>
 
       <RightSidebar saveImageString={this.saveImageString} updateBackgroundColor={this.updateBackgroundColor} />
 

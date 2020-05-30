@@ -65,6 +65,7 @@ textarea::placeholder, .left-input::placeholder {
 }
 
 .sidebar-section-header {
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -74,6 +75,17 @@ textarea::placeholder, .left-input::placeholder {
 
 .sidebar-section-header.disabled {
   color: gray;
+}
+
+.sidebar-section-header.disabled:after {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  height: 1px;
+  background: gray;
+  content: " ";
+  width: 90%;
+  display: block;
 }
 
 .last-left-div {
@@ -137,31 +149,12 @@ textarea::placeholder, .left-input::placeholder {
   font-size: 30px;
 }
 
-.font-comparison-1 {
-  font-size: 30px;
-  font-family: 'AvenirLTStd-medium';
-  font-weight: 900;
-}
-
-.font-comparison-2 {
-  font-size: 30px;
-  font-family: 'AvenirLTStd-roman';
-
-}
-
-.font-comparison-3 {
-  font-size: 30px;
-  font-family: 'AvenirLTStd-black';
-
-}
-
-.font-comparison-4 {
-  font-size: 30px;
-  font-family: 'AvenirLTStd-light';
-}
-
 .sidebar-section {
   width: 100%;
+}
+
+.fed-checkbox {
+  margin-left: 10px;
 }
 
 .collapse-button {

@@ -261,18 +261,24 @@ class LeftSidebar extends React.Component {
         </div>
 
         <div className="sidebar-section">
+          <div className="sidebar-section-header">
+            <input className="fed-checkbox" onChange={this.props.toggleFederalExperience} defaultChecked={this.props.state.federalExperience} type="checkbox"></input>
+
+            <h1 className="sidebar-section-name"> Federal Experience</h1>
+          </div>
+        </div>
+
+        <div className="sidebar-section">
           
             {this.props.state.federalExperience ? (
               <div className="sidebar-section-header">
               <i onClick={e => this.toggleModal("federalAgencies")} className="fas fa-plus-square modal-button"></i>
               <h1 className="sidebar-section-name">Federal Agencies</h1>
-              <input onClick={this.props.toggleFederalExperience} checked={true} type="checkbox"></input>
               </div>
             ) : (
               <div className="sidebar-section-header disabled">
                 <i className="fas fa-plus-square modal-button disabled"></i>
                 <h1 className="sidebar-section-name disabled">Federal Agencies</h1>
-                <input onClick={this.props.toggleFederalExperience} checked={false} type="checkbox"></input>
               </div>
             )}
             
@@ -287,19 +293,19 @@ class LeftSidebar extends React.Component {
               
         </div>
 
+       
+
         <div className="sidebar-section">
 
           {this.props.state.federalExperience ? (
             <div className="sidebar-section-header">
               <i onClick={e => this.toggleEditSection(e, "clearence-edit")} className="fas fa-chevron-down collapse-button collapsed" />
               <h1 className="sidebar-section-name">Clearence Levels</h1>
-              <input onClick={this.props.toggleFederalExperience} checked={true} type="checkbox"></input>
             </div>
           ) : (
               <div className="sidebar-section-header disabled">
                 <i className="fas fa-chevron-down collapse-button collapsed disabled" />
                 <h1 className="sidebar-section-name disabled">Clearence Levels</h1>
-                <input onClick={this.props.toggleFederalExperience} checked={false} type="checkbox"></input>
               </div>
             )}
           
@@ -315,14 +321,12 @@ class LeftSidebar extends React.Component {
               <i onClick={e => this.toggleModal("ats")} className="fas fa-plus-square modal-button"></i>
               <h1 className="sidebar-section-name">Applicant Tracking Systems</h1>
               {/* <button onClick={this.props.toggleFederalExperience}> TOGGLE </button> */}
-              <input onClick={this.props.toggleFederalExperience} checked={true} type="checkbox"></input>
             </div>
           ) : (
               <div className="sidebar-section-header disabled">
                 <i className="fas fa-chevron-down collapse-button collapsed disabled" />
                 <i className="fas fa-plus-square modal-button disabled"></i>
                 <h1 className="sidebar-section-name disabled">Applicant Tracking Systems</h1>
-                <input onClick={this.props.toggleFederalExperience} checked={false} type="checkbox"></input>
               </div>
             )}
           

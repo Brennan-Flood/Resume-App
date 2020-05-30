@@ -23,8 +23,8 @@ const ImageCategory = (props) => {
   return (
     <Query query={FETCH_CATEGORY} variables={{ id: props.imageCategoryId }}>
       {({ loading, error, data }) => {
-        if (loading) return <p>Loading...</p>;
-        if (error) return <p>Error</p>;
+        if (loading) return <div style={{width: "0px", height: "0px", visibility: "hidden"}}></div>;
+        if (error) return <p>{error}</p>;
         return (
           <div id={props.field} className="image-selector-modal hidden-modal">
             <div className="image-selector-interior">

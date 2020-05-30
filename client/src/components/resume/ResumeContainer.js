@@ -82,7 +82,7 @@ const ResumeContainer = (props) => {
       <Resume resumeRef={resumeRef} state={props.state}/>
 
     </PanZoom>
-    <Nav recenter={recenter} print={print} panZoomRef={panZoomRef}/>
+    <Nav recenter={recenter} print={print} panZoomRef={panZoomRef} user={props.user}/>
     </div>
 
   )

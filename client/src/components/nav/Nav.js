@@ -7,17 +7,23 @@ import Queries from "../../graphql/queries";
 const { IS_LOGGED_IN } = Queries;
 
 
-
 const Nav = (props) => {
-
+  const getLeft = () => {
+    if (props.user.admin ) {
+      return `${-375 / 2.0}px`
+    } else {
+      return `${-309 / 2.0}px`
+    }
+  }
   return (
     <ApolloConsumer>
       {client => (
         <Query query={IS_LOGGED_IN}>
-          {({ data }) => {
+          {({ data, loading, error }) => {
+            if (loading) return <div></div>
             if (data.isLoggedIn) {
               return (
-                <div className="nav" style={{left: "50vw", marginLeft: "-130px"}}>
+                <div id="nav" className="nav" style={{ left: "50%", marginLeft: getLeft() }}>
                   <button
                     className="logout-button"
                     onClick={e => {
@@ -44,8 +50,8 @@ const Nav = (props) => {
                     <h1> Recenter Resume </h1>
                   </button>
 
-                  <button 
-                  onClick={() => {props.panZoomRef.current.zoomIn(1)}}
+                  <button
+                    onClick={() => { props.panZoomRef.current.zoomIn(1) }}
                   >
                     <i className="fas fa-search-plus"></i>
                     <h1> Zoom IN </h1>
@@ -57,11 +63,11 @@ const Nav = (props) => {
                     <i className="fas fa-search-minus"></i>
                     <h1> Zoom OUT</h1>
                   </button>
-
-                  <Link className="admin-button" to="/admin"> 
-                   <i className="fas fa-users"></i>
+                  {(props.user.admin || props.user.rootAdmin) && <Link className="admin-button" to="/admin">
+                    <i className="fas fa-users"></i>
                     <h1>Admin Page</h1>
-                  </Link>
+                  </Link> }
+                  
                 </div>
               );
             } else {
