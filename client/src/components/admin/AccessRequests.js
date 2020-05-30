@@ -6,7 +6,6 @@ const { TOGGLE_USER_MEMBERSHIP } = Mutations;
 const AccessRequests = (props) => {
 
   const toggleMembership = (toggleUserMembership, userId) => {
-    console.log(toggleUserMembership, userId);
     toggleUserMembership({
       variables: {
         id: userId
@@ -15,14 +14,12 @@ const AccessRequests = (props) => {
   }
 
   const updateCache = (cache, data) => {
-    console.log(data);
   }
 
   return (
     <div className="user-index">
       <Mutation mutation={TOGGLE_USER_MEMBERSHIP} update={(cache, data) => updateCache(cache, data)} >
         {(toggleUserMembership, {data}) => {
-          console.log(toggleUserMembership);
           return (
             <ul className="user-list">
               {Object.values(props.users).map((user, i) => {

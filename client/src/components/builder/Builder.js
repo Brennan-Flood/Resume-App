@@ -70,7 +70,6 @@ class Builder extends React.Component {
       this.setState({ [field]: currentFieldState});
     }
 
-    console.log(this.state.ats)
   }
 
   updateToolkit(e, id) {
@@ -106,7 +105,6 @@ class Builder extends React.Component {
     let key;
     let i;
 
-    console.log(metaField, inputs, index, field, value)
     if (metaField === "edu") {
       currentField = this.state.educationAndEmployment;
       pushObject = { title: "", entity: "", startTime: "", endTime: "", image: "" };

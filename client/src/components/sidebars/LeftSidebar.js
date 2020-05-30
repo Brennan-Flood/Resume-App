@@ -44,7 +44,6 @@ class LeftSidebar extends React.Component {
 
   toggleEditSection(e, field) {
     let section = document.getElementById(field);
-    console.log(section);
     section.classList.toggle("hidden-section");
     e.target.classList.toggle("collapsed");
   }

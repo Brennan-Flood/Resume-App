@@ -14,7 +14,6 @@ const MemberIndex = (props) => {
   }
 
   const updateCache = (cache, data) => {
-    console.log(cache);
   }
   return (
     <div className="user-index">

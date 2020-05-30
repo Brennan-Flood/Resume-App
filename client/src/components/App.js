@@ -34,11 +34,9 @@ class App extends React.Component {
             )
           }
           if (data.isLoggedIn ) {
-            console.log(this.props.currentUserId)
             return (
               <Query query={CURRENT_USER_ID}>
                 {({ data, loading, error }) => {
-                  console.log(data);
                   if (loading) return (
                   <div className="loading-div">
                     <Loader

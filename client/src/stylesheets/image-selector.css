@@ -64,10 +64,6 @@
   padding: 5px;
 }
 
-.image-select-list > button {
-  
-}
-
 .image-select-list > button > img {
   border-radius: 100%;
   border: 2px solid black;

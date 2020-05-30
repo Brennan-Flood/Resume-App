@@ -82,9 +82,7 @@ class FileUpload extends Component {
   }
 
   handleFileUpload = (event) => {
-    console.log(event.target.files)
     this.setState({ file: event.target.files, uploading: true });
-    console.log(this.state)
   }
 
   render() {

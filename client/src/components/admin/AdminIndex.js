@@ -15,7 +15,6 @@ const AdminIndex = (props) => {
   }
 
   const updateCache = (cache, data) => {
-    console.log(cache);
   }
 
   return (

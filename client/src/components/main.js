@@ -13,7 +13,6 @@ const Main = (props) => {
   return (
     <Query query={CURRENT_USER_INFO} variables={{ id: props.currentUserId }}>
       {({ data, loading, error }) => {
-        console.log(data);
         if (loading) return (
           <div className="loading-div" >
             <Loader

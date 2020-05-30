@@ -17,7 +17,6 @@ const ATS = (props) => {
       />
       {atsIds.map((id, i) => {
         let k = i * 3
-        console.log(id, ats[id])
         return (
           <div className="toolkit-node" key={id}>
             <img className="toolkit-image" src={ats[id].url}></img>
