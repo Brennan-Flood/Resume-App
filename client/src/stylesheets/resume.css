@@ -30,6 +30,7 @@
   align-items: center;
   vertical-align: middle;
   border-color: blue;
+  z-index: 1;
 }
 
 .arrow-left {
