@@ -3,7 +3,7 @@ import React from "react";
 const ClearenceEdit = (props) => {
   return (
     <div id="clearence-edit" className="clearences edit-section hidden-section">
-      <div className="clearence-div edit-section">
+      <div className="clearence-div">
         <h1>Secret: {props.state.clearenceLevels.secret * 5}%</h1>
         <input onChange={props.updateClearenceSlider("secret")}
           type="range"

@@ -45,6 +45,14 @@ class Builder extends React.Component {
   }
 
   toggleFederalExperience() {
+    let clearence = document.getElementById("clearence-edit");
+    let ats = document.getElementById("ats-edit");
+      if (!clearence.classList.contains("hidden-section")) {
+      clearence.classList.toggle("hidden-section"); 
+      }
+      if (!ats.classList.contains("hidden-section")) {
+      ats.classList.toggle("hidden-section");
+      }
     this.setState({federalExperience: !this.state.federalExperience});
   }
 
@@ -143,7 +151,6 @@ class Builder extends React.Component {
         this.setState({recruitingToolkit: newField})
       } 
     }
-    console.log(this.state.educationAndEmployment)
   }
 
   updateBackgroundColor(color) {
