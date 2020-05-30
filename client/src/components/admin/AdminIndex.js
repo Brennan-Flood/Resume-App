@@ -34,8 +34,6 @@ const AdminIndex = (props) => {
                     {props.user.rootAdmin && <button onClick={e => ToggleUserAdmin(toggleUserAdmin, user._id)}> Remove Admin</button>}
                   </div>
                 )
-              } else {
-                return;
               }
             })}
           </ul>

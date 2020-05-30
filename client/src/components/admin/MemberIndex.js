@@ -33,9 +33,7 @@ const MemberIndex = (props) => {
                   
                 </div>
               )
-            } else {
-              return;
-            }
+            } 
           })}
         </ul>
           )

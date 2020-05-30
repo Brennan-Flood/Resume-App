@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 class AdminNav extends React.Component {
   constructor(props) {
     super(props);
+
+    this.getClass = this.getClass.bind(this);
   }
 
   getClass(field) {
@@ -19,7 +21,7 @@ class AdminNav extends React.Component {
   render() {
   return (
     <div className="admin-nav">
-      <Link to="/"> Home </Link>
+      <Link to="/"> <i className="fas fa-long-arrow-alt-left home-button" style={{fontSize: "30px"}}></i> </Link>
       <Link to="/admin/requests" className={this.getClass("requests")}> Requests </Link>
       <Link to="/admin/members" className={this.getClass("members")}> Members </Link>
       <Link to="/admin/admins" className={this.getClass("/admins")}> Admins </Link>

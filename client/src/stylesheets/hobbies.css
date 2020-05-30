@@ -1,10 +1,11 @@
-/* .hobbies-and-interests {
-
-} */
+.hobbies-and-interests {
+margin-bottom: 10px;
+}
 
 .hobbies-images {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .hobbies-image {

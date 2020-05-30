@@ -6,7 +6,7 @@ const { TOGGLE_USER_MEMBERSHIP } = Mutations;
 const AccessRequests = (props) => {
 
   const toggleMembership = (toggleUserMembership, userId) => {
-    toggleUserMembership({
+    return toggleUserMembership({
       variables: {
         id: userId
       }}
@@ -34,9 +34,7 @@ const AccessRequests = (props) => {
                     </div>
 
                   )
-                } else {
-                  return;
-                }
+                } 
               })}
             </ul>
           )

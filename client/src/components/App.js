@@ -3,8 +3,6 @@ import { Query } from "react-apollo";
 import Splash from "./auth/Splash";
 import Main from "./main";
 import Loader from "react-loader-spinner";
-import Builder from "./builder/Builder";
-import Pending from "./pending/Pending";
 import '../css_index.css';
 
 

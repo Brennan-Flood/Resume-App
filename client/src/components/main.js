@@ -5,7 +5,6 @@ import Pending from "./pending/Pending";
 import Loader from "react-loader-spinner";
 import { Query } from "react-apollo";
 import Queries from "../graphql/queries";
-import AuthRoute from "../util/route_util";
 import AdminMain from "./admin/AdminMain";
 const { CURRENT_USER_INFO } = Queries;
 
