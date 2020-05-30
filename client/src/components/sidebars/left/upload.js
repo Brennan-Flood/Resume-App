@@ -58,7 +58,7 @@ class FileUpload extends Component {
     const formData = new FormData();
     if (this.state.file) {
     formData.append('file', this.state.file[0]);
-    axios.post(`http://localhost:5000/test-upload`, formData, {
+    axios.post(`/test-upload`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
         "Access-Control-Allow-Origin": "*"

@@ -2,6 +2,7 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Builder from "./builder/Builder";
 import Pending from "./pending/Pending";
+import Loader from "react-loader-spinner";
 import { Query } from "react-apollo";
 import Queries from "../graphql/queries";
 import AuthRoute from "../util/route_util";
@@ -14,7 +15,15 @@ const Main = (props) => {
       {({ data, loading, error }) => {
         console.log(data);
         if (loading) return (
-          <div>loading...</div>
+          <div className="loading-div" >
+            <Loader
+              type="Circles"
+              color="#00BFFF"
+              height={400}
+              width={400}
+              timeout={10000}
+            />
+          </div>
         )
         if (error) return <div>error</div>
         if (data.user.member) {
@@ -27,7 +36,7 @@ const Main = (props) => {
                   ) : (<Redirect to="/" />)  
                 } 
                 /> 
-                
+
                 <Route path="/" render={ props => <Builder user={data.user} currentUserId={props.currentUserId} />} />
               </Switch>
             </div>

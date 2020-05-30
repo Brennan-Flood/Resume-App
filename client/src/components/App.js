@@ -2,6 +2,7 @@ import React from 'react';
 import { Query } from "react-apollo";
 import Splash from "./auth/Splash";
 import Main from "./main";
+import Loader from "react-loader-spinner";
 import Builder from "./builder/Builder";
 import Pending from "./pending/Pending";
 import '../css_index.css';
@@ -15,14 +16,40 @@ class App extends React.Component {
     return (
       
       <Query query= {IS_LOGGED_IN}> 
-        {({data }) => {
+        {({data, error, loading }) => {
+          if (error) {
+            window.loaction.reload()
+          }
+          if (loading) {
+            return (
+              <div className="loading-div">
+                <Loader
+                  type="Circles"
+                  color="#00BFFF"
+                  height={100}
+                  width={100}
+                  timeout={3000}
+                />
+              </div>
+            )
+          }
           if (data.isLoggedIn ) {
             console.log(this.props.currentUserId)
             return (
               <Query query={CURRENT_USER_ID}>
                 {({ data, loading, error }) => {
                   console.log(data);
-                  if (loading) return <div>loading</div>
+                  if (loading) return (
+                  <div className="loading-div">
+                    <Loader
+                      type="Rings"
+                      color="#00BFFF"
+                      height={100}
+                      width={100}
+                      timeout={3000}
+                    />
+                  </div>
+                  )
                   if (error) {window.location.reload()};
                   return (
                     <Main currentUserId={data.currentUserId}/>

@@ -11,3 +11,19 @@
   height: 100vh;
   overflow: inherit;
 }
+
+.loading-div {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-section::-webkit-scrollbar {
+  display: none;
+}
+
+.left-sidebar::-webkit-scrollbar {
+  display: none;
+}

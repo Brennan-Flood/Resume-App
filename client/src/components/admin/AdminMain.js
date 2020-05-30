@@ -1,5 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
+import Loader from "react-loader-spinner";
 import AdminNav from "./AdminNav";
 import AdminIndex from "./AdminIndex";
 import MemberIndex from "./MemberIndex";
@@ -18,7 +19,17 @@ class AdminMain extends React.Component {
       
         <Query query={FETCH_USERS}> 
           {({ data, loading, error }) => {
-            if (loading) return <div> loading... </div>
+            if (loading) return (
+              <div className="loading-div" >
+                <Loader
+                  type="Circles"
+                  color="#00BFFF"
+                  height={400}
+                  width={400}
+                  timeout={10000}
+                />
+              </div>
+            )
             if (error) return <div> error </div>
             return (
               <div className="admin-main">

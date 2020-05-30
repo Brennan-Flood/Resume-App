@@ -60,6 +60,7 @@ app.post('/test-upload', (request, response) => {
 //       <AllowedHeader>Authorization</AllowedHeader>
 //     </CORSRule>
 //   </CORSConfiguration>
+console.log(process.env.NODE_ENV)
 
 const port = process.env.PORT || 5000;
 
