@@ -23,7 +23,7 @@ class App extends React.Component {
                 {({ data, loading, error }) => {
                   console.log(data);
                   if (loading) return <div>loading</div>
-                  if (error) return <div>error</div>
+                  if (error) {window.location.reload()};
                   return (
                     <Main currentUserId={data.currentUserId}/>
                   )}}

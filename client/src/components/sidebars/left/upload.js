@@ -13,7 +13,6 @@ class FileUpload extends Component {
     super();
     this.state = {
       file: null,
-      name: "test",
       uploading: false
     };
 
