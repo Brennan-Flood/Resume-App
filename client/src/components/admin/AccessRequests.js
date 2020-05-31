@@ -11,9 +11,40 @@ const AccessRequests = (props) => {
         id: userId
       }}
     )
-  }
+  };
 
   const updateCache = (cache, data) => {
+  };
+
+  const sortRequests = (toggleUserMembership) => {
+    let requestCount = 0;
+    let members = Object.values(props.users).map((user, i) => {
+      if (!user.member) {
+        requestCount += 1
+        return (
+          <div className="user-node" key={i}>
+            <div className="user-info">
+              <h1>{user.name}</h1>
+              <h1>{user.email}</h1>
+            </div>
+            {props.user.admin && <button onClick={e => toggleMembership(toggleUserMembership, user._id)}>Accept User</button>}
+          </div>
+
+        )
+      } else {
+        return null;
+      }
+    })
+
+    if (requestCount === 0) {
+      return (
+        <div className="admin-null-div">
+          <h1 className="admin-null">{"No Requests to Show :("}</h1>
+        </div>
+      )
+    } else {
+      return members
+    }
   }
 
   return (
@@ -22,7 +53,7 @@ const AccessRequests = (props) => {
         {(toggleUserMembership, {data}) => {
           return (
             <ul className="user-list">
-              {Object.values(props.users).map((user, i) => {
+              {/* {Object.values(props.users).map((user, i) => {
                 if (!user.member) {
                   return (
                     <div className="user-node" key={i}>
@@ -35,7 +66,8 @@ const AccessRequests = (props) => {
 
                   )
                 } 
-              })}
+              })} */}
+              {sortRequests(toggleUserMembership)}
             </ul>
           )
         }}

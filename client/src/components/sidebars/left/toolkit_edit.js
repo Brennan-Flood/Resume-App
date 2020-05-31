@@ -19,7 +19,7 @@ const ToolkitEdit = (props) => {
         let k = i * 3
         return (
           <div className="toolkit-node" key={id}>
-            <img className="toolkit-image" src={toolkit[id].url}></img>
+            <img alt="toolkit" className="toolkit-image" src={toolkit[id].url}></img>
             <input
               key={k + 2}
               onChange={(e) => props.updateToolkit(e, id)}

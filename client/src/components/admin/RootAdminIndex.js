@@ -15,7 +15,7 @@ const RootAdminIndex = (props) => {
               </div>
             )
           } else {
-            return;
+            return null;
           }
         })}
       </ul>

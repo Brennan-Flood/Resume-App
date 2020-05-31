@@ -31,7 +31,7 @@ const Toolkit = (props) => {
                 
               </svg>
               
-              <img style={{border: `2px solid ${props.state.themeColor.backgroundColor}`}} className="arc-image" crossOrigin="anonymous" src={e.url + "?" + new Date().getTime()} /> 
+              <img alt="Toolkit" style={{border: `2px solid ${props.state.themeColor.backgroundColor}`}} className="arc-image" crossOrigin="anonymous" src={e.url + "?" + new Date().getTime()} /> 
             </div>
           )
         })}

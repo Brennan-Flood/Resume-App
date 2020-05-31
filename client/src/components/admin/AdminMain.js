@@ -11,9 +11,6 @@ import Queries from "../../graphql/queries";
 const { FETCH_USERS } = Queries;
 
 class AdminMain extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       

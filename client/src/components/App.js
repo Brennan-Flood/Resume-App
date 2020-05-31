@@ -7,7 +7,7 @@ import '../css_index.css';
 
 
 import Queries from "../graphql/queries";
-const { IS_LOGGED_IN, IS_USER_MEMBER, CURRENT_USER_ID, CURRENT_USER_INFO } = Queries;
+const { IS_LOGGED_IN, CURRENT_USER_ID } = Queries;
 class App extends React.Component {
 
   render() {
