@@ -56,13 +56,22 @@
   color: red;
 }
 
-.admin-null-div {
+.admin-null-div, .pending-div {
   display: flex;
-  height: 600px;
+  flex-direction: column;
+  height: 100vh;
   justify-content: center;
   align-items: center;
 }
 
-.admin-null {
+.pending-div {
+  background-color: rgb(229, 229, 229);
+}
+
+.admin-null, .pending {
   font-size: 30px;
+  text-align: center;
+  width: 70%;
+  margin-top: 0px;
+  margin-bottom: 50px;
 }

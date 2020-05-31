@@ -41,7 +41,7 @@ const Main = (props) => {
               )
         } else {
            return (
-              <Pending />
+              <Pending user={data.user} />
                   )
         }
                 
