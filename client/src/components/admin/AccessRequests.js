@@ -53,20 +53,6 @@ const AccessRequests = (props) => {
         {(toggleUserMembership, {data}) => {
           return (
             <ul className="user-list">
-              {/* {Object.values(props.users).map((user, i) => {
-                if (!user.member) {
-                  return (
-                    <div className="user-node" key={i}>
-                      <div className="user-info">
-                      <h1>{user.name}</h1>
-                      <h1>{user.email}</h1>
-                      </div>
-                      { props.user.admin && <button onClick={e => toggleMembership(toggleUserMembership, user._id)}>Accept User</button> }
-                    </div>
-
-                  )
-                } 
-              })} */}
               {sortRequests(toggleUserMembership)}
             </ul>
           )

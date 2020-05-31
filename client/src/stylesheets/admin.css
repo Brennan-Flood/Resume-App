@@ -55,3 +55,14 @@
 .home-button:hover {
   color: red;
 }
+
+.admin-null-div {
+  display: flex;
+  height: 600px;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-null {
+  font-size: 30px;
+}

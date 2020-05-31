@@ -53,20 +53,6 @@ const MemberIndex = (props) => {
         {(toggleUserAdmin, { data }) => {
           return (
         <ul className="user-list">
-          {/* {Object.values(props.users).map((user, i) => {
-            if (user.member && !user.admin && !user.rootAdmin) {
-              return (
-                <div className="user-node" key={ i } >
-                  <div className="user-info">
-                    <h1>{user.name}</h1>
-                    <h1>{user.email}</h1>
-                  </div>
-                  {props.user.rootAdmin && <button onClick={e => ToggleUserAdmin(toggleUserAdmin, user._id)}> Make Admin</button>}
-                  
-                </div>
-              )
-            } 
-          })} */}
           {sortMembers(toggleUserAdmin)}
         </ul>
           )
