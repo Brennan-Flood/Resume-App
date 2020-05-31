@@ -33,7 +33,7 @@ class Builder extends React.Component {
 
     this.update = this.update.bind(this);
     this.updateMultiField = this.updateMultiField.bind(this);
-    this.updateBackgroundColor = this.updateBackgroundColor.bind(this);
+    this.updateTheme = this.updateTheme.bind(this);
     this.updateClearenceLevel = this.updateClearenceLevel.bind(this);
     this.addImageToField = this.addImageToField.bind(this);
     this.removeImageFromField = this.removeImageFromField.bind(this);
@@ -150,8 +150,8 @@ class Builder extends React.Component {
     }
   }
 
-  updateBackgroundColor(color) {
-    this.setState({themeColor: {backgroundColor: color}});
+  updateTheme(backgroundColor, fontColor) {
+    this.setState({themeColor: {backgroundColor: backgroundColor, color: fontColor}});
   }
 
   updateClearenceLevel(field, value) {
@@ -179,7 +179,7 @@ class Builder extends React.Component {
 
       <ResumeContainer state={this.state} user={this.props.user}/>
 
-      <RightSidebar saveImageString={this.saveImageString} updateBackgroundColor={this.updateBackgroundColor} />
+      <RightSidebar saveImageString={this.saveImageString} updateTheme={this.updateTheme} />
 
        </div>
                   

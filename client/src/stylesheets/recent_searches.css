@@ -1,8 +1,12 @@
 .recent-searches-div {
   display: flex;
   flex-direction: column;
-  width: 42%;
   overflow-wrap: normal;
+  margin: 0px;
+  width: 210px;
+  text-overflow: wrap;
+  font-family: 'AvenirLTStd-light';
+  white-space: pre-line;
 }
 
 .title, .recent-searches-header {
@@ -12,8 +16,10 @@
 
 .recent-searches {
   padding: 4px;
+  padding-top: 0px;
   flex-wrap: wrap;
   height: 100%;
   width: 100%;
   text-overflow: clip;
+  white-space: pre-line;
 }

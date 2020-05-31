@@ -13,12 +13,6 @@ const EduEdit = (props) => {
         return (
           <div key={k} className="education-cluster">
             <h1 className="education-index">Experience #{i + 1}</h1>
-            <input 
-              type="text"
-              className="education-input"
-              placeholder="www.imgur.com"
-              onChange={props.updateMultiField("edu", i + 1, "image")}
-            />
             <input
               type="text"
               id={k + 1}

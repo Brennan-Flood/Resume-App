@@ -14,11 +14,12 @@
   flex-wrap: wrap;
 }
 
-.linkedin-resume > p, .linkedin-resume > h1, .recent-searches-div {
+.linkedin-resume > p, .linkedin-resume > h1{
   margin-top: 5px;
   width: 210px;
   text-overflow: wrap;
   font-family: 'AvenirLTStd-light';
+  white-space: pre-line;
 }
 
 .linkedin-resume > p, .recent-searches {

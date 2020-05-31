@@ -63,6 +63,7 @@ class LeftSidebar extends React.Component {
     
     let newValues;
     let inputs;
+    
     if (field === "edu") {
 
       inputs = this.state.educationInputs + 1;
@@ -85,8 +86,6 @@ class LeftSidebar extends React.Component {
       this.setState({ recruitingToolkitSliders: inputs, recruitingToolkitValues: newValues });
 
     }
-
-    
 
     this.props.updateMultiField(field, inputs);
     window.setTimeout(() => {leftSidebar.scrollBy({top: 200, behavior: "smooth"});}, 200)

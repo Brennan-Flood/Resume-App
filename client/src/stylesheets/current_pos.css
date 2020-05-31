@@ -7,27 +7,27 @@
 .current-position-header {
   display: flex;
   flex-direction: row;
-  padding-top: 10px;
+  padding-top: 5px;
   padding-bottom: 10px;
 }
 
-.current-position-list {
-  margin-left: 10px;
-}
-
 .current-title {
-  font-size: 10px;
+  font-size: 12px;
+  margin-top: 2px;
 }
 
 .current-company {
-  font-size: 10px;
+  font-size: 12px;
+  margin-top: 2px;
 }
 
 .current-company-time {
-  font-size: 10px;
+  font-size: 12px;
+  margin-top: 2px;
 }
 
 .current-position-description {
+  white-space: pre-line;
   font-size: 10px;
   width: 160px;
 }

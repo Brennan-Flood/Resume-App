@@ -3,12 +3,6 @@ import React from "react";
 const CurrentPosEdit = (props) => {
   return (
     <div id="current-pos-edit" className="current-pos-edit edit-section hidden-section">
-      <input 
-        className="left-input"
-        type="text"
-        placeholder="www.imgur.com/image"
-        onChange={props.update("currentImage")}
-      />
 
       <input
         className="left-input"
