@@ -4,11 +4,13 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
+  margin-top: 20px;
+  padding-top: 30px;
+  padding-bottom: 20px;
 }
 
 .education-and-employment-div > .title {
   text-align: center;
-  padding: 10px;
 }
 
 .experience-timeline {
@@ -16,7 +18,7 @@
   display: flex;
   justify-content: space-around;
   z-index: 2;
-  height: 35px;
+  height: 20px;
 }
 
 .experience-node {
@@ -27,7 +29,7 @@
   height: 100px;
   font-size: 12px;
   text-align: center;
-  margin-top: 23px;
+  margin-top: 8px;
 }
 
 .experience-bar {
@@ -60,11 +62,4 @@
 
 .experience-loc {
   margin-top: 2px;
-}
-
-.edu-image {
-  width: 21px;
-  height: 21px;
-  border-radius: 100%;
-  border: 1px solid black;
 }
