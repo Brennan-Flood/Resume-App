@@ -22,7 +22,7 @@ class Builder extends React.Component {
       educationAndEmployment: [[1, { title: "", entity: "", startTime: "", endTime: "", image: "" }]],
       clearenceLevels: {secret: 10, topSecret: 10, TSSCI: 10, TSSCICIPolygraph: 10, TSSCIFullScopePolygraph: 10},
       linkedinReviews: [[1, {author: "", body: ""}]],
-      themeColor: {backgroundColor: "rgb(229, 229, 229)"},
+      themeColor: {backgroundColor: "rgb(229, 229, 229)", color: "black"},
       federalAgencies: {},
       hobbies: {},
       image: "",
@@ -33,7 +33,7 @@ class Builder extends React.Component {
 
     this.update = this.update.bind(this);
     this.updateMultiField = this.updateMultiField.bind(this);
-    this.updateTheme = this.updateTheme.bind(this);
+    this.updateThemeBackground = this.updateThemeBackground.bind(this);
     this.updateClearenceLevel = this.updateClearenceLevel.bind(this);
     this.addImageToField = this.addImageToField.bind(this);
     this.removeImageFromField = this.removeImageFromField.bind(this);
@@ -41,6 +41,7 @@ class Builder extends React.Component {
     this.updateToolkit = this.updateToolkit.bind(this);
     this.toggleFederalExperience = this.toggleFederalExperience.bind(this);
     this.updateAts = this.updateAts.bind(this);
+    this.updateThemeFont = this.updateThemeFont.bind(this);
   }
 
   toggleFederalExperience() {
@@ -150,8 +151,12 @@ class Builder extends React.Component {
     }
   }
 
-  updateTheme(backgroundColor, fontColor) {
-    this.setState({themeColor: {backgroundColor: backgroundColor, color: fontColor}});
+  updateThemeBackground(backgroundColor) {
+    this.setState({ themeColor: { backgroundColor: backgroundColor, color: this.state.themeColor.color } });
+  }
+
+  updateThemeFont(fontColor) {
+    this.setState({ themeColor: {backgroundColor: this.state.themeColor.backgroundColor, color: fontColor} });
   }
 
   updateClearenceLevel(field, value) {
@@ -179,7 +184,7 @@ class Builder extends React.Component {
 
       <ResumeContainer state={this.state} user={this.props.user}/>
 
-      <RightSidebar saveImageString={this.saveImageString} updateTheme={this.updateTheme} />
+      <RightSidebar saveImageString={this.saveImageString} updateThemeBackground={this.updateThemeBackground} updateThemeFont={this.updateThemeFont}/>
 
        </div>
                   
