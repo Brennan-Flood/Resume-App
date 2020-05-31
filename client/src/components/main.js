@@ -12,18 +12,11 @@ const Main = (props) => {
   return (
     <Query query={CURRENT_USER_INFO} variables={{ id: props.currentUserId }}>
       {({ data, loading, error }) => {
-        if (loading) return (
-          <div className="loading-div" >
-            <Loader
-              type="Circles"
-              color="#00BFFF"
-              height={400}
-              width={400}
-              timeout={10000}
-            />
-          </div>
-        )
-        if (error) return <div>error</div>
+        if (loading) return props.loader();
+        if (error) {
+          window.location.reload();
+          return props.loader();
+        }
         if (data.user.member) {
           return (
             <div className="main">

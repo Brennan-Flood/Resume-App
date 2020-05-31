@@ -9,7 +9,24 @@ import '../css_index.css';
 import Queries from "../graphql/queries";
 const { IS_LOGGED_IN, CURRENT_USER_ID } = Queries;
 class App extends React.Component {
+  constructor(props) {
+    super(props);
 
+    this.loader = this.loader.bind(this);
+  }
+  loader() {
+    return (
+      <div className="loading-div">
+        <Loader
+          type="ThreeDots"
+          color="black"
+          height={300}
+          width={300}
+          timeout={3000}
+        />
+      </div>
+    )
+  }
   render() {
     return (
       
@@ -17,38 +34,22 @@ class App extends React.Component {
         {({data, error, loading }) => {
           if (error) {
             window.loaction.reload()
+            return this.loader();
           }
           if (loading) {
-            return (
-              <div className="loading-div">
-                <Loader
-                  type="Circles"
-                  color="#00BFFF"
-                  height={100}
-                  width={100}
-                  timeout={3000}
-                />
-              </div>
-            )
+            return this.loader()
           }
           if (data.isLoggedIn ) {
             return (
               <Query query={CURRENT_USER_ID}>
                 {({ data, loading, error }) => {
-                  if (loading) return (
-                  <div className="loading-div">
-                    <Loader
-                      type="Rings"
-                      color="#00BFFF"
-                      height={100}
-                      width={100}
-                      timeout={3000}
-                    />
-                  </div>
-                  )
-                  if (error) {window.location.reload()};
+                  if (loading) return this.loader();
+                  if (error) {
+                    window.location.reload()
+                    return this.loader();
+                  };
                   return (
-                    <Main currentUserId={data.currentUserId}/>
+                    <Main loader={this.loader} currentUserId={data.currentUserId}/>
                   )}}
               </Query>
               

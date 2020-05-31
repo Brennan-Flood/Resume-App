@@ -58,7 +58,9 @@ class LeftSidebar extends React.Component {
 
 
 
-  addMultiField(field) {    
+  addMultiField( field ) { 
+    const leftSidebar = document.getElementById("left-sidebar");
+    
     let newValues;
     let inputs;
     if (field === "edu") {
@@ -84,7 +86,10 @@ class LeftSidebar extends React.Component {
 
     }
 
+    
+
     this.props.updateMultiField(field, inputs);
+    window.setTimeout(() => {leftSidebar.scrollBy({top: 200, behavior: "smooth"});}, 200)
   }
 
   removeMultiField(field) {
@@ -158,7 +163,7 @@ class LeftSidebar extends React.Component {
   render() {
 
     return (
-      <div className="left-sidebar">
+      <div id="left-sidebar" className="left-sidebar">
         
         <h1 className="sidebar-header">INPUTS</h1>
 
@@ -259,7 +264,7 @@ class LeftSidebar extends React.Component {
           <div className="sidebar-section-header">
             <input className="fed-checkbox" onChange={this.props.toggleFederalExperience} defaultChecked={this.props.state.federalExperience} type="checkbox"></input>
 
-            <h1 className="sidebar-section-name"> Federal Experience</h1>
+            <h1 className="sidebar-section-name"> Federal Experience?</h1>
           </div>
         </div>
 
@@ -315,7 +320,6 @@ class LeftSidebar extends React.Component {
               <i onClick={e => this.toggleEditSection(e, "ats-edit")} className="fas fa-chevron-down collapse-button collapsed" />
               <i onClick={e => this.toggleModal("ats")} className="fas fa-plus-square modal-button"></i>
               <h1 className="sidebar-section-name">Applicant Tracking Systems</h1>
-              {/* <button onClick={this.props.toggleFederalExperience}> TOGGLE </button> */}
             </div>
           ) : (
               <div className="sidebar-section-header disabled">
