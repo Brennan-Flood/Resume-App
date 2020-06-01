@@ -26,7 +26,7 @@ class Resume extends React.Component {
 
           <Toolkit state={this.props.state}/>
 
-          <div className="recent-searches-div">
+          <div className="recent-searches-div outer">
             
             <Searches state={this.props.state}/>
             <Hobbies state={this.props.state}/>

@@ -3,10 +3,14 @@
   flex-direction: column;
   overflow-wrap: normal;
   margin: 0px;
-  width: 210px;
+  width: 180px;
   text-overflow: wrap;
   font-family: 'AvenirLTStd-light';
   white-space: pre-line;
+}
+
+.recent-searches-div.outer {
+  margin-left: 10px;
 }
 
 .title, .recent-searches-header {
@@ -14,9 +18,14 @@
   font-size: 13px;
 }
 
+.recent-searches-header {
+  margin-bottom: 5px;
+}
+
 .recent-searches {
   padding: 4px;
   padding-top: 0px;
+  padding-left: 0px;
   flex-wrap: wrap;
   height: 100%;
   width: 100%;
