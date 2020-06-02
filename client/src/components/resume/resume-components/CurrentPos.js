@@ -13,7 +13,7 @@ const CurrentPosition = (props) => {
           <h1 className="current-title">{props.state.currentTitle}</h1>
           <h1 className="current-company">{props.state.currentCompany}</h1>
           <h1 className="current-company-time">
-            {props.state.currentPositionStartTime} - {props.state.currentPositionTime}
+            {props.state.currentPositionStartTime} - Present
           </h1>
         </ul>
 

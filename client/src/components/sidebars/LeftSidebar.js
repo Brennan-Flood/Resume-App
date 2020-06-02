@@ -316,19 +316,19 @@ class LeftSidebar extends React.Component {
 
           {!this.props.state.federalExperience ? (
             <div className="sidebar-section-header">
-              <i onClick={e => this.toggleEditSection(e, "ats-edit")} className="fas fa-chevron-down collapse-button collapsed" />
+              {/* <i onClick={e => this.toggleEditSection(e, "ats-edit")} className="fas fa-chevron-down collapse-button collapsed" /> */}
               <i onClick={e => this.toggleModal("ats")} className="fas fa-plus-square modal-button"></i>
               <h1 className="sidebar-section-name">Applicant Tracking Systems</h1>
             </div>
           ) : (
               <div className="sidebar-section-header disabled">
-                <i className="fas fa-chevron-down collapse-button collapsed disabled" />
+                {/* <i className="fas fa-chevron-down collapse-button collapsed disabled" /> */}
                 <i className="fas fa-plus-square modal-button disabled"></i>
                 <h1 className="sidebar-section-name disabled">Applicant Tracking Systems</h1>
               </div>
             )}
           
-            <AtsEdit
+            {/* <AtsEdit
               addImageToField={this.props.addImageToField}
               removeImageFromField={this.props.removeImageFromField}
               field={"ats"}
@@ -337,7 +337,15 @@ class LeftSidebar extends React.Component {
               addMultiField={this.addMultiField}
               removeMultiField={this.removeMultiField}
               toggleModal={this.toggleModal}
-              updateAts={this.props.updateAts} />
+              updateAts={this.props.updateAts} /> */}
+          <ImageCategory
+            addImageToField={this.props.addImageToField}
+            removeImageFromField={this.props.removeImageFromField}
+            field={"ats"}
+            state={this.props.state}
+            imageCategoryId={"5ed0a46462348f113e475199"}
+            toggleModal={this.toggleModal}
+          />
           
         </div>
 

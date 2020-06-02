@@ -1,12 +1,12 @@
 .recruiting-toolkit-div {
   display: flex;
-  width: 25%;
+  width: 30%;
   flex-direction: column;
 }
 
 .arc-container {
   margin: 5px;
-  margin-left: 0px;
+  margin-left: 5px;
   width: 40px;
   height: 40px;
   border-radius: 100%;
@@ -17,7 +17,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 140px
+  width: 150px
 }
 
 .arc-image {
@@ -32,7 +32,9 @@
 .toolkit-image {
   width: 40px;
   height: 40px;
-
+  margin-left: 15px;
+  border-radius: 100%;
+  border: 1px solid black;
 }
 
 .toolkit-node {
@@ -41,4 +43,12 @@
   margin-left: -10px;
   padding-left: -10px ;
   margin-bottom: 5px;
+}
+.toolkit-info {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-evenly;
+  margin: 10px;
+  align-items: center;
 }

@@ -30,7 +30,7 @@
 }
 
 .image-selector-interior {
-  z-index: 2;
+  z-index: 4;
   position: relative;
   display: flex;
   flex-direction: column;

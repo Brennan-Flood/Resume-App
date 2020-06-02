@@ -15,7 +15,7 @@ class Builder extends React.Component {
       currentImage: "",
       currentTitle: "",
       currentCompany: "",
-      currentPositionStartTime: "",
+      currentPositionStartTime: 2020,
       currentPositionTime: "",
       currentPositionParagraph: "",
       recentSearches: "",
@@ -40,19 +40,19 @@ class Builder extends React.Component {
     this.saveImageString = this.saveImageString.bind(this);
     this.updateToolkit = this.updateToolkit.bind(this);
     this.toggleFederalExperience = this.toggleFederalExperience.bind(this);
-    this.updateAts = this.updateAts.bind(this);
+    // this.updateAts = this.updateAts.bind(this);
     this.updateThemeFont = this.updateThemeFont.bind(this);
   }
 
   toggleFederalExperience() {
     let clearence = document.getElementById("clearence-edit");
-    let ats = document.getElementById("ats-edit");
+    // let ats = document.getElementById("ats");
       if (!clearence.classList.contains("hidden-section")) {
       clearence.classList.toggle("hidden-section"); 
       }
-      if (!ats.classList.contains("hidden-section")) {
-      ats.classList.toggle("hidden-section");
-      }
+      // if (!ats.classList.contains("hidden-section")) {
+      // ats.classList.toggle("hidden-section");
+      // }
     this.setState({federalExperience: !this.state.federalExperience});
   }
 
@@ -80,13 +80,13 @@ class Builder extends React.Component {
     this.setState({toolkit: currentToolkit})
   }
 
-  updateAts(e, id) {
-    let currentAts = this.state.ats;
-    let currentNode = currentAts[id];
-    currentNode.value = e.target.value;
-    currentAts[id] = currentNode;
-    this.setState({ ats: currentAts })
-  }
+  // updateAts(e, id) {
+  //   let currentAts = this.state.ats;
+  //   let currentNode = currentAts[id];
+  //   currentNode.value = e.target.value;
+  //   currentAts[id] = currentNode;
+  //   this.setState({ ats: currentAts })
+  // }
 
   removeImageFromField(field, id) {
     let currentFieldState = this.state[field];

@@ -17,6 +17,7 @@
   justify-content: space-evenly;
   align-items: center;
   background-color: white;
+  min-height: 120px;
 }
 
 .recruiting-experience-div {

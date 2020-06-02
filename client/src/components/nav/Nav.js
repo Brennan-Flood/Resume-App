@@ -10,11 +10,19 @@ const { IS_LOGGED_IN } = Queries;
 const Nav = (props) => {
   const getLeft = () => {
     if (props.user.admin ) {
-      return `${-375 / 2.0}px`
+      return -375 / 2.0
     } else {
-      return `${-309 / 2.0}px`
+      return -309 / 2.0
     }
   }
+
+  const collapseNav = () => {
+    const nav = document.getElementById("nav");
+    const navCollapse = document.getElementById("nav-collapse");
+    nav.classList.toggle("collapsed");
+    navCollapse.classList.toggle("collapsed");
+  };
+
   return (
     <ApolloConsumer>
       {client => (
@@ -23,7 +31,8 @@ const Nav = (props) => {
             if (loading) return <div></div>
             if (data.isLoggedIn) {
               return (
-                <div id="nav" className="nav" style={{ left: "50%", marginLeft: getLeft() }}>
+                <div id="nav" className="nav collapsed" style={{ left: "50%", marginLeft: `${getLeft()}px` }}>
+                  <button onClick={collapseNav} style={{ left: `${-getLeft() - 20}px` }} className="toggle-nav"><i id="nav-collapse" className="fas fa-caret-up nav-collapse collapsed"></i></button>
                   <button
                     className="logout-button"
                     onClick={e => {
