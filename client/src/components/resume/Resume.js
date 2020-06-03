@@ -46,7 +46,9 @@ class Resume extends React.Component {
                 <div className="agencies-images">
                   {Object.values(this.props.state.federalAgencies).map((url, i) => {
                     return (
-                      <img key={i} crossOrigin="anonymous" className="federal-agency-icon" src={url + "?" + new Date().getTime()} alt="federal-agency" />
+                      <div key={i} className="federal-agency-icon-container">
+                      <img  crossOrigin="anonymous" className="federal-agency-icon" src={url + "?" + new Date().getTime()} alt="federal-agency" />
+                      </div>
                     )
                   })}
                 </div>
