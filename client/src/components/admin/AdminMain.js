@@ -17,15 +17,15 @@ class AdminMain extends React.Component {
         <Query query={FETCH_USERS}> 
           {({ data, loading, error }) => {
             if (loading) return (
-              <div className="loading-div" >
-                <Loader
-                  type="Circles"
-                  color="#00BFFF"
-                  height={400}
-                  width={400}
-                  timeout={10000}
-                />
-              </div>
+                <div className="loading-div">
+                  <Loader
+                    type="ThreeDots"
+                    color="black"
+                    height={300}
+                    width={300}
+                    timeout={3000}
+                  />
+                </div>
             )
             if (error) return <div> error </div>
             return (
