@@ -8,7 +8,9 @@ const Hobbies = (props) => {
       <div className="hobbies-images">
         {Object.values(props.state.hobbies).map((url, i) => {
           return (
-            <img key={i} crossOrigin="anonymous" className="hobbies-image" src={url + "?" + new Date().getTime() } alt="hobby" />
+            <div key={i} className="hobbies-image-container">
+              <img crossOrigin="anonymous" className="hobbies-image" src={url + "?" + new Date().getTime() } alt="hobby" />
+            </div>
           )
         })}
       </div>

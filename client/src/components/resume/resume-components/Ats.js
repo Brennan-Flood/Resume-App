@@ -8,7 +8,9 @@ const Ats = (props) => {
       <div className="recruiting-toolkit-sliders ats">
         {Object.values(props.state.ats).map((e, i) => {
           return (
-            <img alt="ATS" style={{ border: `2px solid ${props.state.themeColor.backgroundColor}` }} className="ats-image" crossOrigin="anonymous" src={e.url + "?" + new Date().getTime()} />
+            <div key={i} className="ATS-container">
+              <img alt="ATS" style={{ border: `2px solid ${props.state.themeColor.backgroundColor}` }} className="ats-image" crossOrigin="anonymous" src={e.url + "?" + new Date().getTime()} />
+            </div>
           )
         })}
 
