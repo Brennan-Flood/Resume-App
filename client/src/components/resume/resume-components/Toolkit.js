@@ -8,8 +8,8 @@ const Toolkit = (props) => {
       <div className="recruiting-toolkit-sliders">
         {Object.values(props.state.toolkit).map((e, i) => {
           const arcGenerator = arc()
-            .innerRadius(20)
-            .outerRadius(16)
+            .innerRadius(23)
+            .outerRadius(20)
             .startAngle(0)
             .endAngle((e.value / 20) * 6.3)
             .padAngle(0)
@@ -20,7 +20,7 @@ const Toolkit = (props) => {
           return (
             <div key={k} className="arc-container">
               <svg 
-                key={k + 1} width="40" height="40"
+                key={k + 1} width="46" height="46"
               >
                
                 <path key={k + 2}
@@ -30,8 +30,9 @@ const Toolkit = (props) => {
                 />
                 
               </svg>
-              
-              <img alt="Toolkit" style={{border: `2px solid ${props.state.themeColor.backgroundColor}`}} className="arc-image" crossOrigin="anonymous" src={e.url + "?" + new Date().getTime()} /> 
+              <div style={{ border: `2px solid ${props.state.themeColor.backgroundColor}` }} className="arc-image-container">
+              <img alt="Toolkit"  className="arc-image" crossOrigin="anonymous" src={e.url + "?" + new Date().getTime()} /> 
+              </div>
             </div>
           )
         })}
