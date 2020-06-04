@@ -47,10 +47,6 @@ UserSchema.statics.toggleUserMembership = function (id) {
       if (!user.draft) {
         const Draft = mongoose.model("drafts");
         draft = new Draft();
-        draft.save().
-        then((draft) => {
-          user.draft = draft;
-        });
       }
       
     } else {
@@ -58,23 +54,19 @@ UserSchema.statics.toggleUserMembership = function (id) {
       user.admin = false;
       user.rootAdmin = false;
     }
-    // if (draft === null) {
+    if (draft === null) {
       return Promise.all([user.save()])
         .then(([user]) => user);
-    // } else {
-    //   user.save()
-    //   .then((user) => {
-    //     draft.save()
-    //       .then((draft) => {
-    //         user.draft = draft;
-    //         return Promise.all([user.save()])
-    //           .then(([user]) => {
-    //             console.log(user);
-    //             return user
-    //           })
-    //       })
-    //   })
-    // }
+    } else {
+      return draft.save()
+      .then((draft) => {
+        user.draft = draft;
+        return user.save()
+        .then((user) => {
+          return user;
+        });
+      })
+    }
 
   })
 }
@@ -84,6 +76,7 @@ UserSchema.statics.toggleAdmin = function (id) {
     .then((user) => {
       if (!user.admin) {
         user.admin = true;
+        user.member = true;
       } else {
         user.admin = false;
         user.rootAdmin = false;
@@ -98,6 +91,8 @@ UserSchema.statics.toggleRootAdmin = function (id) {
     .then((user) => {
       if (!user.rootAdmin) {
         user.rootAdmin = true;
+        user.admin = true;
+        user.member = true;
       } else {
         user.rootAdmin = false;
       }

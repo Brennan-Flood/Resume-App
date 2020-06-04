@@ -82,5 +82,13 @@ const Mutations = {
       }
     }
   `,
+  UPDATE_DRAFT: gql`
+    mutation updateDraft($id: ID!, $state: String!) {
+      updateDraft(_id: $id, state: $state) {
+        _id
+        state
+      }
+    }
+  `
 };
 export default Mutations;

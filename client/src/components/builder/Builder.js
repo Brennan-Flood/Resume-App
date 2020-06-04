@@ -2,34 +2,15 @@ import React from "react";
 import LeftSidebar from "../sidebars/LeftSidebar";
 import RightSidebar from "../sidebars/RightSidebar";
 import ResumeContainer from "../resume/ResumeContainer";
+import { Mutation } from "react-apollo";
+import Mutations from "../../graphql/mutations";
+
+const { UPDATE_DRAFT } = Mutations;
 
 class Builder extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      firstName: "",
-      lastName: "",
-      title: "",
-      yearsExperience: "",
-      currentImage: "",
-      currentTitle: "",
-      currentCompany: "",
-      currentPositionStartTime: 2020,
-      currentPositionTime: "",
-      currentPositionParagraph: "",
-      recentSearches: "",
-      educationAndEmployment: [[1, { title: "", entity: "", startTime: "", endTime: "", image: "" }]],
-      clearenceLevels: {secret: 10, topSecret: 10, TSSCI: 10, TSSCICIPolygraph: 10, TSSCIFullScopePolygraph: 10},
-      linkedinReviews: [[1, {author: "", body: ""}]],
-      themeColor: {backgroundColor: "rgb(229, 229, 229)", color: "black"},
-      federalAgencies: {},
-      hobbies: {},
-      image: "",
-      toolkit: {},
-      ats: {},
-      federalExperience: true,
-    }
+    this.state = JSON.parse(props.draft.state);
 
     this.update = this.update.bind(this);
     this.updateMultiField = this.updateMultiField.bind(this);
@@ -42,6 +23,50 @@ class Builder extends React.Component {
     this.toggleFederalExperience = this.toggleFederalExperience.bind(this);
     // this.updateAts = this.updateAts.bind(this);
     this.updateThemeFont = this.updateThemeFont.bind(this);
+    this.resetDraft = this.resetDraft.bind(this);
+  }
+
+  componentDidMount() {
+    setInterval(() => {
+      if (JSON.parse(this.props.draft.state) !== this.state) {
+        this.props.updateDraft({
+          variables: {id: this.props.draftId, state: JSON.stringify(this.state)}
+        })
+      }
+    }, 10000)
+  }
+
+  resetDraft() {
+    let freshState = {
+      firstName: "",
+      lastName: "",
+      title: "",
+      yearsExperience: "",
+      currentImage: "",
+      currentTitle: "",
+      currentCompany: "",
+      currentPositionStartTime: 2020,
+      currentPositionTime: "",
+      currentPositionParagraph: "",
+      recentSearches: "",
+      educationAndEmployment: [[1, { title: "", entity: "", startTime: "", endTime: "", image: "" }]],
+      clearenceLevels: { secret: 10, topSecret: 10, TSSCI: 10, TSSCICIPolygraph: 10, TSSCIFullScopePolygraph: 10 },
+      linkedinReviews: [[1, { author: "", body: "" }]],
+      themeColor: { backgroundColor: "rgb(229, 229, 229)", color: "black" },
+      federalAgencies: {},
+      hobbies: {},
+      image: "",
+      toolkit: {},
+      ats: {},
+      federalExperience: true,
+    };
+    this.setState(freshState);
+    this.props.updateDraft({
+      variables: {
+        state: JSON.stringify(freshState)
+      }
+    })
+    
   }
 
   toggleFederalExperience() {
@@ -167,28 +192,31 @@ class Builder extends React.Component {
 
   render() {
     return(
-      
-      <div className="builder">
 
-      <LeftSidebar
-        toggleFederalExperience={this.toggleFederalExperience}
-        update={this.update}
-        updateMultiField={this.updateMultiField}
-        updateClearenceLevel={this.updateClearenceLevel}
-        addImageToField={this.addImageToField}
-        removeImageFromField={this.removeImageFromField}
-        state={this.state}
-        updateToolkit={this.updateToolkit}
-        updateAts={this.updateAts}
-       />
+            <div className="builder">
 
-      <ResumeContainer state={this.state} user={this.props.user}/>
+              <LeftSidebar
+                toggleFederalExperience={this.toggleFederalExperience}
+                update={this.update}
+                updateMultiField={this.updateMultiField}
+                updateClearenceLevel={this.updateClearenceLevel}
+                addImageToField={this.addImageToField}
+                removeImageFromField={this.removeImageFromField}
+                state={this.state}
+                updateToolkit={this.updateToolkit}
+                updateAts={this.updateAts}
+              />
 
-      <RightSidebar saveImageString={this.saveImageString} updateThemeBackground={this.updateThemeBackground} updateThemeFont={this.updateThemeFont}/>
+              <ResumeContainer resetDraft={this.resetDraft} state={this.state} user={this.props.user} />
 
-       </div>
-                  
-    )
+              <RightSidebar saveImageString={this.saveImageString} updateThemeBackground={this.updateThemeBackground} updateThemeFont={this.updateThemeFont} />
+
+            </div>
+          )
+        
+
+         
+    
   }
 
 }

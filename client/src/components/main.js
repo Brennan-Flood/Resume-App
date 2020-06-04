@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import Builder from "./builder/Builder";
+import BuilderContainer from "./builder/BuilderContainer";
 import Pending from "./pending/Pending";
 import Loader from "react-loader-spinner";
 import { Query } from "react-apollo";
@@ -17,6 +17,11 @@ const Main = (props) => {
           window.location.reload();
           return props.loader();
         }
+        if (!data.user) {
+          window.location.reload();
+          return props.loader;
+        }
+        console.log(data.user.draft._id)
         if (data.user.member) {
           return (
             <div className="main">
@@ -28,7 +33,7 @@ const Main = (props) => {
                 } 
                 /> 
 
-                <Route path="/" render={ props => <Builder user={data.user} currentUserId={props.currentUserId} />} />
+                <Route path="/" render={props => <BuilderContainer user={data.user} draftId={data.user.draft._id} currentUserId={props.currentUserId} />} />
               </Switch>
             </div>
               )

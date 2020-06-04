@@ -31,4 +31,13 @@ const DraftSchema = new Schema({
   }
 });
 
+DraftSchema.statics.updateState = function(id, newState) {
+  return this.findById(id)
+  .then((draft) => {
+    draft.state = newState;
+    return draft.save()
+    .then((draft) => draft)
+  })
+}
+
 module.exports = mongoose.model("drafts", DraftSchema)

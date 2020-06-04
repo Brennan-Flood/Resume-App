@@ -8,6 +8,7 @@ const BasicInfoEdit = (props) => {
         type="text"
         placeholder="First Name"
         onChange={props.update("firstName")}
+        value={props.state.firstName}
       />
 
       <input
@@ -15,6 +16,8 @@ const BasicInfoEdit = (props) => {
         type="text"
         placeholder="Last Name"
         onChange={props.update("lastName")}
+        value={props.state.lastName}
+
       />
 
       <input
@@ -22,6 +25,7 @@ const BasicInfoEdit = (props) => {
         type="text"
         placeholder="Title"
         onChange={props.update("title")}
+        value={props.state.title}
       />
 
       <input
@@ -29,6 +33,7 @@ const BasicInfoEdit = (props) => {
         type="number"
         placeholder="Years of Experience"
         onChange={props.update("yearsExperience")}
+        value={props.state.yearsExperience}
       />
     </div>
   )

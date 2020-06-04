@@ -172,7 +172,7 @@ class LeftSidebar extends React.Component {
             <i onClick={e => this.toggleEditSection(e, "basic")} className="fas fa-chevron-down collapse-button collapsed" />
             <h1 className="sidebar-section-name"> Basic Info </h1>
           </div>
-          <BasicInfoEdit update={this.update}/>
+          <BasicInfoEdit state={this.props.state} update={this.update}/>
 
         </div>
 

@@ -134,6 +134,16 @@ const mutation = new GraphQLObjectType({
           return draft;
         })
       }
+    },
+    updateDraft: {
+      type: DraftType,
+      args: {
+        _id: {type: GraphQLID},
+        state: {type: GraphQLString}
+      },
+      resolve(_, args) {
+        return Draft.updateState(args._id, args.state);
+      }
     }
   }
 });
