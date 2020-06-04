@@ -72,6 +72,10 @@ const Nav = (props) => {
                     <i className="fas fa-search-minus"></i>
                     <h1> Zoom OUT</h1>
                   </button>
+
+                  <button onClick={() => { props.resetDraft()}}>
+                    Reset Draft
+                  </button>
                   {(props.user.admin || props.user.rootAdmin) && <Link className="admin-button" to="/admin/requests">
                     <i className="fas fa-users"></i>
                     <h1>Admin Page</h1>

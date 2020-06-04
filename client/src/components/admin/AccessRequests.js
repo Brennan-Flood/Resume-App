@@ -10,7 +10,9 @@ const AccessRequests = (props) => {
       variables: {
         id: userId
       }}
-    )
+    ).then((promise) => {
+      console.log(promise)
+    })
   };
 
   const updateCache = (cache, data) => {

@@ -19,6 +19,9 @@ export default {
         member
         admin
         rootAdmin
+        draft{
+          _id
+        }
       }
       
     }
@@ -75,6 +78,13 @@ export default {
         admin
         rootAdmin
         member
+      }
+    }
+  `, 
+  FETCH_DRAFT: gql`
+    query fetchDraft($id: ID!) {
+      draft(_id: $id) {
+        state
       }
     }
   `
