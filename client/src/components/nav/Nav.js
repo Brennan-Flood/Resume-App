@@ -10,9 +10,9 @@ const { IS_LOGGED_IN } = Queries;
 const Nav = (props) => {
   const getLeft = () => {
     if (props.user.admin ) {
-      return -375 / 2.0
+      return -441 / 2.0
     } else {
-      return -309 / 2.0
+      return -375 / 2.0
     }
   }
 
@@ -73,9 +73,11 @@ const Nav = (props) => {
                     <h1> Zoom OUT</h1>
                   </button>
 
-                  <button onClick={() => { props.resetDraft()}}>
-                    Reset Draft
+                  <button className="admin-button" onClick={() => { props.resetDraft()}}>
+                    <i className="fas fa-trash-alt"></i>
+                    <h1>Delete Inputs</h1>
                   </button>
+
                   {(props.user.admin || props.user.rootAdmin) && <Link className="admin-button" to="/admin/requests">
                     <i className="fas fa-users"></i>
                     <h1>Admin Page</h1>

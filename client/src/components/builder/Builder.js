@@ -63,6 +63,7 @@ class Builder extends React.Component {
     this.setState(freshState);
     this.props.updateDraft({
       variables: {
+        id: this.props.draftId,
         state: JSON.stringify(freshState)
       }
     })
