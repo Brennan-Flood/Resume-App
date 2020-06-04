@@ -4,11 +4,13 @@ const mongoose = require("mongoose");
 const Image = require("../models/Image");
 const User = require("../models/User");
 const ImageCategory = require("../models/ImageCategory");
+const Draft = require("../models/Draft");
 
 const AuthService = require("../services/auth");
 const UserType = require("./types/user_type");
 const ImageType = require("./types/image_type");
 const ImageCategoryType = require("./types/image_category_type");
+const DraftType = require("./types/draft_type");
 
 
 const mutation = new GraphQLObjectType({
@@ -121,6 +123,16 @@ const mutation = new GraphQLObjectType({
       },
       resolve(_, args) {
         return User.toggleRootAdmin(args._id);
+      }
+    },
+    createDraft: {
+      type: DraftType,
+      resolve(_, args) {
+        return new Draft({})
+        .save()
+        .then((draft) => {
+          return draft;
+        })
       }
     }
   }

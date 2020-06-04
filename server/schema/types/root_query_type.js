@@ -3,12 +3,14 @@ const graphql = require("graphql");
 const { GraphQLObjectType, GraphQLList, GraphQLID, GraphQLNonNull } = graphql;
 
 const UserType = require("./user_type");
-const ImageType = require("./image_type")
+const ImageType = require("./image_type");
 const ImageCategoryType = require("./image_category_type");
+const DraftType = require("./draft_type");
 
 const User = mongoose.model("users");
 const Image = mongoose.model("images");
 const ImageCategory = mongoose.model("imageCategory");
+const Draft = mongoose.model("drafts");
 
 const RootQueryType = new GraphQLObjectType({
   name: "RootQueryType",
@@ -24,6 +26,19 @@ const RootQueryType = new GraphQLObjectType({
       type: new GraphQLList(UserType),
       resolve() {
         return User.find({});
+      }
+    },
+    draft: {
+      type: DraftType,
+      args: {_id: {type: new GraphQLNonNull(GraphQLID)}},
+      resolve(_, args) {
+        return Draft.findById(args._id)
+      }
+    },
+    drafts: {
+      type: new GraphQLList(DraftType),
+      resolve() {
+        return Draft.find({});
       }
     },
     image: {
