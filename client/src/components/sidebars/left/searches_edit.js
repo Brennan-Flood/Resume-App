@@ -8,6 +8,7 @@ const SearchesEdit = (props) => {
         type="text"
         placeholder="Recent Searches"
         onChange={props.update("recentSearches")}
+        value={props.state.recentSearches}
       />
     </div>
   )

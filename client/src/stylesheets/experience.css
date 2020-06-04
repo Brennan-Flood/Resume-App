@@ -38,7 +38,7 @@
   border-radius: 10px;
   background-color: rgb(20, 178, 75);
   margin-bottom: 10px;
-  margin-top: 25px;
+  margin-top: 30px;
   /* align-self: middle; */
 }
 
@@ -62,4 +62,5 @@
 
 .experience-loc {
   margin-top: 4px;
+  margin-bottom: 3px;
 }

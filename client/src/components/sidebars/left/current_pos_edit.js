@@ -9,6 +9,7 @@ const CurrentPosEdit = (props) => {
         type="text"
         placeholder="Current Title"
         onChange={props.update("currentTitle")}
+        value={props.state.currentTitle}
       />
 
       <input
@@ -16,6 +17,8 @@ const CurrentPosEdit = (props) => {
         type="text"
         placeholder="Current Company"
         onChange={props.update("currentCompany")}
+        value={props.state.currentCompany}
+
       />
 
       <input
@@ -24,6 +27,8 @@ const CurrentPosEdit = (props) => {
         placeholder="Starting Year"
         onChange={props.update("currentPositionStartTime")}
         defaultValue={new Date().getFullYear()}
+        value={props.state.currentPositionStartTime}
+
       />
 
       {/* <input
@@ -37,6 +42,8 @@ const CurrentPosEdit = (props) => {
         className="left-text"
         placeholder="Description"
         onChange={props.update("currentPositionParagraph")}
+        value={props.state.currentPositionParagraph}
+
       />
 
     </div>

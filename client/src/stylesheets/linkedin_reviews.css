@@ -12,6 +12,7 @@
 .linkedin-resume {
   width: 100%;
   flex-wrap: wrap;
+  margin-top: 10px;
 }
 
 .linkedin-resume > p, .linkedin-resume > h1{

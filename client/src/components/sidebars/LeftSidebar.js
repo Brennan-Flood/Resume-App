@@ -185,7 +185,7 @@ class LeftSidebar extends React.Component {
 
           </div>
         
-          <CurrentPosEdit update={this.update} />
+          <CurrentPosEdit state={this.props.state} update={this.update} />
 
         </div>
 
@@ -221,7 +221,7 @@ class LeftSidebar extends React.Component {
             <h1 className="sidebar-section-name"> Recent Searches</h1>
 
           </div>
-          <SearchesEdit update={this.update} />
+          <SearchesEdit state={this.props.state} update={this.update} />
 
           <div className="sidebar-section">
         </div>

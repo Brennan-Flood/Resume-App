@@ -20,7 +20,7 @@ const EduEdit = (props) => {
               className="education-input"
               placeholder="Study or Title"
               onChange={props.updateMultiField("edu", i + 1, "title")}
-            />
+              value={props.state.educationAndEmployment[i][1].title}            />
             <input
               type="text"
               id={k + 2}
@@ -28,7 +28,7 @@ const EduEdit = (props) => {
               className="education-input"
               placeholder="School or Company"
               onChange={props.updateMultiField("edu", i + 1, "entity")}
-            />
+              value={props.state.educationAndEmployment[i][1].entity}            />
             <input
               type="text"
               id={k + 3}
@@ -36,6 +36,7 @@ const EduEdit = (props) => {
               className="education-input"
               placeholder="Starting Year"
               onChange={props.updateMultiField("edu", i + 1, "startTime")}
+              value={props.state.educationAndEmployment[i][1].startTime}
             />
             <input
               type="text"
@@ -44,6 +45,7 @@ const EduEdit = (props) => {
               className="education-input"
               placeholder="Ending Year"
               onChange={props.updateMultiField("edu", i + 1, "endTime")}
+              value={props.state.educationAndEmployment[i][1].endTime}
             />
           </div>
         )

@@ -20,6 +20,14 @@ const ImageCategory = (props) => {
     document.getElementById(`${field}-upload`).classList.toggle("uploading");
   };
 
+  const getClass = function (id) {
+    if (props.state[props.field][id]) {
+      return "toggle-image selected";
+    } else {
+      return "toggle-image"
+    }
+  };
+
   return (
     <Query query={FETCH_CATEGORY} variables={{ id: props.imageCategoryId }}>
       {({ loading, error, data }) => {
@@ -34,7 +42,7 @@ const ImageCategory = (props) => {
               {data.imageCategory.images.map((img, i) => {
                 return (
                   <button  key={i} className="image-toggle-button" onClick={e => toggleImage(e, img._id, img.url)}>
-                    <img id={img._id} className="toggle-image" key={i} src={img.url} alt={props.field} />
+                    <img id={img._id} className={getClass(img._id)} key={i} src={img.url} alt={props.field} />
                   </button>
                 )
               })}
