@@ -28,6 +28,7 @@ class FileUpload extends Component {
         variables: { id: this.props.imageCategoryId }
       });
     } catch (err) {
+      toast(err, { type: "error" });
       return;
     }
 

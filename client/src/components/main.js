@@ -21,7 +21,6 @@ const Main = (props) => {
           window.location.reload();
           return props.loader;
         }
-        console.log(data.user.draft._id)
         if (data.user.member) {
           return (
             <div className="main">
