@@ -19,6 +19,12 @@ const UserType = new GraphQLObjectType({
       resolve(parentValue) {
         return User.findDraft(parentValue.id);
       }
+    },
+    recentDrafts: {
+      type: new GraphQLList(require("./draft_type")),
+      resolve(parentValue) {
+        return User.findRecentDrafts(parentValue.id);
+      }
     }
   })
 });

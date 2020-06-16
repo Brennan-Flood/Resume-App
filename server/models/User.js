@@ -35,7 +35,11 @@ const UserSchema = new Schema({
   draft: {
     type: Schema.Types.ObjectId,
     ref: "drafts"
-  }
+  },
+  recentDrafts: [{
+    type: Schema.Types.ObjectId,
+    ref: "drafts"
+  }]
 });
 
 UserSchema.statics.toggleUserMembership = function (id) {
@@ -69,7 +73,7 @@ UserSchema.statics.toggleUserMembership = function (id) {
     }
 
   })
-}
+};
 
 UserSchema.statics.toggleAdmin = function (id) {
   return this.findById(id)
@@ -84,7 +88,7 @@ UserSchema.statics.toggleAdmin = function (id) {
       return Promise.all([user.save()])
         .then(([user]) => user);
     })
-}
+};
 
 UserSchema.statics.toggleRootAdmin = function (id) {
   return this.findById(id)
@@ -99,7 +103,7 @@ UserSchema.statics.toggleRootAdmin = function (id) {
       return Promise.all([user.save()])
         .then(([user]) => user);
     })
-}
+};
 
 UserSchema.statics.addDraftToUser = function (id) {
   return this.findById(id)
@@ -112,7 +116,7 @@ UserSchema.statics.addDraftToUser = function (id) {
     return Promise.all([ user.save()])
       .then(([user]) => user)
   })
-}
+};
 
 UserSchema.statics.findDraft = function (id) {
   return this.findById(id)
@@ -121,6 +125,47 @@ UserSchema.statics.findDraft = function (id) {
       const Draft = mongoose.model("drafts");
       return Draft.findById(user.draft);
     });
-}
+};
+
+UserSchema.statics.findRecentDrafts = function (id) {
+  return this.findById(id)
+    .populate("recentDrafts")
+    .then(user => {
+      const Draft = mongoose.model("drafts");
+      const recentDrafts = user.recentDrafts;
+      let returnArr = [];
+      recentDrafts.forEach(draftId => {
+        returnArr.push(Draft.findById(draftId));
+      })
+      return returnArr;
+    })
+};
+
+UserSchema.statics.addRecentDraft = function (id, state) {
+  return this.findById(id)
+    .populate("recentDrafts")
+    .then(user => {
+      let recentDrafts = user.recentDrafts;
+      const Draft = mongoose.model("drafts");
+      let newDraft = new Draft({state: state});
+      return newDraft.save()
+      .then(draft => {
+        recentDrafts.unshift(draft);
+        if (recentDrafts.length > 10) {
+          let lastDraft = recentDrafts.pop();
+          Draft.findByIdAndDelete(lastDraft._id, function(err){
+            if (err) {
+              console.log(err);
+            }
+          });
+        }
+        user.recentDrafts = recentDrafts;
+        return user.save()
+        .then(user => {
+          return user;
+        })
+      })
+    })
+};
 
 module.exports = mongoose.model("users", UserSchema);
