@@ -59,10 +59,11 @@ const mutation = new GraphQLObjectType({
       type: ImageType,
       args: {
         url: { type: GraphQLString },
-        category: { type: GraphQLID }
+        category: { type: GraphQLID },
+        name: { type: GraphQLString }
       },
       resolve(_, args) {
-        return new Image({ url: args.url, category: args.category })
+        return new Image({ url: args.url, category: args.category, name: args.name })
           .save()
           .then(image => {
             Image.addImageToCategory(image._id, image.category);
@@ -75,7 +76,6 @@ const mutation = new GraphQLObjectType({
       args: {
         name: { type: GraphQLString},
         images: { type: new GraphQLList(GraphQLID)}
-
       },
       resolve(_, args) {
         return new ImageCategory({

@@ -12,7 +12,8 @@ const ImageType = new GraphQLObjectType({
       resolve(parentValue) {
         return Image.findCategory(parentValue.id);
       }},
-    url: { type: GraphQLString }
+    url: { type: GraphQLString },
+    name: { type: GraphQLString}
   })
 });
 

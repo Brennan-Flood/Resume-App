@@ -30,6 +30,7 @@ export default {
     query fetchImage($id: ID!) {
       image(_id: $id) {
         url
+        name
         category{
           name
           _id
@@ -41,6 +42,7 @@ export default {
     query fetchImages {
       images {
         url
+        name
         category {
           name
           _id
@@ -55,6 +57,7 @@ export default {
         images {
           _id
           url
+          name
         }
       }
     }
@@ -65,6 +68,7 @@ export default {
         name
         images{
           url
+          name
         }
       }
     }

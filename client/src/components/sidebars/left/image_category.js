@@ -41,9 +41,15 @@ const ImageCategory = (props) => {
             <ul className="image-select-list">
               {data.imageCategory.images.map((img, i) => {
                 return (
-                  <button  key={i} className="image-toggle-button" onClick={e => toggleImage(e, img._id, img.url)}>
+                  <div className="image-select-node" key={i}>
+                    {img.name ? (
+                    <h1>{img.name}</h1> )
+                     : null }
+                  
+                  <button   className="image-toggle-button" onClick={e => toggleImage(e, img._id, img.url)}>
                     <img id={img._id} className={getClass(img._id)} key={i} src={img.url} alt={props.field} />
                   </button>
+                  </div>
                 )
               })}
             </ul>

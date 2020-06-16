@@ -13,11 +13,14 @@ class FileUpload extends Component {
     super();
     this.state = {
       file: null,
-      uploading: false
+      uploading: false,
+      name: null
     };
 
     this.updateCache = this.updateCache.bind(this);
     this.submitFile = this.submitFile.bind(this);
+    this.getFormEnding = this.getFormEnding.bind(this);
+    this.updateName = this.updateName.bind(this);
   }
 
   updateCache(cache, data) {
@@ -57,6 +60,12 @@ class FileUpload extends Component {
   submitFile = (event, createImage) => {
     event.preventDefault();
     const formData = new FormData();
+    if (this.props.imageCategoryId === "5ec7459c19eaed359f63641e") {
+      if (this.state.name === null) {
+        toast("Please Name The Federal Agency", {type: "error"})
+        return;
+      }
+    }
     if (this.state.file) {
     formData.append('file', this.state.file[0]);
     axios.post(`/test-upload`, formData, {
@@ -69,6 +78,7 @@ class FileUpload extends Component {
 
       createImage({
         variables: {
+          name: this.state.name,
           url: url,
           category: this.props.imageCategoryId
         }
@@ -82,8 +92,30 @@ class FileUpload extends Component {
     }
   }
 
+  updateName = (event) => {
+    this.setState({ name: event.target.value});
+    console.log(this.state.name);
+  }
+
   handleFileUpload = (event) => {
     this.setState({ file: event.target.files, uploading: true });
+  }
+
+  getFormEnding() {
+    if (this.props.imageCategoryId === "5ec7459c19eaed359f63641e") {
+      return (
+        <div className="upload-form-ending">
+          <h1>{"2). Add the Name of the Federal Agency"}</h1>
+          <input className="fed-name" onChange={this.updateName} placeholder="Agency Name" />
+          <h1>then</h1>
+          <button className="upload-button" type='submit'>{"3). Upload the file to the App"}</button>
+        </div>
+      )
+    } else {
+      return (
+        <button className="upload-button" type='submit'>{"2). Upload the file to the App"}</button>
+      )
+    }
   }
 
   render() {
@@ -105,7 +137,7 @@ class FileUpload extends Component {
                 </h1>
                 <label className="upload-label" htmlFor={`${this.props.field}-file`}>{"1). Choose a file to upload"}</label>
                 <h1>then</h1>
-                <button className="upload-button" type='submit'>{"2). Upload the file to the App"}</button>
+                {this.getFormEnding()}
               </form>
             )
           }}
