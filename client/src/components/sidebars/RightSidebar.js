@@ -1,7 +1,40 @@
 import React from "react";
+import { Mutation } from "react-apollo";
+import Mutations from "../../graphql/mutations";
+
+const { ADD_RECENT_DRAFT } = Mutations;
 
 class RightSidebar extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.alertDraftSelection = this.alertDraftSelection.bind(this);
+  }
+
+  alertDraftSelection(state, addRecentDraft) {
+    let currentStateString = JSON.stringify(this.props.state);
+
+    if (currentStateString === state) {
+      return;
+    }
+
+    if (window.confirm("Save your current progress to your recent drafts?")) {
+      addRecentDraft({
+        variables: {
+          id: this.props.currentUserId,
+          state: currentStateString
+        }
+      }).then(() => {
+        this.props.selectRecentDraft(state);
+      })
+    } else {
+      this.props.selectRecentDraft(state);
+    }
+  }
+
   render() {
+    // <div className='delete-button' onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) this.onCancel(item) } } />
+    // this.props.selectRecentDraft(draft.state)} className="recent-draft-button"
     return (
       <div className="right-sidebar col-sm-8">
         <h1 className="sidebar-header">THEMES</h1>
@@ -39,16 +72,28 @@ class RightSidebar extends React.Component {
         </ul>
 
         <h1 className="sidebar-section-header">Recent Drafts</h1>
-        <ul>
-          {this.props.user.recentDrafts && this.props.user.recentDrafts.map((draft) => {
-            if (draft) {
-            let draftState = JSON.parse(draft.state);
-            let draftName = draftState.firstName.toLowerCase() + "_" + draftState.lastName.toLowerCase() + "_resume"
-            console.log(draftName);
-            return <h1></h1>
-            }
-          })}
-        </ul>
+        <Mutation mutation={ADD_RECENT_DRAFT}>
+        {addRecentDraft => {
+          return (
+            <ul>
+              {this.props.user.recentDrafts && this.props.user.recentDrafts.map((draft) => {
+                if (draft) {
+                  let draftState = JSON.parse(draft.state);
+                  let draftName = draftState.firstName.toLowerCase() + "_" + draftState.lastName.toLowerCase() + "_resume"
+                  return (
+                    <button 
+                    className="select-draft-button"
+                    onClick={() => this.alertDraftSelection(draft.state, addRecentDraft)}
+                    >
+                      {draftName}
+                    </button>
+                  )
+                }
+              })}
+            </ul>
+          )
+        }}
+        </Mutation>
       </div>
     )
   }

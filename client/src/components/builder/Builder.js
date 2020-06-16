@@ -24,6 +24,7 @@ class Builder extends React.Component {
     // this.updateAts = this.updateAts.bind(this);
     this.updateThemeFont = this.updateThemeFont.bind(this);
     this.resetDraft = this.resetDraft.bind(this);
+    this.selectRecentDraft = this.selectRecentDraft.bind(this);
   }
 
   componentDidMount() {
@@ -107,13 +108,9 @@ class Builder extends React.Component {
     this.setState({toolkit: currentToolkit})
   }
 
-  // updateAts(e, id) {
-  //   let currentAts = this.state.ats;
-  //   let currentNode = currentAts[id];
-  //   currentNode.value = e.target.value;
-  //   currentAts[id] = currentNode;
-  //   this.setState({ ats: currentAts })
-  // }
+  selectRecentDraft(stateString) {
+    this.setState(JSON.parse(stateString));
+  }
 
   removeImageFromField(field, id) {
     let currentFieldState = this.state[field];
@@ -220,6 +217,9 @@ class Builder extends React.Component {
               updateThemeBackground={this.updateThemeBackground} 
               updateThemeFont={this.updateThemeFont} 
               user={this.props.user}
+              selectRecentDraft={this.selectRecentDraft}
+              currentUserId={this.props.currentUserId}
+              state={this.state}
               />
 
             </div>

@@ -29,7 +29,7 @@ const ResumeContainer = (props) => {
   const print = (addRecentDraft) => new Promise(resolve => {
     panZoomRef.current.reset(1);
     panZoomRef.current.autoCenter(1);
-    console.log(props.currentUserId);
+
     addRecentDraft({
       variables: {
         id: props.currentUserId,
