@@ -37,6 +37,18 @@ class RightSidebar extends React.Component {
             style={{ backgroundColor: "rgb(39, 77, 120)" }}
             onClick={e => this.props.updateThemeFont("rgb(39, 77, 120)")}></button>
         </ul>
+
+        <h1 className="sidebar-section-header">Recent Drafts</h1>
+        <ul>
+          {this.props.user.recentDrafts && this.props.user.recentDrafts.map((draft) => {
+            if (draft) {
+            let draftState = JSON.parse(draft.state);
+            let draftName = draftState.firstName.toLowerCase() + "_" + draftState.lastName.toLowerCase() + "_resume"
+            console.log(draftName);
+            return <h1></h1>
+            }
+          })}
+        </ul>
       </div>
     )
   }

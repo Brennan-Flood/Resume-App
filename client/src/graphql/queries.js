@@ -22,6 +22,10 @@ export default {
         draft{
           _id
         }
+        recentDrafts {
+          _id
+          state
+        }
       }
       
     }

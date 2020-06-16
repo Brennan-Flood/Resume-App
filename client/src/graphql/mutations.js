@@ -90,6 +90,19 @@ const Mutations = {
         state
       }
     }
+  `,
+  ADD_RECENT_DRAFT: gql`
+    mutation addRecentDraft($id: ID!, $state: String!) {
+      addRecentDraft(_id: $id, state: $state) {
+        _id
+        name
+        email
+        recentDrafts {
+          _id
+          state
+        }
+      }
+    }
   `
 };
 export default Mutations;

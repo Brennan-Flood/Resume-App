@@ -28,7 +28,8 @@ class Builder extends React.Component {
 
   componentDidMount() {
     setInterval(() => {
-      if (JSON.parse(this.props.draft.state) !== this.state) {
+      if (this.props.draft.state !== JSON.stringify(this.state)) {
+        console.log("update running...")
         this.props.updateDraft({
           variables: {id: this.props.draftId, state: JSON.stringify(this.state)}
         })
@@ -192,6 +193,7 @@ class Builder extends React.Component {
   }
 
   render() {
+    console.log("Builder User ID:", this.props.currentUserId)
     return(
 
             <div className="builder">
@@ -208,9 +210,17 @@ class Builder extends React.Component {
                 updateAts={this.updateAts}
               />
 
-              <ResumeContainer resetDraft={this.resetDraft} state={this.state} user={this.props.user} />
+              <ResumeContainer resetDraft={this.resetDraft} 
+              state={this.state} 
+              user={this.props.user}
+              currentUserId={this.props.currentUserId}
+              />
 
-              <RightSidebar saveImageString={this.saveImageString} updateThemeBackground={this.updateThemeBackground} updateThemeFont={this.updateThemeFont} />
+              <RightSidebar saveImageString={this.saveImageString} 
+              updateThemeBackground={this.updateThemeBackground} 
+              updateThemeFont={this.updateThemeFont} 
+              user={this.props.user}
+              />
 
             </div>
           )

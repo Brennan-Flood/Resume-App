@@ -3,8 +3,12 @@ import Resume from "./Resume";
 import Nav from "../nav/Nav";
 import html2canvas from "html2canvas";
 import * as jsPDF from "jspdf" ;
-
+import { Mutation } from "react-apollo";
+import { Query } from "react-apollo";
+import Mutations from "../../graphql/mutations";
 import { PanZoom } from 'react-easy-panzoom'
+
+const { ADD_RECENT_DRAFT } = Mutations;
 
 
 const ResumeContainer = (props) => {
@@ -18,9 +22,20 @@ const ResumeContainer = (props) => {
 
   };
 
-  const print = () => new Promise(resolve => {
+  // const updateCache = (cache, data) => {
+
+  // }
+
+  const print = (addRecentDraft) => new Promise(resolve => {
     panZoomRef.current.reset(1);
     panZoomRef.current.autoCenter(1);
+    console.log(props.currentUserId);
+    addRecentDraft({
+      variables: {
+        id: props.currentUserId,
+        state: JSON.stringify(props.state)
+      }
+    })
 
     const firstName = document.querySelector(".first-name").innerHTML;
     const lastName = document.querySelector(".last-name").innerHTML;
@@ -62,29 +77,41 @@ const ResumeContainer = (props) => {
   });
 
   return (
-    <div className="pan-zoom-container">
-    <PanZoom
-      style={{width: "100%"}}
-      ref={panZoomRef}
-      keyMapping={{
-        '87': { x: 0, y: -1, z: 0 },
-        '83': { x: 0, y: 1, z: 0 },
-        '65': { x: -1, y: 0, z: 0 },
-        '68': { x: 1, y: 0, z: 0 },
-      }}
-      boundaryRatioVertical={0.8}
-      boundaryRatioHorizontal={0.8}
-      enableBoundingBox
-      minZoom={0.4}
-      maxZoom={3}
-      autoCenter
+    <Mutation mutation={ADD_RECENT_DRAFT}
     >
-      <Resume resumeRef={resumeRef} state={props.state}/>
+      
+      {(addRecentDraft, {data, loading, error}) => {
+        if (error) {
+          console.log(error);
+        }
+        console.log("resume container userId:", props.currentUserId)
+        return (
+          <div className="pan-zoom-container">
+          <PanZoom
+          style={{ width: "100%" }}
+          ref={panZoomRef}
+          keyMapping={{
+            '87': { x: 0, y: -1, z: 0 },
+            '83': { x: 0, y: 1, z: 0 },
+            '65': { x: -1, y: 0, z: 0 },
+            '68': { x: 1, y: 0, z: 0 },
+          }}
+          boundaryRatioVertical={0.8}
+          boundaryRatioHorizontal={0.8}
+          enableBoundingBox
+          minZoom={0.4}
+          maxZoom={3}
+          autoCenter
+        >
+          <Resume resumeRef={resumeRef} state={props.state} />
 
-    </PanZoom>
-    <Nav resetDraft={props.resetDraft} recenter={recenter} print={print} panZoomRef={panZoomRef} user={props.user}/>
-    </div>
-
+        </PanZoom>
+        <Nav addRecentDraft={addRecentDraft} resetDraft={props.resetDraft} recenter={recenter} print={print} panZoomRef={panZoomRef} user={props.user} />
+      </div>
+        )
+      }}
+      
+    </Mutation>
   )
 }
 

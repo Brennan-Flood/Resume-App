@@ -48,7 +48,7 @@ const Nav = (props) => {
                   </button>
                   <button
                     className="download-button"
-                    onClick={props.print}
+                    onClick={() => props.print(props.addRecentDraft)}
                   >
                     <i className="fas fa-download"></i>
                     <h1> Download as PDF</h1>

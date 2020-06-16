@@ -22,6 +22,7 @@ const Main = (props) => {
           return props.loader;
         }
         if (data.user.member) {
+          console.log(props.currentUserId)
           return (
             <div className="main">
               <Switch>
@@ -32,7 +33,7 @@ const Main = (props) => {
                 } 
                 /> 
 
-                <Route path="/" render={props => <BuilderContainer user={data.user} draftId={data.user.draft._id} currentUserId={props.currentUserId} />} />
+                <Route path="/" render={() => <BuilderContainer user={data.user} draftId={data.user.draft._id} currentUserId={props.currentUserId} />} />
               </Switch>
             </div>
               )
