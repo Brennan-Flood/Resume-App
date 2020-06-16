@@ -1,13 +1,14 @@
 const mongoose = require("mongoose");
 const graphql = require("graphql");
-const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLBoolean, GraphQLList, GraphQLInputObjectType } = graphql;
+const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLInt } = graphql;
 const Draft = mongoose.model("images");
 
 const DraftType = new GraphQLObjectType({
   name: "DraftType",
   fields: () => ({
     _id: { type: GraphQLID },
-    state: {type: GraphQLString}
+    state: {type: GraphQLString},
+    date: {type: GraphQLString}
   })
 });
 

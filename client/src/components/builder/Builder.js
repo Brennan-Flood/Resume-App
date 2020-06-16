@@ -3,8 +3,10 @@ import LeftSidebar from "../sidebars/LeftSidebar";
 import RightSidebar from "../sidebars/RightSidebar";
 import ResumeContainer from "../resume/ResumeContainer";
 import { Mutation } from "react-apollo";
+import Queries from "../../graphql/queries";
 import Mutations from "../../graphql/mutations";
 
+const { CURRENT_USER_INFO } = Queries;
 const { UPDATE_DRAFT } = Mutations;
 
 class Builder extends React.Component {
@@ -25,6 +27,7 @@ class Builder extends React.Component {
     this.updateThemeFont = this.updateThemeFont.bind(this);
     this.resetDraft = this.resetDraft.bind(this);
     this.selectRecentDraft = this.selectRecentDraft.bind(this);
+    this.updateRecentDrafts = this.updateRecentDrafts.bind(this);
   }
 
   componentDidMount() {
@@ -36,6 +39,43 @@ class Builder extends React.Component {
         })
       }
     }, 10000)
+  }
+
+  updateRecentDrafts(cache, data) {
+    console.log(cache, data);
+    let currentUser;
+    
+    try {
+      currentUser = cache.readQuery({
+        query: CURRENT_USER_INFO,
+        variables: {id: this.props.currentUserId}
+      })
+    } catch(err) {
+      console.log(err)
+      return;
+    }
+    console.log(currentUser);
+    if (currentUser) {
+      let recentDrafts = data.data.addRecentDraft.recentDrafts;
+      cache.writeQuery({
+        query: CURRENT_USER_INFO,
+        variables: {
+          id: this.props.currentUserId
+        }, 
+        data: {
+          user: {
+            name: currentUser.name,
+            email: currentUser.email,
+            member: currentUser.member,
+            admin: currentUser.admin,
+            rootAdmin: currentUser.rootAdmin,
+            draft: currentUser.draft,
+            recentDrafts: recentDrafts,
+            __typename: "UserType"
+          }
+        }
+      })
+    }
   }
 
   resetDraft() {
@@ -190,7 +230,6 @@ class Builder extends React.Component {
   }
 
   render() {
-    console.log("Builder User ID:", this.props.currentUserId)
     return(
 
             <div className="builder">
@@ -211,6 +250,7 @@ class Builder extends React.Component {
               state={this.state} 
               user={this.props.user}
               currentUserId={this.props.currentUserId}
+              updateRecentDrafts={this.updateRecentDrafts}
               />
 
               <RightSidebar saveImageString={this.saveImageString} 
@@ -220,6 +260,7 @@ class Builder extends React.Component {
               selectRecentDraft={this.selectRecentDraft}
               currentUserId={this.props.currentUserId}
               state={this.state}
+              updateRecentDrafts={this.updateRecentDrafts}
               />
 
             </div>

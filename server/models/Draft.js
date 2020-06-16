@@ -28,6 +28,10 @@ const DraftSchema = new Schema({
       federalExperience: true,
     })
 
+  },
+  date: {
+    type: Date,
+    default: Date.now
   }
 });
 

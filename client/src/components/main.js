@@ -22,7 +22,6 @@ const Main = (props) => {
           return props.loader;
         }
         if (data.user.member) {
-          console.log(props.currentUserId)
           return (
             <div className="main">
               <Switch>

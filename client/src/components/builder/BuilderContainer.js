@@ -45,12 +45,10 @@ class BuilderContainer extends React.Component {
         {({ data, loading, error }) => {
           if (error) return <div>{error}</div>
           if (loading) return <div>{loading}</div>
-          console.log(data.draft)
           return (
             <Mutation mutation={UPDATE_DRAFT} update={(cache, data) => this.updateCache(cache, data)}>
               
               {( updateDraft ) => {
-                console.log("Builder container props: ", this.props)
                 return (
                   <Builder user={this.props.user} draftId={this.props.draftId} currentUserId={this.props.currentUserId} draft={data.draft} updateDraft={updateDraft} />
                 )

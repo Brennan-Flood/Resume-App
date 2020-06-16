@@ -1,0 +1,19 @@
+.select-draft-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+}
+
+.select-draft-button {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.draft-name {
+  font-size: 16px;
+}
+
+.draft-date {
+  font-size: 12px;
+}

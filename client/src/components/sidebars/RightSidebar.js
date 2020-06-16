@@ -9,6 +9,7 @@ class RightSidebar extends React.Component {
     super(props)
 
     this.alertDraftSelection = this.alertDraftSelection.bind(this);
+    this.parseDate = this.parseDate.bind(this);
   }
 
   alertDraftSelection(state, addRecentDraft) {
@@ -18,7 +19,7 @@ class RightSidebar extends React.Component {
       return;
     }
 
-    if (window.confirm("Save your current progress to your recent drafts?")) {
+    if (window.confirm("Save your progress to recent drafts?")) {
       addRecentDraft({
         variables: {
           id: this.props.currentUserId,
@@ -28,8 +29,16 @@ class RightSidebar extends React.Component {
         this.props.selectRecentDraft(state);
       })
     } else {
-      this.props.selectRecentDraft(state);
+    
+      // this.props.selectRecentDraft(state);
+      return;
     }
+  }
+
+  parseDate(dateString) {
+    let dateInt = parseInt(dateString);
+    let date = new Date(dateInt);
+    return "Saved on " + date.getMonth() + "/" + date.getDate() + "/" +  date.getFullYear() + " at " + date.getHours() + ":" + date.getMinutes()
   }
 
   render() {
@@ -72,20 +81,28 @@ class RightSidebar extends React.Component {
         </ul>
 
         <h1 className="sidebar-section-header">Recent Drafts</h1>
-        <Mutation mutation={ADD_RECENT_DRAFT}>
+        <Mutation mutation={ADD_RECENT_DRAFT} update={(cache, data) => {this.props.updateRecentDrafts(cache, data)}}>
         {addRecentDraft => {
           return (
-            <ul>
+            <ul className="select-draft-list">
               {this.props.user.recentDrafts && this.props.user.recentDrafts.map((draft) => {
                 if (draft) {
                   let draftState = JSON.parse(draft.state);
-                  let draftName = draftState.firstName.toLowerCase() + "_" + draftState.lastName.toLowerCase() + "_resume"
+                  let draftName = draftState.firstName.toLowerCase() + "_" + draftState.lastName.toLowerCase() + "_resume";
+                  // let dateInt = parseInt(draft.date);
+                  // let date = new Date(dateInt);
+                  // let dateParsed = "Saved on " + date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear() + " at " + date.getHours() + ":" + date.getMinutes()
                   return (
                     <button 
                     className="select-draft-button"
                     onClick={() => this.alertDraftSelection(draft.state, addRecentDraft)}
                     >
-                      {draftName}
+                      <h1 className="draft-name">
+                        {draftName}
+                      </h1>
+                      <h1 className="draft-date">
+                        {this.parseDate(draft.date)}
+                      </h1>
                     </button>
                   )
                 }

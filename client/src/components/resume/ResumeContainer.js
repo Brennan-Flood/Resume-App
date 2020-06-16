@@ -6,8 +6,10 @@ import * as jsPDF from "jspdf" ;
 import { Mutation } from "react-apollo";
 import { Query } from "react-apollo";
 import Mutations from "../../graphql/mutations";
-import { PanZoom } from 'react-easy-panzoom'
+import Queries from "../../graphql/queries";
+import { PanZoom } from 'react-easy-panzoom';
 
+const { CURRENT_USER_INFO } = Queries;
 const { ADD_RECENT_DRAFT } = Mutations;
 
 
@@ -21,10 +23,6 @@ const ResumeContainer = (props) => {
     panZoomRef.current.autoCenter(1);
 
   };
-
-  // const updateCache = (cache, data) => {
-
-  // }
 
   const print = (addRecentDraft) => new Promise(resolve => {
     panZoomRef.current.reset(1);
@@ -77,14 +75,13 @@ const ResumeContainer = (props) => {
   });
 
   return (
-    <Mutation mutation={ADD_RECENT_DRAFT}
+    <Mutation mutation={ADD_RECENT_DRAFT} update={(cache, data) => props.updateRecentDrafts(cache, data)}
     >
       
       {(addRecentDraft, {data, loading, error}) => {
         if (error) {
           console.log(error);
         }
-        console.log("resume container userId:", props.currentUserId)
         return (
           <div className="pan-zoom-container">
           <PanZoom
@@ -106,7 +103,16 @@ const ResumeContainer = (props) => {
           <Resume resumeRef={resumeRef} state={props.state} />
 
         </PanZoom>
-        <Nav addRecentDraft={addRecentDraft} resetDraft={props.resetDraft} recenter={recenter} print={print} panZoomRef={panZoomRef} user={props.user} />
+
+        <Nav 
+        addRecentDraft={addRecentDraft} 
+        resetDraft={props.resetDraft} 
+        recenter={recenter} 
+        print={print} 
+        panZoomRef={panZoomRef} 
+        user={props.user}
+        />
+
       </div>
         )
       }}

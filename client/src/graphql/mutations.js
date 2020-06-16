@@ -100,6 +100,7 @@ const Mutations = {
         recentDrafts {
           _id
           state
+          date
         }
       }
     }

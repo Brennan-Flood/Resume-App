@@ -25,6 +25,7 @@ export default {
         recentDrafts {
           _id
           state
+          date
         }
       }
       
