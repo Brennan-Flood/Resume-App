@@ -109,6 +109,7 @@ const ResumeContainer = (props) => {
         panZoomRef={panZoomRef} 
         user={props.user}
         state={props.state}
+        currentUserId={props.currentUserId}
         />
 
       </div>

@@ -150,16 +150,32 @@ UserSchema.statics.addRecentDraft = function (id, state) {
       let newDraft = new Draft({state: state});
       return newDraft.save()
       .then(draft => {
-        recentDrafts.unshift(draft);
-        if (recentDrafts.length > 10) {
-          let lastDraft = recentDrafts.pop();
+        let draftStateParsed = JSON.parse(draft.state);
+        let firstName = draftStateParsed.firstName;
+        let lastName = draftStateParsed.lastName;
+        let returnArr = [];
+        recentDrafts.forEach((e) => {
+          let draftStateCheck = JSON.parse(e.state);
+          if ( draftStateCheck.firstName === firstName && draftStateCheck.lastName === lastName ) {
+            Draft.findByIdAndDelete(e._id, function(err){
+              if (err) {
+                console.log(err);
+              }
+            })
+          } else {
+            returnArr.push(e);
+          }
+        })
+        returnArr.unshift(draft);
+        if (returnArr.length > 10) {
+          let lastDraft = returnArr.pop();
           Draft.findByIdAndDelete(lastDraft._id, function(err){
             if (err) {
               console.log(err);
             }
           });
         }
-        user.recentDrafts = recentDrafts;
+        user.recentDrafts = returnArr;
         return user.save()
         .then(user => {
           return user;
