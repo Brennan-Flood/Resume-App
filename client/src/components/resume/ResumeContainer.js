@@ -34,7 +34,7 @@ const ResumeContainer = (props) => {
 
     const firstName = document.querySelector(".first-name").innerHTML;
     const lastName = document.querySelector(".last-name").innerHTML;
-    const fileName = lastName + "_" + firstName + "_resume.pdf"
+    const fileName = lastName.toLowerCase() + "_" + firstName.toLowerCase() + "_resume.pdf"
 
     setTimeout(() => {
       html2canvas(resumeRef.current, {

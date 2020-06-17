@@ -102,14 +102,8 @@ class RightSidebar extends React.Component {
             style={{ backgroundColor: "black" }}
             onClick={e => this.props.updateThemeFont("black")}></button>
           <button className="theme"
-            style={{ backgroundColor: "rgb(102, 101, 95)" }}
-            onClick={e => this.props.updateThemeFont("rgb(102, 101, 95)")}></button>
-          <button className="theme"
-            style={{ backgroundColor: "rgb(69, 73, 85)" }}
-            onClick={e => this.props.updateThemeFont("rgb(69, 73, 85)")}></button>
-          <button className="theme"
-            style={{ backgroundColor: "rgb(39, 77, 120)" }}
-            onClick={e => this.props.updateThemeFont("rgb(39, 77, 120)")}></button>
+            style={{ backgroundColor: "rgb(0, 33, 105)" }}
+            onClick={e => this.props.updateThemeFont("rgb(0, 33, 105)")}></button>
         </ul>
 
         <h1 className="sidebar-section-header">Recent Drafts</h1>

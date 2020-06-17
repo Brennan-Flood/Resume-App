@@ -18,6 +18,7 @@ const ImageCategory = (props) => {
 
   const toggleUpload = function(field) {
     document.getElementById(`${field}-upload`).classList.toggle("uploading");
+    document.getElementById(`${field}-chevron`).classList.toggle("collapsed")
   };
 
   const getClass = function (id) {
@@ -37,7 +38,9 @@ const ImageCategory = (props) => {
           <div id={props.field} className="image-selector-modal hidden-modal">
             <div className="image-selector-interior">
             <h1 className="image-selector-title">{data.imageCategory.name}</h1>
-            <button onClick={e => props.toggleModal(props.field)}> Hide </button>
+              <button className="hide-modal-button" onClick={e => props.toggleModal(props.field)}>
+                 <i className="fas fa-window-close"></i>
+              </button>
             <ul className="image-select-list">
               {data.imageCategory.images.map((img, i) => {
                 return (
@@ -53,7 +56,10 @@ const ImageCategory = (props) => {
                 )
               })}
             </ul>
-            <button onClick={e => toggleUpload(props.field)}> Add an Image </button>
+            <button className="upload-toggle-button" onClick={e => toggleUpload(props.field)}> 
+              <i id={`${props.field}-chevron`} className="fas fa-chevron-down collapse-button collapsed" />
+              <h1>Image Upload</h1>
+             </button>
             <Upload name={data.imageCategory.name} imageCategoryId={props.imageCategoryId} field={props.field}/>
 
             </div>

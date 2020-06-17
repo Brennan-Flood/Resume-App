@@ -24,7 +24,7 @@ const Toolkit = (props) => {
               >
                
                 <path key={k + 2}
-                  fill="rgb(0, 167, 0)"
+                  fill="rgb(0, 172, 105)"
                   d={arcPath}
                   style={{ transform: "translate(50%, 50%)" }}
                 />

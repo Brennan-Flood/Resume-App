@@ -109,7 +109,7 @@ textarea::placeholder, .left-input::placeholder {
 }
 
 .add-field-button:hover {
-  background-color: rgba(1, 185, 1, 0.473);
+  background-color: rgba(0, 172, 105);
   bottom: 1px;
   box-shadow: 2px 2px 1px black;
 }
@@ -164,7 +164,7 @@ textarea::placeholder, .left-input::placeholder {
 .collapse-button {
   font-size: 20px;
   margin-left: 10px;
-  color: green;
+  color: rgb(0, 172, 105);
   transition: transform 0.2s linear;
 }
 
@@ -186,7 +186,7 @@ textarea::placeholder, .left-input::placeholder {
 
 .collapse-button:hover, .modal-button:hover {
   cursor: pointer;
-  color: green;
+  color: rgb(0, 172, 105);
 }
 
 .modal-button {

@@ -41,7 +41,24 @@
   max-width: 600px;
   min-width: 400px;
   padding-bottom: 40px;
-  top: 5vh;
+  top: 1vh;
+}
+
+.hide-modal-button {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  padding: 10px;
+}
+
+.hide-modal-button > i {
+  font-size: 20px;
+  transition: 0.3s;
+}
+
+.hide-modal-button:hover > i {
+  color: red;
+  transition: 0s;
 }
 
 .image-selector-interior > h1 {
@@ -116,7 +133,7 @@
 }
 
 .toggle-image.selected {
-  border: 4px solid rgb(0, 255, 0);
+  border: 4px solid rgb(0, 172, 105);
 }
 
 .image-upload-modal {
@@ -193,4 +210,16 @@
   border-radius: 10px;
   font-size: 15px;
   width: 200px;
+}
+
+.upload-toggle-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.upload-toggle-button > i {
+  margin-right: 10px;
+  font-size: 25px;
 }
