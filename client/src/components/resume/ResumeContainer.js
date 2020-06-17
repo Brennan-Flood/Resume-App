@@ -108,6 +108,7 @@ const ResumeContainer = (props) => {
         print={print} 
         panZoomRef={panZoomRef} 
         user={props.user}
+        state={props.state}
         />
 
       </div>

@@ -10,9 +10,9 @@ const { IS_LOGGED_IN } = Queries;
 const Nav = (props) => {
   const getLeft = () => {
     if (props.user.admin ) {
-      return -441 / 2.0
+      return -496 / 2.0
     } else {
-      return -375 / 2.0
+      return -441 / 2.0
     }
   }
 
@@ -52,6 +52,19 @@ const Nav = (props) => {
                   >
                     <i className="fas fa-download"></i>
                     <h1> Download as PDF</h1>
+                  </button>
+
+                  <button 
+                    className="save-button"
+                    onClick={() => props.addRecentDraft({
+                      variables: {
+                        id: props.currentUserId,
+                        state: JSON.stringify(props.state)
+                      }
+                    })}
+                  >
+                    <i className="fas fa-save"></i>
+                    <h1>Save Resume</h1>
                   </button>
 
                   <button onClick={props.recenter}>

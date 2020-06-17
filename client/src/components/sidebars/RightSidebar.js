@@ -1,5 +1,7 @@
 import React from "react";
 import { Mutation } from "react-apollo";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Mutations from "../../graphql/mutations";
 
 const { ADD_RECENT_DRAFT } = Mutations;
@@ -12,7 +14,7 @@ class RightSidebar extends React.Component {
     this.parseDate = this.parseDate.bind(this);
   }
 
-  alertDraftSelection(state, addRecentDraft) {
+  alertDraftSelection(state, addRecentDraft, draftName) {
     let currentStateString = JSON.stringify(this.props.state);
     let currentYear = new Date().getFullYear();
     let freshState = {
@@ -39,6 +41,7 @@ class RightSidebar extends React.Component {
       federalExperience: true,
     };
     if (currentStateString === state) {
+      toast("You are already viewing this draft", {type: "success"})
       return;
     }
 
@@ -52,11 +55,15 @@ class RightSidebar extends React.Component {
         }
       }).then(() => {
         this.props.selectRecentDraft(state);
+        toast(`Successfully saved your current progress and loaded ${draftName}!`, {type: "success"})
       });
     } else {
-    
-      // this.props.selectRecentDraft(state);
-      return;
+        if (window.confirm(`Would you like to proceed to your recent draft titled ${draftName} without saving? \n\nAll current progress will be lost...`)) {
+        this.props.selectRecentDraft(state);
+        toast(`Successfully loaded ${draftName}!`, {type: "success"})
+      } else {
+        return;
+      }
     }
   }
 
@@ -67,10 +74,10 @@ class RightSidebar extends React.Component {
   }
 
   render() {
-    // <div className='delete-button' onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) this.onCancel(item) } } />
-    // this.props.selectRecentDraft(draft.state)} className="recent-draft-button"
     return (
       <div className="right-sidebar col-sm-8">
+        <ToastContainer />
+
         <h1 className="sidebar-header">THEMES</h1>
 
         <h1 className="sidebar-section-header">Background Color</h1>
@@ -114,14 +121,11 @@ class RightSidebar extends React.Component {
                 if (draft) {
                   let draftState = JSON.parse(draft.state);
                   let draftName = draftState.firstName.toLowerCase() + "_" + draftState.lastName.toLowerCase() + "_resume";
-                  // let dateInt = parseInt(draft.date);
-                  // let date = new Date(dateInt);
-                  // let dateParsed = "Saved on " + date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear() + " at " + date.getHours() + ":" + date.getMinutes()
                   return (
                     <button 
                     key={i}
                     className="select-draft-button"
-                    onClick={() => this.alertDraftSelection(draft.state, addRecentDraft)}
+                    onClick={() => this.alertDraftSelection(draft.state, addRecentDraft, draftName)}
                     >
                       <h1 className="draft-name">
                         {draftName}
