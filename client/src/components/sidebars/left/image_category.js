@@ -12,7 +12,6 @@ const ImageCategory = (props) => {
     } else {
       props.removeImageFromField(props.field, imageId);
     }
-    // e.target.firstChild.classList.toggle("selected")
     document.getElementById(imageId).classList.toggle("selected");
   };
 

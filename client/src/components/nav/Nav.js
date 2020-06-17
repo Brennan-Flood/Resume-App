@@ -56,12 +56,7 @@ const Nav = (props) => {
 
                   <button 
                     className="save-button"
-                    onClick={() => props.addRecentDraft({
-                      variables: {
-                        id: props.currentUserId,
-                        state: JSON.stringify(props.state)
-                      }
-                    })}
+                    onClick={() => props.save(props.addRecentDraft)}
                   >
                     <i className="fas fa-save"></i>
                     <h1>Save Resume</h1>

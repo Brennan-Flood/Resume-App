@@ -3,6 +3,8 @@ import Resume from "./Resume";
 import Nav from "../nav/Nav";
 import html2canvas from "html2canvas";
 import * as jsPDF from "jspdf" ;
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Mutation } from "react-apollo";
 import Mutations from "../../graphql/mutations";
 import { PanZoom } from 'react-easy-panzoom';
@@ -21,16 +23,20 @@ const ResumeContainer = (props) => {
 
   };
 
-  const print = (addRecentDraft) => new Promise(resolve => {
-    panZoomRef.current.reset(1);
-    panZoomRef.current.autoCenter(1);
-
+  const save = (addRecentDraft) => {
     addRecentDraft({
       variables: {
         id: props.currentUserId,
         state: JSON.stringify(props.state)
       }
-    })
+    }).then(() => {
+      toast(`Successfully Saved ${props.state.firstName.toLowerCase()}_${props.state.lastName.toLowerCase()}_resume!`, {type: "success"});
+    });
+  }
+
+  const print = (addRecentDraft) => new Promise(resolve => {
+    panZoomRef.current.reset(1);
+    panZoomRef.current.autoCenter(1);
 
     const firstName = document.querySelector(".first-name").innerHTML;
     const lastName = document.querySelector(".last-name").innerHTML;
@@ -68,8 +74,8 @@ const ResumeContainer = (props) => {
           resolve();
         });
 
-    }, 250)
-  });
+    }, 250);
+  }).then(() => {save(addRecentDraft)});
 
   return (
     <Mutation mutation={ADD_RECENT_DRAFT} update={(cache, data) => props.updateRecentDrafts(cache, data)}
@@ -110,6 +116,7 @@ const ResumeContainer = (props) => {
         user={props.user}
         state={props.state}
         currentUserId={props.currentUserId}
+        save={save}
         />
 
       </div>
