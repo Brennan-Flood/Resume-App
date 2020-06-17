@@ -2,6 +2,7 @@
   z-index: 2;
   padding: 10px;
   margin-top: 0px;
+  margin-left: -60px;
 }
 
 .first-name {
@@ -17,5 +18,4 @@
 .applicant-title {
   font-size: 12px;
   font-family: 'AvenirLTStd-roman';
-
 }

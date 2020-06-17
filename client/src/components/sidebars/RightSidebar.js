@@ -14,12 +14,37 @@ class RightSidebar extends React.Component {
 
   alertDraftSelection(state, addRecentDraft) {
     let currentStateString = JSON.stringify(this.props.state);
-
+    let currentYear = new Date().getFullYear();
+    let freshState = {
+      firstName: "",
+      lastName: "",
+      title: "",
+      yearsExperience: "",
+      currentImage: "",
+      currentTitle: "",
+      currentCompany: "",
+      currentPositionStartTime: currentYear,
+      currentPositionTime: "",
+      currentPositionParagraph: "",
+      recentSearches: "",
+      educationAndEmployment: [[1, { title: "", entity: "", startTime: "", endTime: "", image: "" }]],
+      clearenceLevels: { secret: 10, topSecret: 10, TSSCI: 10, TSSCICIPolygraph: 10, TSSCIFullScopePolygraph: 10 },
+      linkedinReviews: [[1, { author: "", body: "" }]],
+      themeColor: { backgroundColor: "rgb(229, 229, 229)", color: "black" },
+      federalAgencies: {},
+      hobbies: {},
+      image: "",
+      toolkit: {},
+      ats: {},
+      federalExperience: true,
+    };
     if (currentStateString === state) {
       return;
     }
 
-    if (window.confirm("Save your progress to recent drafts?")) {
+    if (JSON.stringify(freshState) === currentStateString ) { 
+      this.props.selectRecentDraft(state);
+    } else if ( window.confirm("Save your progress to recent drafts?")) {
       addRecentDraft({
         variables: {
           id: this.props.currentUserId,
@@ -27,7 +52,7 @@ class RightSidebar extends React.Component {
         }
       }).then(() => {
         this.props.selectRecentDraft(state);
-      })
+      });
     } else {
     
       // this.props.selectRecentDraft(state);
@@ -85,7 +110,7 @@ class RightSidebar extends React.Component {
         {addRecentDraft => {
           return (
             <ul className="select-draft-list">
-              {this.props.user.recentDrafts && this.props.user.recentDrafts.map((draft) => {
+              {this.props.user.recentDrafts && this.props.user.recentDrafts.map((draft, i) => {
                 if (draft) {
                   let draftState = JSON.parse(draft.state);
                   let draftName = draftState.firstName.toLowerCase() + "_" + draftState.lastName.toLowerCase() + "_resume";
@@ -94,6 +119,7 @@ class RightSidebar extends React.Component {
                   // let dateParsed = "Saved on " + date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear() + " at " + date.getHours() + ":" + date.getMinutes()
                   return (
                     <button 
+                    key={i}
                     className="select-draft-button"
                     onClick={() => this.alertDraftSelection(draft.state, addRecentDraft)}
                     >
@@ -105,6 +131,8 @@ class RightSidebar extends React.Component {
                       </h1>
                     </button>
                   )
+                } else {
+                  return null;
                 }
               })}
             </ul>

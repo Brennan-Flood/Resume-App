@@ -7,7 +7,6 @@ import SearchesEdit from "./left/searches_edit.js";
 import EduEdit from "./left/education_edit.js";
 import ClearenceEdit from "./left/clearence_edit.js";
 import LinkedinEdit from "./left/linkedin_edit.js";
-import AtsEdit from "./left/ats_edit.js";
 
 class LeftSidebar extends React.Component {
   constructor(props) {

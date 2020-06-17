@@ -2,12 +2,9 @@ import React from "react";
 import LeftSidebar from "../sidebars/LeftSidebar";
 import RightSidebar from "../sidebars/RightSidebar";
 import ResumeContainer from "../resume/ResumeContainer";
-import { Mutation } from "react-apollo";
 import Queries from "../../graphql/queries";
-import Mutations from "../../graphql/mutations";
 
 const { CURRENT_USER_INFO } = Queries;
-const { UPDATE_DRAFT } = Mutations;
 
 class Builder extends React.Component {
   constructor(props) {
@@ -79,6 +76,7 @@ class Builder extends React.Component {
   }
 
   resetDraft() {
+    let currentYear = new Date().getFullYear();
     let freshState = {
       firstName: "",
       lastName: "",
@@ -87,7 +85,7 @@ class Builder extends React.Component {
       currentImage: "",
       currentTitle: "",
       currentCompany: "",
-      currentPositionStartTime: 2020,
+      currentPositionStartTime: currentYear,
       currentPositionTime: "",
       currentPositionParagraph: "",
       recentSearches: "",

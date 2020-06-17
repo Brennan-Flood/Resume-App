@@ -1,5 +1,4 @@
 import React from "react";
-import { arc } from "d3-shape";
 
 const Ats = (props) => {
   return (

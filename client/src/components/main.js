@@ -2,7 +2,6 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import BuilderContainer from "./builder/BuilderContainer";
 import Pending from "./pending/Pending";
-import Loader from "react-loader-spinner";
 import { Query } from "react-apollo";
 import Queries from "../graphql/queries";
 import AdminMain from "./admin/AdminMain";

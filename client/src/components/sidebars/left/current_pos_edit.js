@@ -24,9 +24,8 @@ const CurrentPosEdit = (props) => {
       <input
         className="left-input"
         type="number"
-        placeholder="Starting Year"
         onChange={props.update("currentPositionStartTime")}
-        defaultValue={new Date().getFullYear()}
+        // defaultValue={new Date().getFullYear()}
         value={props.state.currentPositionStartTime}
 
       />

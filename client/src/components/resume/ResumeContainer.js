@@ -4,12 +4,9 @@ import Nav from "../nav/Nav";
 import html2canvas from "html2canvas";
 import * as jsPDF from "jspdf" ;
 import { Mutation } from "react-apollo";
-import { Query } from "react-apollo";
 import Mutations from "../../graphql/mutations";
-import Queries from "../../graphql/queries";
 import { PanZoom } from 'react-easy-panzoom';
 
-const { CURRENT_USER_INFO } = Queries;
 const { ADD_RECENT_DRAFT } = Mutations;
 
 

@@ -53,7 +53,7 @@ class FileUpload extends Component {
         }
       })
       toast(`${this.state.file[0].name} uploaded successfully!`, {type: "success"});
-      this.setState({file: null, uploading: false})
+      this.setState({file: null, uploading: false, name: null})
     }
   }
 
