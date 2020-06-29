@@ -3,15 +3,32 @@
   height: 45px;
 }
 
+.federal-agency-node {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
+
+.federal-agency-node > h1 {
+  text-align: center;
+  font-family: 'AvenirLTStd-light';
+  font-size: 12px;
+}
+
 .federal-agency-icon-container {
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 100%;
+  height: 45px;
+  width: 45px;
   border: 1px solid black;
   background-color: white;
-  margin: 5px;
+  margin: 0px;
   overflow: hidden;
+
 }
 
 .agencies-images {

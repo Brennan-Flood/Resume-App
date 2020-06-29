@@ -44,10 +44,13 @@ class Resume extends React.Component {
               <div className="resume-federal-agencies">
                 <h1 className="title">FEDERAL AGENCIES</h1>
                 <div className="agencies-images">
-                  {Object.values(this.props.state.federalAgencies).map((url, i) => {
+                  {Object.values(this.props.state.federalAgencies).map((agency, i) => {
                     return (
-                      <div key={i} className="federal-agency-icon-container">
-                      <img  crossOrigin="anonymous" className="federal-agency-icon" src={url + "?" + new Date().getTime()} alt="federal-agency" />
+                      <div key={i} className="federal-agency-node">
+                        <h1 className="agency-icon-name">{agency.name}</h1>
+                        <div className="federal-agency-icon-container">
+                          <img crossOrigin="anonymous" className="federal-agency-icon" src={agency.url + "?" + new Date().getTime()} alt="federal-agency" />
+                        </div>
                       </div>
                     )
                   })}

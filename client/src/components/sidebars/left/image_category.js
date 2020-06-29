@@ -6,9 +6,9 @@ const { FETCH_CATEGORY } = Queries;
 
 const ImageCategory = (props) => {
 
-  const toggleImage = function(e, imageId, url) {
+  const toggleImage = function(e, imageId, url, name=undefined) {
     if (props.state[props.field][imageId] === undefined) {
-      props.addImageToField(props.field, url, imageId);
+      props.addImageToField(props.field, url, imageId, name);
     } else {
       props.removeImageFromField(props.field, imageId);
     }
@@ -48,7 +48,7 @@ const ImageCategory = (props) => {
                     <h1>{img.name}</h1> )
                      : null }
                   
-                  <button   className="image-toggle-button" onClick={e => toggleImage(e, img._id, img.url)}>
+                  <button className="image-toggle-button" onClick={e => toggleImage(e, img._id, img.url, img.name)}>
                     <img id={img._id} className={getClass(img._id)} key={i} src={img.url} alt={props.field} />
                   </button>
                   </div>

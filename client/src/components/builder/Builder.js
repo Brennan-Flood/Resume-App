@@ -126,11 +126,14 @@ class Builder extends React.Component {
     this.setState({image: string});
   }
 
-  addImageToField(field, url, id) {
+  addImageToField(field, url, id, name=null) {
     let currentFieldState = this.state[field];
-    if (field !== "toolkit" && field !== "ats") {
+    if (field !== "toolkit" && field !== "ats" && field !== "federalAgencies") {
       currentFieldState[id] = url;
-      this.setState({ [field]: currentFieldState })
+      this.setState({ [field]: currentFieldState });
+    } else if ( field === "federalAgencies" ) {
+      currentFieldState[id] = {url: url, name: name};
+      this.setState({ [field]: currentFieldState });
     } else {
       currentFieldState[id] = {url: url, value: 10}
       this.setState({ [field]: currentFieldState});
